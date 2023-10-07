@@ -29,37 +29,37 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 50%;
-  min-height: 100%;
+  min-width: 320px;
+  min-height: 100vh;
   background-color: #f5f5f5;
 }
 
 .title {
-  font-size: 6.25%;
+  font-size: 60px;
   line-height: 1.1;
   color: #7db6eb;
   font-family: "Patrick Hand", cursive;
   position: fixed;
   top: 0;
   left: 0;
-  right: 20%;
+  right: 20em;
   /* z-index: 9999; */
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.189);
-  letter-spacing: -0.2%;
-  margin-left: 3%;
+  letter-spacing: -2px;
+  margin-left: 3em;
 }
 
 .baby-image {
   position: fixed;
   top: 0;
   left: 0;
-  right: 5%;
-  width: 10%;
-  height: 10%;
-  margin-left: 12%;
-  margin-right: 5%;
-  margin-top: 5%;
-  margin-bottom: 34%;
+  right: 5em;
+  width: 75px;
+  height: 75px;
+  margin-left: 6em;
+  margin-right: 50px;
+  margin-top: 2.5em;
+  margin-bottom: 34px;
   size: 500%;
 }
 
@@ -70,14 +70,14 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  margin-top: 6.25%;
-  margin-right: 8.33%;
-  font-size: 150%;
+  margin-top: 2.4em;
+  margin-right: 50px;
+  font-size: 1.5em;
   border-radius: 20px;
-  padding-left: 20%;
-  padding-right: 20%;
-  padding-top: 1.67%;
-  padding-bottom: 1.67%;
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .instructions-button {
@@ -85,97 +85,101 @@ body {
   color: #4d92d3;
   font-family: "Patrick Hand", cursive;
   position: fixed;
-  top: 5.2083%;
+  top: 5em;
   right: 0;
-  margin-top: 0%;
-  margin-right: 3.125%;
-  font-size: 1.5625%;
-  border-radius: 2.0833%;
-  padding-left: 2.0833%;
-  padding-right: 2.0833%;
-  padding-top: 0.5208%;
-  padding-bottom: 0.5208%;
+  margin-top: 0em;
+  margin-right: 50px;
+  font-size: 1.5em;
+  border-radius: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .description-english-line1 {
   font-family: "Patrick Hand", cursive;
   color: #ff7777;
-  font-size: 6.25vw; /* equivalent to 48px */
-  margin-right: 7.5%; /* equivalent to 3em */
-  padding-right: 7.5%; /* equivalent to 3em */
-  margin-bottom: 0%;
+  font-size: 48px;
+  margin-right: 3em;
+  padding-right: 3em;
+  margin-bottom: 0px;
 }
 
 .description-english-line2 {
   font-family: "Patrick Hand", cursive;
   color: #ff7777;
-  font-size: 6.25vw; /* equivalent to 48px */
-  margin-right: 7.5%; /* equivalent to 3em */
-  padding-right: 7.5%; /* equivalent to 3em */
-  margin-top: 0%;
-  margin-bottom: 0%;
+  font-size: 48px;
+  margin-right: 3em;
+  padding-right: 3em;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .description-spanish-line1 {
   font-family: "Patrick Hand", cursive;
   color: #f2a661;
-  font-size: 3.2vw; /* equivalent to 48px */
-  margin-right: 4.8%; /* equivalent to 3em */
-  padding-right: 4.8%; /* equivalent to 3em */
-  margin-bottom: 0%;
-  margin-top: 0%;
+  font-size: 48px;
+  margin-right: 3em;
+  padding-right: 3em;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 .description-spanish-line2 {
   font-family: "Patrick Hand", cursive;
   color: #f2a661;
-  font-size: 3.2vw; /* equivalent to 48px */
-  margin-right: 4.8%; /* equivalent to 3em */
-  padding-right: 4.8%; /* equivalent to 3em */
-  margin-top: 0;
-  margin-bottom: 0;
+  font-size: 48px;
+  margin-right: 3em;
+  padding-right: 3em;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .star1 {
-  position:static;
   width: 9%;
   height: auto;
-  top: 5%;
-  right: 17%;
+  flex-shrink: 0;
+  position: absolute;
+  left: 0;
+  top: 28%;
+  margin-left: 17%;
+  margin-top: 0;
+  margin-bottom: 5%;
   z-index: 9999;
 }
 
 .star2 {
-  position: static;
   width: 14%;
   height: auto;
-  top: 3%;
-  right: 5%;
+  flex-shrink: 0;
+  position: absolute;
+  left: 0;
+  top: 63%; /* changed from top: 1; */
+  margin-left: 59%;
+  margin-top: 0;
+  margin-bottom: 3%;
   z-index: 9999;
 }
 
-.star1:hover {
-  transform: rotateY(180deg);
-}
-
-.star2:hover {
+img .star1, .star2:hover {
   transform: rotateY(180deg);
 }
 
 .girl-pointing {
   position: absolute;
-  width: 23%;
+  width: 22%;
   height: auto;
   top: 35%;
-  right: 13%;
+  right: 14%;
   z-index: 9999;
 }
 
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 4% 8%;
-  font-size: 100%;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
@@ -189,7 +193,7 @@ button:hover {
 
 button:focus,
 button:focus-visible {
-  outline: 0.4rem auto -webkit-focus-ring-color;
+  outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {
