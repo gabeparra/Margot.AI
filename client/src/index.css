@@ -177,7 +177,7 @@ body {
   position: fixed;
   left: 0;
   top: 13em;
-  margin-left: 15em;
+  margin-left: 12em;
   margin-top: 0;
   margin-bottom: 5em;
   z-index: 9999;
@@ -189,8 +189,9 @@ body {
   flex-shrink: 0;
   position: fixed;
   left: 0;
-  top: 30em; /* changed from top: 1; */
-  margin-left: 57em;
+  /* top: 30em; changed from top: 1; */
+  bottom: 2em;
+  margin-left: 54em;
   margin-top: 0;
   margin-bottom: 3em;
   z-index: 9999;
