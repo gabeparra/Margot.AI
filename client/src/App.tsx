@@ -58,18 +58,9 @@ function App() {
             className="girl-pointing"
             alt="girl pointing at text"
           />
-        </a>
+        </div>
         <button className="change-language">SITE LANGUAGE: English</button>
         <button className="instructions-button">Instructions</button>
-      </div>
-      <div className="images">
-        <img src={starImage} className="star1" alt="Star" />
-        <img
-          src={girlPointing}
-          className="girl-pointing"
-          alt="girl pointing at text"
-        />
-        
       </div>
       <div className="description">
         <p className="description-english-line1">Helping your kids learn and</p>
@@ -96,7 +87,6 @@ function App() {
       </div> */}
         {/* <img src={starImage} className="star-image2" alt="Star" /> */}
         <img src={starImage} className="star2" alt="Star" />
-      </div>
     </Router>
   );
 }
