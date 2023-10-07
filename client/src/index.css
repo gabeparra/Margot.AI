@@ -232,6 +232,10 @@ button:hover {
   border-color: #646cff;
 }
 
+h2 {
+  color:#1a1a1a;
+}
+
 /* button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
