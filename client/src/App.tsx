@@ -2,6 +2,8 @@ import { useState } from "react";
 import babyImage from "./assets/baby.png";
 import starImage from "./assets/star.png";
 import girlPointing from "./assets/girl-pointing.png";
+// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
           />
         </a>
         <button className="change-language">SITE LANGUAGE: English</button>
+        <button className="instructions-button">Instructions</button>
       </div>
       {/* <div className="images"> */}
       <img src={starImage} className="star-image" alt="Star"/>
@@ -27,22 +30,20 @@ function App() {
         className="girlPointing-image"
         alt="girl pointing at text"
       />
-      {/* </div> */}
-      <div className="instructions">
-        <p className="instructions-english-line1">
-          Helping your kids learn and understand
-        </p>
-        <p className="instructions-english-line2">Spanish easier!</p>
-        <p className="instructions-spanish-line1">
-          Ayudando a tus niños a entender y
-        </p>
-        <p className="instructions-spanish-line2">
-          aprender Ingles facilmente!
+      <div className="description">
+        <p className="description-english-line1">Helping your kids learn and</p>
+        <p className="description-english-line2">understand Spanish easier!</p>
+        <p className="description-spanish-line1">Ayudando a tus niños a</p>
+        <p className="description-spanish-line2">
+          entender y aprender Ingles facilmente!
         </p>
       </div>
       <img src={starImage} className="star-image2" alt="Star"/>
     </>
+     <img src={starImage} className="star-image2" alt="Star"/>
   );
+  
 }
+
 
 export default App;
