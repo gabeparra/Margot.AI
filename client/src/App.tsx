@@ -38,7 +38,10 @@ function App() {
         </p>
       </div>
     </>
+     <img src={starImage} className="star-image2" alt="Star"/>
   );
+  
 }
+
 
 export default App;
