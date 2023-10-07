@@ -26,13 +26,13 @@ function App() {
         className="girlPointing-image"
         alt="girl pointing at text"
       />
-      <div className="instructions">
-        <p className="instructions-english-line1">
+      <div className="description">
+        <p className="description-english-line1">
           Helping your kids learn and
         </p>
-        <p className="instructions-english-line2">understand Spanish easier!</p>
-        <p className="instructions-spanish-line1">Ayudando a tus niños a</p>
-        <p className="instructions-spanish-line2">
+        <p className="description-english-line2">understand Spanish easier!</p>
+        <p className="description-spanish-line1">Ayudando a tus niños a</p>
+        <p className="description-spanish-line2">
           entender y aprender Ingles facilmente!
         </p>
       </div>
