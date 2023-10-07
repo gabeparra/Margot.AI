@@ -49,6 +49,10 @@ body {
   margin-left: 3em;
 }
 
+/* .description {
+  padding-top: 50%;
+} */
+
 .baby-image {
   position: fixed;
   top: 0;
@@ -244,4 +248,32 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* list */
+#instruction-list {
+  font-family: "Patrick Hand", cursive;
+  font-size: 1.5em;
+  color: #4d92d3;
+  text-align: left;
+  margin-left: 25%;
+}
+
+.star {
+  list-style-type: none;
+  background-image: url("./assets/star.png");
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding: 10px 48px;
+}
+
+
+
+/* headers */
+.how-works {
+  font-family: "Patrick Hand", cursive;
+  font-size: 300%;
+  color: #4d92d3;
+  margin-top: 20%;
 }
