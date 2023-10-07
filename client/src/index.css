@@ -136,38 +136,42 @@ body {
   margin-bottom: 0px;
 }
 
-.star-image {
+.star1 {
   width: 10em;
   height: 10em;
   flex-shrink: 0;
   position: fixed;
   left: 0;
   top: 13em;
-  margin-left: 10em;
+  margin-left: 15em;
   margin-top: 0;
   margin-bottom: 5em;
   z-index: 9999;
 }
 
-.star-image2 {
+.star2 {
   width: 200px;
   height: 200px;
   flex-shrink: 0;
   position: fixed;
   left: 0;
-  top: 28em; /* changed from top: 1; */
-  margin-left: 56em;
+  top: 30em; /* changed from top: 1; */
+  margin-left: 57em;
   margin-top: 0;
   margin-bottom: 3em;
   z-index: 9999;
   transition: transform 0.5s;
 }
 
-img:hover {
+.star1:hover {
   transform: rotateY(180deg);
 }
 
-.girlPointing-image {
+.star2:hover {
+  transform: rotateY(180deg);
+}
+
+.girl-pointing {
   position: absolute;
   width: 25em;
   height: 25em;
@@ -187,9 +191,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -206,22 +212,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
-
-.star-image2 {
-  width: 200px;
-  height: 200px;
-  flex-shrink: 0;
-  position: fixed;
-  left: 0;
-  top: 28em; /* changed from top: 1; */
-  margin-left: 56em;
-  margin-top: 0;
-  margin-bottom: 3em;
-  z-index: 9999;
-  transition: transform 0.5s;
-}
-
-img:hover {
-  transform: rotateY(180deg);
 }
