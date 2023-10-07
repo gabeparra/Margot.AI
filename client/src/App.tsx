@@ -7,10 +7,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
 
 function App() {
-  // const [count, setCount] = useState(0);
-
   return (
-    <>
+    <div>
       <div className="header">
         <h1 className="title">Margot.AI</h1>
         <a>
@@ -23,13 +21,14 @@ function App() {
         <button className="change-language">SITE LANGUAGE: English</button>
         <button className="instructions-button">Instructions</button>
       </div>
-      {/* <div className="images"> */}
-      <img src={starImage} className="star-image" alt="Star"/>
-      <img
-        src={girlPointing}
-        className="girlPointing-image"
-        alt="girl pointing at text"
-      />
+      <div className="images">
+        <img src={starImage} className="star-image" alt="Star" />
+        <img
+          src={girlPointing}
+          className="girlPointing-image"
+          alt="girl pointing at text"
+        />
+      </div>
       <div className="description">
         <p className="description-english-line1">Helping your kids learn and</p>
         <p className="description-english-line2">understand Spanish easier!</p>
@@ -38,12 +37,11 @@ function App() {
           entender y aprender Ingles facilmente!
         </p>
       </div>
-      <img src={starImage} className="star-image2" alt="Star"/>
-    </>
-     <img src={starImage} className="star-image2" alt="Star"/>
+      <img src={starImage} className="star-image2" alt="Star" />
+    </div>
   );
-  
 }
+
 
 
 export default App;
