@@ -49,10 +49,6 @@ body {
   margin-left: 3em;
 }
 
-/* .description {
-  padding-top: 50%;
-} */
-
 .baby-image {
   position: fixed;
   top: 0;
@@ -110,7 +106,7 @@ body {
   right: 0;
   transform: translateX(30%);
   transform: translateY(270%);
-  margin-top: 0em;
+  margin-top: 1em;
   font-size: 3em;
   border-radius: 20px;
   padding-left: 40px;
@@ -128,7 +124,7 @@ body {
   right: 0;
   transform: translateX(30%);
   transform: translateY(270%);
-  margin-top: 0em;
+  margin-top: 1em;
   font-size: 3em;
   border-radius: 20px;
   padding-left: 40px;
@@ -180,12 +176,10 @@ body {
 
 .star1 {
   position: relative;
-  width: 10%;
-  height: auto;
-  left: -50%;
-  margin-left: 18%;
-  margin-top: -50%;
-  margin-bottom: -10%;
+  width: 30%;
+  height: 30%;
+  left: -70%;
+  margin-top: -20%;
   z-index: 9999;
 }
 
@@ -211,13 +205,14 @@ body {
 }
 
 .girl-pointing {
-  position: absolute;
-  width: 22%;
-  height: auto;
-  margin-top: 2%;
+  position: relative;
+  width: 40%;
+  height: 40%;
+  margin-top: -50%;
   margin-left: 3%;
   margin-bottom: 5%;
-  z-index: 9999;
+  z-index: 0;
+  right: -60%;
 }
 
 .girl-megaphone {
@@ -244,7 +239,7 @@ button:hover {
 }
 
 h2 {
-  color:#1a1a1a;
+  color: #1a1a1a;
 }
 
 /* button:focus,
@@ -282,8 +277,6 @@ button:focus-visible {
   background-position: left center;
   padding: 10px 48px;
 }
-
-
 
 /* headers */
 .how-works {
