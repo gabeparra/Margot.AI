@@ -13,7 +13,7 @@ function App() {
   // const [showLearningPage, setShowLearningPage] = useState(false);
   const [activeTab, setActiveTab] = useState("AboutMargot");
 
-  /*const [inputValue, setInputValue] = useState(""); // State for input value
+  const [inputValue, setInputValue] = useState(""); // State for input value
   const [responseMessage, setResponseMessage] = useState(""); // State for server response message
 
   const handleSubmit = async () => {
@@ -32,7 +32,6 @@ function App() {
       setResponseMessage("Error generating audio.");
     }
   };
-  */
   return (
     <Router>
       <div>
@@ -108,14 +107,12 @@ function App() {
             </div>
           )}
         </div>
-
         {/* <Routes>
           <Route path="/learning" Component={LearningPage} />
         </Routes> */}
         <button className="change-language">SITE LANGUAGE: English</button>
         <button className="instructions-button">Instructions</button>
       </div>
-
       {/* <div className="startle">
         <button className="start-learning-button">Start Learning</button>
         <button className="instructions-button">Instructions</button>
@@ -130,7 +127,8 @@ function App() {
         <button onClick={handleSubmit}>Submit</button>
         {responseMessage && <p>{responseMessage}</p>}
       </div> */}
-
+        {/* <img src={starImage} className="star-image2" alt="Star" /> */}
+        <img src={starImage} className="star2" alt="Star" />
       <div className="introduction">
         <h1 className="how-works">How Margot.AI works: </h1>
         <ul id="instruction-list">
