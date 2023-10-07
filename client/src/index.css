@@ -80,7 +80,7 @@ body {
   padding-bottom: 10px;
 }
 
-.instructions-english-line1 {
+.description-english-line1 {
   font-family: "Patrick Hand", cursive;
   color: #ff7777;
   font-size: 48px;
@@ -89,7 +89,7 @@ body {
   margin-bottom: 0px;
 }
 
-.instructions-english-line2 {
+.description-english-line2 {
   font-family: "Patrick Hand", cursive;
   color: #ff7777;
   font-size: 48px;
@@ -99,7 +99,7 @@ body {
   margin-bottom: 0px;
 }
 
-.instructions-spanish-line1 {
+.description-spanish-line1 {
   font-family: "Patrick Hand", cursive;
   color: #f2a661;
   font-size: 48px;
@@ -109,7 +109,7 @@ body {
   margin-top: 0px;
 }
 
-.instructions-spanish-line2 {
+.description-spanish-line2 {
   font-family: "Patrick Hand", cursive;
   color: #f2a661;
   font-size: 48px;
