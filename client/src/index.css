@@ -101,28 +101,13 @@ body {
   padding-bottom: 10px;
 }
 
-/* .learn-button {
-  background-color: #f7d6a6;
-  color: #4d92d3;
-  font-family: "Patrick Hand", cursive;
-  position: fixed;
-  bottom: 8em;
-  right: 0;
-  margin-top: 0em;
-  margin-right: 50px;
-  font-size: 1.5em;
-  border-radius: 20px;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 10px;
-  padding-bottom: 10px; */
 .learn-button {
   background-color: #f7d6a6;
   color: #3db29f;
   font-family: "Patrick Hand", cursive;
-  position: fixed;
-  bottom: 8em;
-  right: 50%;
+  position: relative;
+  bottom: 5em;
+  right: 0;
   transform: translateX(30%);
   transform: translateY(270%);
   margin-top: 0em;
@@ -132,15 +117,34 @@ body {
   padding-right: 40px;
   padding-top: 10px;
   padding-bottom: 10px;
+  margin-bottom: 0.7em;
 }
-/* } */
+.about-button {
+  background-color: #f7d6a6;
+  color: #3db29f;
+  font-family: "Patrick Hand", cursive;
+  position: relative;
+  bottom: 5em;
+  right: 0;
+  transform: translateX(30%);
+  transform: translateY(270%);
+  margin-top: 0em;
+  font-size: 3em;
+  border-radius: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 0.7em;
+  margin-right: 0.2em;
+}
 
 .description-english-line1 {
   font-family: "Patrick Hand", cursive;
   color: #ff7777;
   font-size: 48px;
-  margin-right: 3em;
-  padding-right: 3em;
+  /* margin-right: 3em; */
+  /* padding-right: 3em; */
   margin-bottom: 0px;
 }
 
@@ -148,8 +152,8 @@ body {
   font-family: "Patrick Hand", cursive;
   color: #ff7777;
   font-size: 48px;
-  margin-right: 3em;
-  padding-right: 3em;
+  /* margin-right: 3em; */
+  /* padding-right: 3em; */
   margin-top: 0px;
   margin-bottom: 0px;
 }
@@ -158,8 +162,8 @@ body {
   font-family: "Patrick Hand", cursive;
   color: #f2a661;
   font-size: 48px;
-  margin-right: 3em;
-  padding-right: 3em;
+  /* margin-right: 3em; */
+  /* padding-right: 3em; */
   margin-bottom: 0px;
   margin-top: 0px;
 }
@@ -168,8 +172,8 @@ body {
   font-family: "Patrick Hand", cursive;
   color: #f2a661;
   font-size: 48px;
-  margin-right: 3em;
-  padding-right: 3em;
+  /* margin-right: 3em; */
+  /* padding-right: 3em; */
   margin-top: 0px;
   margin-bottom: 0px;
 }
@@ -232,10 +236,14 @@ button:hover {
   border-color: #646cff;
 }
 
-button:focus,
+h2 {
+  color:#1a1a1a;
+}
+
+/* button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
 @media (prefers-color-scheme: light) {
   :root {

@@ -1,14 +1,16 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import babyImage from "./assets/baby.png";
 import starImage from "./assets/star.png";
 import girlPointing from "./assets/girl-pointing.png";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import LearningPage from "./components/LearningPage";
+// import LearningPage from "./components/LearningPage";
+import "./LearningPage.css";
 import "./App.css";
 
 function App() {
-  const [showLearningPage, setShowLearningPage] = useState(false);
+  // const [showLearningPage, setShowLearningPage] = useState(false);
+  const [activeTab, setActiveTab] = useState("AboutMargot");
 
   /*const [inputValue, setInputValue] = useState(""); // State for input value
   const [responseMessage, setResponseMessage] = useState(""); // State for server response message
@@ -44,13 +46,55 @@ function App() {
           </a>
           <button className="change-language">SITE LANGUAGE: English</button>
           <button className="instructions-button">Instructions</button>
-          <Link to="/learning">
-            <button className="learn-button">Start Learning!</button>
-          </Link>
+          <div className="info-buttons">
+            <button
+              onClick={() => setActiveTab("AboutMargot")}
+              className="about-button"
+            >
+              About Margot
+            </button>
+            <button
+              onClick={() => setActiveTab("LearningPage")}
+              className="learn-button"
+            >
+              Start Learning!
+            </button>
+          </div>
         </div>
-        <Routes>
+
+        <div className="info">
+          {activeTab === "LearningPage" && (
+            <div>
+              <h2>What did Margot say?</h2>
+              {/* <p>Enter your response here!</p> */}
+              <input
+                className="input-box"
+                type="text"
+                placeholder="Enter your response here!"
+              />
+            </div>
+          )}
+          {activeTab === "AboutMargot" && (
+            <div className="description">
+              <p className="description-english-line1">
+                Helping your kids learn and
+              </p>
+              <p className="description-english-line2">
+                understand Spanish easier!
+              </p>
+              <p className="description-spanish-line1">
+                Ayudando a tus niños a
+              </p>
+              <p className="description-spanish-line2">
+                entender y aprender Ingles facilmente!
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* <Routes>
           <Route path="/learning" Component={LearningPage} />
-        </Routes>
+        </Routes> */}
         <div className="images">
           <img src={starImage} className="star1" alt="Star" />
           <img
@@ -61,14 +105,6 @@ function App() {
         </div>
         <button className="change-language">SITE LANGUAGE: English</button>
         <button className="instructions-button">Instructions</button>
-      </div>
-      <div className="description">
-        <p className="description-english-line1">Helping your kids learn and</p>
-        <p className="description-english-line2">understand Spanish easier!</p>
-        <p className="description-spanish-line1">Ayudando a tus niños a</p>
-        <p className="description-spanish-line2">
-          entender y aprender Ingles facilmente!
-        </p>
       </div>
 
       {/* <div className="startle">
