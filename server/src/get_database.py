@@ -1,4 +1,7 @@
-from pymongo.mongo_client import MongoClient
+from pymongo import MongoClient
+import os
+from dotenv import load_dotenv
+import schema
 import os
 from dotenv import load_dotenv
 
@@ -15,3 +18,10 @@ try:
     print("Pinged your deployment. You successfully connected to MongoDB!")
 except Exception as e:
     print(e)
+
+def get_database():
+    # Replace "database_name" with the name of your database
+    return client["MargotAI"]
+
+if __name__ == "__main__":
+    dbname = get_database()
