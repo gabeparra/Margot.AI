@@ -58,7 +58,11 @@ function App() {
           entender y aprender Ingles facilmente!
         </p>
       </div>
-      
+
+      {/* <div className="startle">
+        <button className="start-learning-button">Start Learning</button>
+        <button className="instructions-button">Instructions</button>
+      </div>   */}
       {/* <div className="input-section">
         <input
           type="text"
