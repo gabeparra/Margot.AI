@@ -38,8 +38,29 @@ def generate_audio():
 
     response = request_audio_conversion(text)
 
-    print(f"Response status code: {response.status_code}")  # Debug print
-    print(f"Response headers: {response.headers}")  # Debug print
+    #print(f"Response status code: {response.status_code}")  # Debug print
+    #print(f"Response headers: {response.headers}")  # Debug print
+    print(
+        f"First 100 bytes of response: {response.content[:100]}"
+    )  # Debug print, just to check content type
+
+    audio_filename = handle_audio_response(response)
+
+    print(f"Audio saved as: {audio_filename}")  # Debug print
+    goodjob()
+
+    return jsonify({"message": f"Audio saved as {audio_filename}"})
+
+def goodjob():
+    print("Generating audio...")  # Debug print to confirm the endpoint is hit
+
+    data = request.get_json()
+    text = "Good job! Excelente trabajo!"
+
+    response = request_audio_conversion(text)
+
+    #print(f"Response status code: {response.status_code}")  # Debug print
+    #print(f"Response headers: {response.headers}")  # Debug print
     print(
         f"First 100 bytes of response: {response.content[:100]}"
     )  # Debug print, just to check content type
