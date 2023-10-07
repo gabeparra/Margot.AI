@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import babyImage from "./assets/baby.png";
 import starImage from "./assets/star.png";
 import girlPointing from "./assets/girl-pointing.png";
+import girlMegaphone from "./assets/girl-megaphone.png";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 // import LearningPage from "./components/LearningPage";
@@ -126,6 +127,7 @@ function App() {
 
 
       <div className="introduction">
+        <img src={girlMegaphone} className="girl-megaphone" alt="Girl holding megaphone"/>
         <h1 className="how-works">How Margot.AI works: </h1>
         <ul id="instruction-list">
           <li className="star">Listen for Margot to say a Spanish word.</li>

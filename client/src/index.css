@@ -220,6 +220,13 @@ body {
   z-index: 9999;
 }
 
+.girl-megaphone {
+  width: 22%;
+  height: auto;
+  margin-right: 60%;
+  margin-bottom: -35%;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
