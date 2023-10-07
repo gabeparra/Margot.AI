@@ -6,6 +6,9 @@ from dotenv import load_dotenv
 import uuid
 from datetime import datetime
 from flask_cors import CORS
+from pymongo import MongoClient
+from mongoengine import Document, StringField, connect
+
 
 app = Flask(__name__)
 CORS(app)
@@ -13,6 +16,38 @@ load_dotenv()
 base_dir = os.path.dirname(os.path.abspath(__file__))
 AUDIO_FOLDER = os.path.join(base_dir, "./audio/output")
 CHUNK_SIZE = 1024
+
+uri = os.environ["MONGODB"]
+
+# Connect to MongoDB
+db = connect(host=uri, alias="default",db="MargotAI")
+
+# Define the schema for the Translations collection
+class Words(Document):
+    meta = {'collection': 'Words', 'db_alias': 'default'}  # Specify the collection name
+    english = StringField(required=True)
+    spanish = StringField(required=True)
+
+# Define the schema for the Users collection
+class User(Document):
+    meta = {'collection': 'Users', 'db_alias': 'default'}  # Specify the collection name
+    user = StringField(required=True)
+    password = StringField(required=True)
+
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
+
+    # Fetch the user from the database
+    user = User.objects(user=username).first()
+
+    # If user doesn't exist or password doesn't match, return 401 Unauthorized
+    if not user or user.password != password:
+        return jsonify({"error": "Invalid credentials"}), 401
+
+    return jsonify({"message": "Login successful"})
 
 # Create the folder if it doesn't exist
 if not os.path.exists(AUDIO_FOLDER):
@@ -28,6 +63,15 @@ headers = {
     "xi-api-key": xi_api_key,
 }
 
+@app.route('/users')
+def get_users():
+    users = User.objects.all()
+    return jsonify(users)
+
+@app.route('/words')
+def get_words():
+    words = Words.objects.all()
+    return jsonify(words)
 
 @app.route("/generate_audio", methods=["POST"])
 def generate_audio():
@@ -71,6 +115,15 @@ def goodjob():
 
     return jsonify({"message": f"Audio saved as {audio_filename}"})
 
+
+
+
+app = Flask(__name__)
+
+@app.route('/users')
+def get_users():
+    users = User.objects.all()
+    return jsonify(users)
 
 def request_audio_conversion(text):
     data = { #set paramters for the voice AI conversion
