@@ -64,15 +64,12 @@ function App() {
           {activeTab === "LearningPage" && (
             <div>
               <h2>What did Margot say?</h2>
+              {/* <p>Enter your response here!</p> */}
               <input
                 className="input-box"
                 type="text"
-                placeholder="Enter text for audio conversion..."
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
+                placeholder="Enter your response here!"
               />
-              <button onClick={handleSubmit}>Submit</button>
-              {responseMessage && <p>{responseMessage}</p>}
             </div>
           )}
           {activeTab === "AboutMargot" && (
@@ -92,6 +89,9 @@ function App() {
             </div>
           )}
         </div>
+        {/* <Routes>
+          <Route path="/learning" Component={LearningPage} />
+        </Routes> */}
         <div className="images">
           <img src={starImage} className="star1" alt="Star" />
           <img
@@ -103,9 +103,22 @@ function App() {
         <button className="change-language">SITE LANGUAGE: English</button>
         <button className="instructions-button">Instructions</button>
       </div>
-      <img src={starImage} className="star2" alt="Star" />
-
-
+      {/* <div className="startle">
+        <button className="start-learning-button">Start Learning</button>
+        <button className="instructions-button">Instructions</button>
+      </div>   */}
+      {/* <div className="input-section">
+        <input
+          type="text"
+          placeholder="Enter text for audio conversion..."
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
+        <button onClick={handleSubmit}>Submit</button>
+        {responseMessage && <p>{responseMessage}</p>}
+      </div> */}
+        {/* <img src={starImage} className="star-image2" alt="Star" /> */}
+        <img src={starImage} className="star2" alt="Star" />
       <div className="introduction">
         <h1 className="how-works">How Margot.AI works: </h1>
         <ul id="instruction-list">
@@ -115,8 +128,6 @@ function App() {
         </ul>
       </div>
     </Router>
-
-
   );
 }
 
