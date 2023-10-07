@@ -23,7 +23,8 @@ function App() {
         <button className="change-language">SITE LANGUAGE: English</button>
         <button className="instructions-button">Instructions</button>
       </div>
-      <img src={starImage} className="star-image" alt="Image of a star" />
+      {/* <div className="images"> */}
+      <img src={starImage} className="star-image" alt="Star"/>
       <img
         src={girlPointing}
         className="girlPointing-image"
@@ -37,6 +38,7 @@ function App() {
           entender y aprender Ingles facilmente!
         </p>
       </div>
+      <img src={starImage} className="star-image2" alt="Star"/>
     </>
      <img src={starImage} className="star-image2" alt="Star"/>
   );
