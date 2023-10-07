@@ -19,6 +19,7 @@ function App() {
           />
         </a>
         <button className="change-language">SITE LANGUAGE: English</button>
+        <button className="instructions-button">Instructions</button>
       </div>
       <img src={starImage} className="star-image" alt="Image of a star" />
       <img
