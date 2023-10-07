@@ -42,12 +42,13 @@ function App() {
         <button className="instructions-button">Instructions</button>
       </div>
       <div className="images">
-        <img src={starImage} className="star-image" alt="Star" />
+        <img src={starImage} className="star1" alt="Star" />
         <img
           src={girlPointing}
-          className="girlPointing-image"
+          className="girl-pointing"
           alt="girl pointing at text"
         />
+        
       </div>
       <div className="description">
         <p className="description-english-line1">Helping your kids learn and</p>
@@ -68,7 +69,8 @@ function App() {
         <button onClick={handleSubmit}>Submit</button>
         {responseMessage && <p>{responseMessage}</p>}
       </div> */}
-      <img src={starImage} className="star-image2" alt="Star" />
+      {/* <img src={starImage} className="star-image2" alt="Star" /> */}
+      <img src={starImage} className="star2" alt="Star"/>
     </div>
   );
 }
