@@ -12,7 +12,12 @@ function LearningPage() {
     <div>
       <h2>What did Margot say?</h2>
       <p>Enter your response here!</p>
-      <input type="text" value={inputValue} onChange={handleInputChange} />
+      <input
+        className="input-box"
+        type="text"
+        value={inputValue}
+        onChange={handleInputChange}
+      />
     </div>
   );
 }

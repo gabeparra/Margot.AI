@@ -1,8 +1,22 @@
 h2 {
   font-family: "Patrick Hand", cursive;
+  font-size: 6em;
+  margin-bottom: 0;
 }
 
 p {
   font-family: "Patrick Hand", cursive;
   color: #c2bfbf;
+  font-size: 2em;
+  margin-top: 0;
+}
+
+.input-box {
+  font-family: "Patrick Hand", cursive;
+  font-size: 1em;
+  border-radius: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
