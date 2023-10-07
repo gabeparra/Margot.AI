@@ -35,7 +35,7 @@ body {
 }
 
 .title {
-  font-size: 3.2em;
+  font-size: 60px;
   line-height: 1.1;
   color: #7db6eb;
   font-family: "Patrick Hand", cursive;
@@ -46,7 +46,7 @@ body {
   /* z-index: 9999; */
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.189);
   letter-spacing: -2px;
-  margin-left: 55px;
+  margin-left: 3em;
 }
 
 .baby-image {
@@ -54,13 +54,13 @@ body {
   top: 0;
   left: 0;
   right: 5em;
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  margin-left: 75px;
+  width: 75px;
+  height: 75px;
+  margin-left: 6em;
   margin-right: 50px;
-  margin-top: 34px;
+  margin-top: 2.5em;
   margin-bottom: 34px;
+  size: 500%;
 }
 
 .change-language {
@@ -70,7 +70,7 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  margin-top: 34px;
+  margin-top: 2.4em;
   margin-right: 50px;
   font-size: 1.5em;
   border-radius: 20px;
@@ -78,6 +78,45 @@ body {
   padding-right: 80px;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.instructions-english-line1 {
+  font-family: "Patrick Hand", cursive;
+  color: #ff7777;
+  font-size: 48px;
+  margin-right: 3em;
+  padding-right: 3em;
+  margin-bottom: 0px;
+}
+
+.instructions-english-line2 {
+  font-family: "Patrick Hand", cursive;
+  color: #ff7777;
+  font-size: 48px;
+  margin-right: 3em;
+  padding-right: 3em;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.instructions-spanish-line1 {
+  font-family: "Patrick Hand", cursive;
+  color: #F2A661;
+  font-size: 48px;
+  margin-right: 3em;
+  padding-right: 3em;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.instructions-spanish-line2 {
+  font-family: "Patrick Hand", cursive;
+  color: #F2A661;
+  font-size: 48px;
+  margin-right: 3em;
+  padding-right: 3em;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 button {

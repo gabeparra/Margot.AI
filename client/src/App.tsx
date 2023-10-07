@@ -2,6 +2,7 @@ import { useState } from "react";
 // import reactLogo from "./assets/react.svg";
 // import viteLogo from "/vite.svg";
 import babyImage from "./assets/baby.png";
+import starImage from "./assets/star.png";
 import "./App.css";
 
 function App() {
@@ -20,25 +21,18 @@ function App() {
         </a>
         <button className="change-language">SITE LANGUAGE: English</button>
       </div>
-      <div>
-        {/* <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a> */}
-        {/* <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a> */}
-      </div>
-      {/* <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+      <div className="instructions">
+        <p className="instructions-english-line1">
+          Helping your kids learn and understand
+        </p>
+        <p className="instructions-english-line2">Spanish easier!</p>
+        <p className="instructions-spanish-line1">
+          Ayudando a tus niños a entender y
+        </p>
+        <p className="instructions-spanish-line2">
+          aprender Ingles facilmente!
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
     </>
   );
 }
