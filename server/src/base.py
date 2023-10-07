@@ -1,6 +1,6 @@
+from flask import Flask, request, jsonify
 import os
 import sys
-from flask import Flask, request, jsonify
 import requests
 from dotenv import load_dotenv
 import uuid
@@ -11,7 +11,8 @@ from mongoengine import Document, StringField, connect
 
 
 app = Flask(__name__)
-CORS(app)
+CORS(app) # This will allow all origins. You can customize this for more security.
+
 load_dotenv()
 base_dir = os.path.dirname(os.path.abspath(__file__))
 AUDIO_FOLDER = os.path.join(base_dir, "./audio/output")
@@ -114,16 +115,6 @@ def goodjob():
     print(f"Audio saved as: {audio_filename}")  # Debug print
 
     return jsonify({"message": f"Audio saved as {audio_filename}"})
-
-
-
-
-app = Flask(__name__)
-
-@app.route('/users')
-def get_users():
-    users = User.objects.all()
-    return jsonify(users)
 
 def request_audio_conversion(text):
     data = { #set paramters for the voice AI conversion
