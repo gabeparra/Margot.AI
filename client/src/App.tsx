@@ -1,7 +1,9 @@
 import { useState } from "react";
-// import reactLogo from "./assets/react.svg";
-// import viteLogo from "/vite.svg";
 import babyImage from "./assets/baby.png";
+import starImage from "./assets/star.png";
+import girlPointing from "./assets/girl-pointing.png";
+// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
 
 function App() {
@@ -19,26 +21,22 @@ function App() {
           />
         </a>
         <button className="change-language">SITE LANGUAGE: English</button>
+        <button className="instructions-button">Instructions</button>
       </div>
-      <div>
-        {/* <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a> */}
-        {/* <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a> */}
-      </div>
-      {/* <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+      <img src={starImage} className="star-image" alt="Image of a star" />
+      <img
+        src={girlPointing}
+        className="girlPointing-image"
+        alt="girl pointing at text"
+      />
+      <div className="description">
+        <p className="description-english-line1">Helping your kids learn and</p>
+        <p className="description-english-line2">understand Spanish easier!</p>
+        <p className="description-spanish-line1">Ayudando a tus niños a</p>
+        <p className="description-spanish-line2">
+          entender y aprender Ingles facilmente!
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
     </>
   );
 }
