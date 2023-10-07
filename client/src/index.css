@@ -149,6 +149,24 @@ body {
   z-index: 9999;
 }
 
+.star-image2 {
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+  position: fixed;
+  left: 0;
+  top: 28em; /* changed from top: 1; */
+  margin-left: 56em;
+  margin-top: 0;
+  margin-bottom: 3em;
+  z-index: 9999;
+  transition: transform 0.5s;
+}
+
+img:hover {
+  transform: rotateY(180deg);
+}
+
 .girlPointing-image {
   position: absolute;
   width: 25em;
@@ -188,4 +206,22 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.star-image2 {
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+  position: fixed;
+  left: 0;
+  top: 28em; /* changed from top: 1; */
+  margin-left: 56em;
+  margin-top: 0;
+  margin-bottom: 3em;
+  z-index: 9999;
+  transition: transform 0.5s;
+}
+
+img:hover {
+  transform: rotateY(180deg);
 }

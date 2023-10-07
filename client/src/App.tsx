@@ -3,14 +3,32 @@ import babyImage from "./assets/baby.png";
 import starImage from "./assets/star.png";
 import girlPointing from "./assets/girl-pointing.png";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+/*import { BrowserRouter as Router, Route, Link } from "react-router-dom";*/
 import "./App.css";
 
 function App() {
-  // const [count, setCount] = useState(0);
+  /*const [inputValue, setInputValue] = useState(""); // State for input value
+  const [responseMessage, setResponseMessage] = useState(""); // State for server response message
 
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:5000/generate_audio", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text: inputValue }),
+      });
+      const data = await response.json();
+      setResponseMessage(data.message);
+    } catch (error) {
+      console.error("Error sending request:", error);
+      setResponseMessage("Error generating audio.");
+    }
+  };
+  */
   return (
-    <>
+    <div>
       <div className="header">
         <h1 className="title">Margot.AI</h1>
         <a>
@@ -23,12 +41,14 @@ function App() {
         <button className="change-language">SITE LANGUAGE: English</button>
         <button className="instructions-button">Instructions</button>
       </div>
-      <img src={starImage} className="star-image" alt="Image of a star" />
-      <img
-        src={girlPointing}
-        className="girlPointing-image"
-        alt="girl pointing at text"
-      />
+      <div className="images">
+        <img src={starImage} className="star-image" alt="Star" />
+        <img
+          src={girlPointing}
+          className="girlPointing-image"
+          alt="girl pointing at text"
+        />
+      </div>
       <div className="description">
         <p className="description-english-line1">Helping your kids learn and</p>
         <p className="description-english-line2">understand Spanish easier!</p>
@@ -37,8 +57,22 @@ function App() {
           entender y aprender Ingles facilmente!
         </p>
       </div>
-    </>
+      
+      {/* <div className="input-section">
+        <input
+          type="text"
+          placeholder="Enter text for audio conversion..."
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
+        <button onClick={handleSubmit}>Submit</button>
+        {responseMessage && <p>{responseMessage}</p>}
+      </div> */}
+      <img src={starImage} className="star-image2" alt="Star" />
+    </div>
   );
 }
+
+
 
 export default App;
