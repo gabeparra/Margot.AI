@@ -28,9 +28,7 @@ function App() {
         alt="girl pointing at text"
       />
       <div className="description">
-        <p className="description-english-line1">
-          Helping your kids learn and
-        </p>
+        <p className="description-english-line1">Helping your kids learn and</p>
         <p className="description-english-line2">understand Spanish easier!</p>
         <p className="description-spanish-line1">Ayudando a tus niños a</p>
         <p className="description-spanish-line2">
