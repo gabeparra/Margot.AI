@@ -3,10 +3,13 @@ import babyImage from "./assets/baby.png";
 import starImage from "./assets/star.png";
 import girlPointing from "./assets/girl-pointing.png";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-/*import { BrowserRouter as Router, Route, Link } from "react-router-dom";*/
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import LearningPage from "./components/LearningPage";
 import "./App.css";
 
 function App() {
+  const [showLearningPage, setShowLearningPage] = useState(false);
+
   /*const [inputValue, setInputValue] = useState(""); // State for input value
   const [responseMessage, setResponseMessage] = useState(""); // State for server response message
 
@@ -28,38 +31,48 @@ function App() {
   };
   */
   return (
-    <div>
-      <div className="header">
-        <h1 className="title">Margot.AI</h1>
-        <a>
+    <Router>
+      <div>
+        <div className="header">
+          <h1 className="title">Margot.AI</h1>
+          <a>
+            <img
+              src={babyImage}
+              className="baby-image"
+              alt="Image of a baby's face"
+            />
+          </a>
+          <button className="change-language">SITE LANGUAGE: English</button>
+          <button className="instructions-button">Instructions</button>
+          <Link to="/learning">
+            <button className="learn-button">Start Learning!</button>
+          </Link>
+        </div>
+        <Routes>
+          <Route path="/learning" Component={LearningPage} />
+        </Routes>
+        <div className="images">
+          <img src={starImage} className="star1" alt="Star" />
           <img
-            src={babyImage}
-            className="baby-image"
-            alt="Image of a baby's face"
+            src={girlPointing}
+            className="girl-pointing"
+            alt="girl pointing at text"
           />
-        </a>
-        <button className="change-language">SITE LANGUAGE: English</button>
-        <button className="instructions-button">Instructions</button>
-      </div>
-      <div className="images">
-        <img src={starImage} className="star1" alt="Star" />
-        <img
-          src={girlPointing}
-          className="girl-pointing"
-          alt="girl pointing at text"
-        />
-        
-      </div>
-      <div className="description">
-        <p className="description-english-line1">Helping your kids learn and</p>
-        <p className="description-english-line2">understand Spanish easier!</p>
-        <p className="description-spanish-line1">Ayudando a tus niños a</p>
-        <p className="description-spanish-line2">
-          entender y aprender Ingles facilmente!
-        </p>
-      </div>
-      
-      {/* <div className="input-section">
+        </div>
+        <div className="description">
+          <p className="description-english-line1">
+            Helping your kids learn and
+          </p>
+          <p className="description-english-line2">
+            understand Spanish easier!
+          </p>
+          <p className="description-spanish-line1">Ayudando a tus niños a</p>
+          <p className="description-spanish-line2">
+            entender y aprender Ingles facilmente!
+          </p>
+        </div>
+
+        {/* <div className="input-section">
         <input
           type="text"
           placeholder="Enter text for audio conversion..."
@@ -69,12 +82,11 @@ function App() {
         <button onClick={handleSubmit}>Submit</button>
         {responseMessage && <p>{responseMessage}</p>}
       </div> */}
-      {/* <img src={starImage} className="star-image2" alt="Star" /> */}
-      <img src={starImage} className="star2" alt="Star"/>
-    </div>
+        {/* <img src={starImage} className="star-image2" alt="Star" /> */}
+        <img src={starImage} className="star2" alt="Star" />
+      </div>
+    </Router>
   );
 }
-
-
 
 export default App;
