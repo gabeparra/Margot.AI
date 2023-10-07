@@ -40,6 +40,7 @@ function App() {
         </a>
         <button className="change-language">SITE LANGUAGE: English</button>
         <button className="instructions-button">Instructions</button>
+        <button className="learn-button">Start Learning!</button>
       </div>
       <div className="images">
         <img src={starImage} className="star1" alt="Star" />
@@ -48,7 +49,6 @@ function App() {
           className="girl-pointing"
           alt="girl pointing at text"
         />
-        
       </div>
       <div className="description">
         <p className="description-english-line1">Helping your kids learn and</p>
@@ -58,7 +58,7 @@ function App() {
           entender y aprender Ingles facilmente!
         </p>
       </div>
-      
+
       {/* <div className="input-section">
         <input
           type="text"
@@ -70,11 +70,9 @@ function App() {
         {responseMessage && <p>{responseMessage}</p>}
       </div> */}
       {/* <img src={starImage} className="star-image2" alt="Star" /> */}
-      <img src={starImage} className="star2" alt="Star"/>
+      <img src={starImage} className="star2" alt="Star" />
     </div>
   );
 }
-
-
 
 export default App;
