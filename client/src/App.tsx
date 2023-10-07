@@ -59,20 +59,23 @@ function App() {
             alt="girl pointing at text"
           />
         </div>
-        <div className="description">
-          <p className="description-english-line1">
-            Helping your kids learn and
-          </p>
-          <p className="description-english-line2">
-            understand Spanish easier!
-          </p>
-          <p className="description-spanish-line1">Ayudando a tus niños a</p>
-          <p className="description-spanish-line2">
-            entender y aprender Ingles facilmente!
-          </p>
-        </div>
+        <button className="change-language">SITE LANGUAGE: English</button>
+        <button className="instructions-button">Instructions</button>
+      </div>
+      <div className="description">
+        <p className="description-english-line1">Helping your kids learn and</p>
+        <p className="description-english-line2">understand Spanish easier!</p>
+        <p className="description-spanish-line1">Ayudando a tus niños a</p>
+        <p className="description-spanish-line2">
+          entender y aprender Ingles facilmente!
+        </p>
+      </div>
 
-        {/* <div className="input-section">
+      {/* <div className="startle">
+        <button className="start-learning-button">Start Learning</button>
+        <button className="instructions-button">Instructions</button>
+      </div>   */}
+      {/* <div className="input-section">
         <input
           type="text"
           placeholder="Enter text for audio conversion..."
@@ -84,7 +87,6 @@ function App() {
       </div> */}
         {/* <img src={starImage} className="star-image2" alt="Star" /> */}
         <img src={starImage} className="star2" alt="Star" />
-      </div>
     </Router>
   );
 }
