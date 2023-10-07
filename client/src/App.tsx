@@ -3,11 +3,11 @@ import babyImage from "./assets/baby.png";
 import starImage from "./assets/star.png";
 import girlPointing from "./assets/girl-pointing.png";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+/*import { BrowserRouter as Router, Route, Link } from "react-router-dom";*/
 import "./App.css";
 
 function App() {
-  const [inputValue, setInputValue] = useState(""); // State for input value
+  /*const [inputValue, setInputValue] = useState(""); // State for input value
   const [responseMessage, setResponseMessage] = useState(""); // State for server response message
 
   const handleSubmit = async () => {
@@ -26,6 +26,7 @@ function App() {
       setResponseMessage("Error generating audio.");
     }
   };
+  */
   return (
     <div>
       <div className="header">
