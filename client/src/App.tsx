@@ -30,14 +30,12 @@ function App() {
       {/* </div> */}
       <div className="instructions">
         <p className="instructions-english-line1">
-          Helping your kids learn and understand
+          Helping your kids learn and
         </p>
-        <p className="instructions-english-line2">Spanish easier!</p>
-        <p className="instructions-spanish-line1">
-          Ayudando a tus niños a entender y
-        </p>
+        <p className="instructions-english-line2">understand Spanish easier!</p>
+        <p className="instructions-spanish-line1">Ayudando a tus niños a</p>
         <p className="instructions-spanish-line2">
-          aprender Ingles facilmente!
+          entender y aprender Ingles facilmente!
         </p>
       </div>
     </>

@@ -120,20 +120,25 @@ body {
 }
 
 .star-image {
-  width: 110px;
-  height: 110px;
+  width: 10em;
+  height: 10em;
   flex-shrink: 0;
   position: fixed;
   left: 0;
-  top: 1;
-  margin-left: 8em;
+  top: 13em;
+  margin-left: 10em;
   margin-top: 0;
-  margin-bottom: 3em;
+  margin-bottom: 5em;
   z-index: 9999;
 }
 
 .girlPointing-image {
-  float: right;
+  position: absolute;
+  width: 25em;
+  height: 25em;
+  top: 15em;
+  right: 10em;
+  z-index: 9999;
 }
 
 button {
