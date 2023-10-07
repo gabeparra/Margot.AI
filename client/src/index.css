@@ -42,7 +42,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  right: 18.4em;
+  right: 20em;
   /* z-index: 9999; */
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.189);
   letter-spacing: -2px;
@@ -57,7 +57,7 @@ body {
   width: 60px;
   height: 60px;
   object-fit: cover;
-  margin-left: 55px;
+  margin-left: 75px;
   margin-right: 50px;
   margin-top: 34px;
   margin-bottom: 34px;
@@ -67,6 +67,17 @@ body {
   background-color: #b1d1ef;
   color: #4d92d3;
   font-family: "Patrick Hand", cursive;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-top: 34px;
+  margin-right: 50px;
+  font-size: 1.5em;
+  border-radius: 20px;
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 button {
