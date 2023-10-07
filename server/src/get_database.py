@@ -25,6 +25,3 @@ def get_database():
 
 if __name__ == "__main__":
     dbname = get_database()
-
-new_user = schema.User(user="JohnDoe", password="secure_password")
-new_user.save()
