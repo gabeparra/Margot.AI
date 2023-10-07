@@ -4,8 +4,8 @@ import starImage from "./assets/star.png";
 import girlPointing from "./assets/girl-pointing.png";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import LearningPage from "./components/LearningPage";
-import "./components/LearningPage.css";
+// import LearningPage from "./components/LearningPage";
+import "./LearningPage.css";
 import "./App.css";
 
 function App() {
@@ -66,8 +66,12 @@ function App() {
           {activeTab === "LearningPage" && (
             <div>
               <h2>What did Margot say?</h2>
-              <p>Enter your response here!</p>
-              <input className="input-box" type="text" />
+              {/* <p>Enter your response here!</p> */}
+              <input
+                className="input-box"
+                type="text"
+                placeholder="Enter your response here!"
+              />
             </div>
           )}
           {activeTab === "AboutMargot" && (
