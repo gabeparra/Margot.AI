@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import babyImage from "./assets/baby.png";
 import starImage from "./assets/star.png";
 import girlPointing from "./assets/girl-pointing.png";
+import girlSitting from "./assets/girl-sitting.png";
+// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 // import LearningPage from "./components/LearningPage";
 import "./LearningPage.css";
@@ -65,11 +67,20 @@ function App() {
             <div>
               <h2>What did Margot say?</h2>
               {/* <p>Enter your response here!</p> */}
-              <input
-                className="input-box"
-                type="text"
-                placeholder="Enter your response here!"
-              />
+              <div className="subtext">
+                <input
+                  className="input-box"
+                  type="text"
+                  placeholder="Enter your response here!"
+                />
+              </div>
+              <div className="learning-images">
+                <img
+                  src={girlSitting}
+                  className="girl-sitting"
+                  alt="girl pointing at text"
+                />
+              </div>
             </div>
           )}
           {activeTab === "AboutMargot" && (
@@ -86,20 +97,19 @@ function App() {
               <p className="description-spanish-line2">
                 entender y aprender Ingles facilmente!
               </p>
+              <img
+                src={girlPointing}
+                className="girl-pointing"
+                alt="girl pointing at text"
+              />
+              <img src={starImage} className="star1" alt="Star" />
+              <img src={starImage} className="star2" alt="Star" />
             </div>
           )}
         </div>
         {/* <Routes>
           <Route path="/learning" Component={LearningPage} />
         </Routes> */}
-        <div className="images">
-          <img src={starImage} className="star1" alt="Star" />
-          <img
-            src={girlPointing}
-            className="girl-pointing"
-            alt="girl pointing at text"
-          />
-        </div>
         <button className="change-language">SITE LANGUAGE: English</button>
         <button className="instructions-button">Instructions</button>
       </div>
