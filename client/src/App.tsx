@@ -52,10 +52,10 @@ function App() {
 
 
   useEffect(() => {
-    fetch('http://localhost:5000/words')
-      .then(response => response.json())
-      .then(data => setWords(data))
-      .catch(error => console.error('Error fetching words:', error));
+    fetch("http://localhost:5000/words")
+      .then((response) => response.json())
+      .then((data) => setWords(data))
+      .catch((error) => console.error("Error fetching words:", error));
   }, []);
   useEffect(() => {
     pickRandomWord();
@@ -65,7 +65,7 @@ function App() {
     if (resetMode) return;
 
     // Filter out words that have already been shown
-    const unshownWords = words.filter(word => !shownWords.includes(word));
+    const unshownWords = words.filter((word) => !shownWords.includes(word));
 
     // If all words have been shown, enable reset mode
     if (unshownWords.length === 0) {
@@ -74,11 +74,12 @@ function App() {
     }
 
     // Pick a random word from the unshownWords array
-    const randomWord = unshownWords[Math.floor(Math.random() * unshownWords.length)];
+    const randomWord =
+      unshownWords[Math.floor(Math.random() * unshownWords.length)];
 
     // Update the current word and the list of shown words
     setCurrentWord(randomWord);
-    setShownWords(prevWords => [...prevWords, randomWord]);
+    setShownWords((prevWords) => [...prevWords, randomWord]);
   };
   return (
     <Router>
@@ -123,18 +124,21 @@ function App() {
                 <h2>Word</h2>
                 {currentWord && (
                   <div>
-                    English: {currentWord.english}, Spanish: {currentWord.spanish}
+                    English: {currentWord.english}, Spanish:{" "}
+                    {currentWord.spanish}
                   </div>
                 )}
-                <button onClick={() => {
-                  if (resetMode) {
-                    setShownWords([]);
-                    setResetMode(false);
-                    pickRandomWord();
-                  } else {
-                    pickRandomWord();
-                  }
-                }}>
+                <button
+                  onClick={() => {
+                    if (resetMode) {
+                      setShownWords([]);
+                      setResetMode(false);
+                      pickRandomWord();
+                    } else {
+                      pickRandomWord();
+                    }
+                  }}
+                >
                   {resetMode ? "Start Over" : "Pick Random Word"}
                 </button>
               </div>
@@ -176,29 +180,33 @@ function App() {
                 className="girl-megaphone"
                 alt="Girl holding megaphone"
               />
-              <h1 className="how-works">How Margot.AI works: </h1>
+              {/* <h1 className="how-works">How Margot.AI works: </h1> */}
               <ul id="instruction-list">
-                <li className="star">
-                  Listen for Margot to say a Spanish word.
-                </li>
+                <li className="how-works">How Margot.AI works: </li>
+                <li className="star"> Listen for Margot to say a Spanish word.</li>
                 <li className="star">Type the word.</li>
                 <li className="star">Earn stars!</li>
               </ul>
+              <img src={starImage} className="star3" alt="Star" />
+              <img src={starImage} className="star4" alt="Star" />
+              <img src={starImage} className="star5" alt="Star" />
+              <img src={starImage} className="star6" alt="Star" />
+              <img src={starImage} className="star7" alt="Star" />
             </div>
           )}
           {activeTab === "AboutMargot" && (
             <div className="description">
               <p className="description-english-line1">
-                Helping your kids learn and
+                Hello, parents! I’m Margot. I’m here to help your
               </p>
               <p className="description-english-line2">
-                understand Spanish easier!
+                kids have fun as they learn to type Spanish!
               </p>
               <p className="description-spanish-line1">
-                Ayudando a tus niños a
+                ¡Hola, padres! Soy Margot. ¡Estoy aquí para ayudar a
               </p>
               <p className="description-spanish-line2">
-                entender y aprender Ingles facilmente!
+                a tus niños divertirse mientras aprenden inglés!
               </p>
               <img
                 src={girlPointing}
