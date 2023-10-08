@@ -36,7 +36,7 @@ function App() {
         },
         body: JSON.stringify({
           text: inputText,
-          wordEnglish: wordEnglish
+          wordEnglish: wordEnglish,
         }),
       });
 
@@ -48,7 +48,7 @@ function App() {
         const blob = await response.blob();
         const audioUrl = URL.createObjectURL(blob);
         setAudioSrc(audioUrl);
-        setAudioKey(prevKey => prevKey + 1); // Increment the audio key
+        setAudioKey((prevKey) => prevKey + 1); // Increment the audio key
         setResponseMessage("Correct word!");
       } else {
         const data = await response.json();
@@ -77,7 +77,7 @@ function App() {
         const blob = await response.blob();
         const audioUrl = URL.createObjectURL(blob);
         setAudioSrc(audioUrl);
-        setAudioKey(prevKey => prevKey + 1); // Increment the audio key
+        setAudioKey((prevKey) => prevKey + 1); // Increment the audio key
         setResponseMessage("Audio generated successfully!");
       } else {
         const data = await response.json();
@@ -94,13 +94,11 @@ function App() {
     setLanguage(language === "English" ? "Spanish" : "English");
   };
 
-
-
   useEffect(() => {
     // Fetch words from the database when the component mounts
-    fetch('http://localhost:5000/words')
-      .then(response => response.json())
-      .then(data => {
+    fetch("http://localhost:5000/words")
+      .then((response) => response.json())
+      .then((data) => {
         setWords(data);
         // Assuming the first word is the one you want to load
         const initialWord = data[0];
@@ -108,13 +106,13 @@ function App() {
         // Generate audio for the initial word
         generateAudioForWord(initialWord.spanish);
       })
-      .catch(error => console.error('Error fetching words:', error));
+      .catch((error) => console.error("Error fetching words:", error));
   }, []);
   useEffect(() => {
-    fetch('http://localhost:5000/words')
-      .then(response => response.json())
-      .then(data => setWords(data))
-      .catch(error => console.error('Error fetching words:', error));
+    fetch("http://localhost:5000/words")
+      .then((response) => response.json())
+      .then((data) => setWords(data))
+      .catch((error) => console.error("Error fetching words:", error));
   }, []);
   useEffect(() => {
     pickRandomWord();
@@ -123,17 +121,18 @@ function App() {
     // If in reset mode, just return
     if (resetMode) return;
     // Filter out words that have already been shown
-    const unshownWords = words.filter(word => !shownWords.includes(word));
+    const unshownWords = words.filter((word) => !shownWords.includes(word));
     // If all words have been shown, enable reset mode
     if (unshownWords.length === 0) {
       setResetMode(true);
       return;
     }
     // Pick a random word from the unshownWords array
-    const randomWord = unshownWords[Math.floor(Math.random() * unshownWords.length)];
+    const randomWord =
+      unshownWords[Math.floor(Math.random() * unshownWords.length)];
     // Update the current word and the list of shown words
     setCurrentWord(randomWord);
-    setShownWords(prevWords => [...prevWords, randomWord]);
+    setShownWords((prevWords) => [...prevWords, randomWord]);
   };
   return (
     <Router>
@@ -176,23 +175,36 @@ function App() {
         <div className="info">
           {activeTab === "LearningPage" && (
             <div>
-              <h2>What did Margot say?</h2>
+              <h2>
+                {language === "Spanish"
+                  ? "¿Qué dijo Margot?"
+                  : "What did Margot say?"}
+              </h2>
               <div>
                 {currentWord && (
                   <div>
-                    English: {currentWord.english}, Spanish: {currentWord.spanish}
+                    English: {currentWord.english}, Spanish:{" "}
+                    {currentWord.spanish}
                   </div>
                 )}
-                <button onClick={() => {
-                  if (resetMode) {
-                    setShownWords([]);
-                    setResetMode(false);
-                    pickRandomWord();
-                  } else {
-                    pickRandomWord();
-                  }
-                }}>
-                  {resetMode ? "Start Over" : "Pick Random Word"}
+                <button
+                  onClick={() => {
+                    if (resetMode) {
+                      setShownWords([]);
+                      setResetMode(false);
+                      pickRandomWord();
+                    } else {
+                      pickRandomWord();
+                    }
+                  }}
+                >
+                  {resetMode
+                    ? language === "English"
+                      ? "Start Over"
+                      : "Empezar de Nuevo"
+                    : language === "English"
+                    ? "Pick Random Word"
+                    : "Elegir Palabra al Azar"}
                 </button>
               </div>
               <div className="subtext">
@@ -203,12 +215,18 @@ function App() {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                 />
-                <button onClick={() => handleSubmit(currentWord.english, inputValue)}>Submit</button>
+                <button
+                  onClick={() => handleSubmit(currentWord.english, inputValue)}
+                >
+                  Submit
+                </button>
                 {audioSrc && (
                   <div>
                     <audio controls key={audioKey}>
                       <source src={audioSrc} type="audio/mpeg" />
-                      Your browser does not support the audio element.
+                      {language === "Spanish"
+                        ? "Su navegador no admite el elemento de audio."
+                        : "Your browser does not support the audio element."}
                     </audio>
                   </div>
                 )}
@@ -236,7 +254,10 @@ function App() {
               {/* <h1 className="how-works">How Margot.AI works: </h1> */}
               <ul id="instruction-list">
                 <li className="how-works">How Margot.AI works: </li>
-                <li className="star"> Listen for Margot to say a Spanish word.</li>
+                <li className="star">
+                  {" "}
+                  Listen for Margot to say a Spanish word.
+                </li>
                 <li className="star">Type the word.</li>
                 <li className="star">Earn stars!</li>
               </ul>
