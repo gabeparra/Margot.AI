@@ -14,6 +14,7 @@ interface Word {
   spanish: string;
 }
 function App() {
+  let starCountNum = 0;
   // const [showLearningPage, setShowLearningPage] = useState(false);\
   const [words, setWords] = useState<Word[]>([]);
   const [activeTab, setActiveTab] = useState("AboutMargot");
@@ -25,7 +26,11 @@ function App() {
   const [audioSrc, setAudioSrc] = useState(null); // State to store the audio blob URL
   const [audioUrl, setAudioURL] = useState("");
   const [audioKey, setAudioKey] = useState(0);
-  const handleSubmit = async (wordEnglish: any, inputText: string, wordSpanish: any) => {
+  const handleSubmit = async (
+    wordEnglish: any,
+    inputText: string,
+    wordSpanish: any
+  ) => {
     //Check if the inputValue matches currentWord.spanish
     if (!currentWord || !("spanish" in currentWord) || inputValue.toLowerCase() !== currentWord.spanish.toLowerCase()) {
       setResponseMessage("Incorrect word. Please try again.");
@@ -40,11 +45,12 @@ function App() {
         body: JSON.stringify({
           text: inputText,
           wordEnglish: wordEnglish,
-          wordSpanish: wordSpanish
+          wordSpanish: wordSpanish,
         }),
       });
 
       if (response.ok) {
+        starCountNum += 1;
         // Revoke the previous blob URL
         if (audioSrc) {
           URL.revokeObjectURL(audioSrc);
@@ -81,7 +87,7 @@ function App() {
         const blob = await response.blob();
         const audioUrl = URL.createObjectURL(blob);
         setAudioSrc(audioUrl);
-        setAudioKey(prevKey => prevKey + 1); // Increment the audio key
+        setAudioKey((prevKey) => prevKey + 1); // Increment the audio key
         //setResponseMessage("Audio generated successfully! from audio from word");
       } else {
         const data = await response.json();
@@ -101,8 +107,7 @@ function App() {
   const loadInitialAudio = async () => {
     try {
       // Filter out words that have already been shown
-      const unshownWords = words.filter(word => !shownWords.includes(word));
-
+      let unshownWords = words.filter(word => !shownWords.includes(word));
       // If all words have been shown, reset the shownWords list
       if (unshownWords.length === 0) {
         setShownWords([]);
@@ -110,7 +115,8 @@ function App() {
       }
 
       // Pick a random word from the unshownWords array
-      const randomWord = unshownWords[Math.floor(Math.random() * unshownWords.length)];
+      const randomWord =
+        unshownWords[Math.floor(Math.random() * unshownWords.length)];
 
       const response = await fetch("http://localhost:5000/load_audio", {
         method: "POST",
@@ -130,7 +136,7 @@ function App() {
         setAudioKey((prevKey) => prevKey + 1);
         setCurrentWord(randomWord);
         setInputValue(""); // Clear the input value
-        setShownWords(prevWords => [...prevWords, randomWord]);
+        setShownWords((prevWords) => [...prevWords, randomWord]);
       } else {
         const data = await response.json();
         setResponseMessage(data.message || "Error loading audio.");
@@ -207,13 +213,15 @@ function App() {
         <div className="info">
           {activeTab === "LearningPage" && (
             <div>
-              <h2>
+              <h2 id="margot-question">
                 {language === "Spanish"
                   ? "¿Qué dijo Margot?"
                   : "What did Margot say?"}
               </h2>
               <div>
-                <button onClick={loadInitialAudio}>Start Over</button>
+                <button id="startover-button" onClick={loadInitialAudio}>
+                  {language === "Spanish" ? "Empezar de nuevo" : "Start Over!"}
+                </button>
               </div>
               <div className="subtext">
                 <input
@@ -227,7 +235,18 @@ function App() {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                 />
-                <button onClick={() => handleSubmit(currentWord.english, inputValue, currentWord.spanish)}>Submit</button>
+                <button
+                  className="submit-button"
+                  onClick={() =>
+                    handleSubmit(
+                      currentWord.english,
+                      inputValue,
+                      currentWord.spanish
+                    )
+                  }
+                >
+                  {language === "Spanish" ? "Enviar" : "Submit"}
+                </button>
                 {audioSrc && (
                   <div>
                     <audio controls key={audioKey}>
@@ -241,6 +260,8 @@ function App() {
                 {responseMessage && <p>{responseMessage}</p>}
               </div>
               <div className="learning-images">
+                <img src={starImage} className="starCount" alt="Star" />
+                <p className="starCountNum">{starCountNum}</p>
                 <img
                   src={girlSitting}
                   className="girl-sitting"

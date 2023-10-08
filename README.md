@@ -1,6 +1,6 @@
 # Margot.AI :baby:
 
-Helping your kids learn and kids have fun while learning Spanish!
+Helping your kids have fun while learning Spanish!
 Ayudando a tus niños a entender y aprender Ingles facilmente!
 
 Listen for Margot to speak a word in English or Spanish, depending on your chosen language.
