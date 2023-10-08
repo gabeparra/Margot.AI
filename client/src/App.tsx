@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import babyImage from "./assets/baby.png";
 import starImage from "./assets/star.png";
 import girlPointing from "./assets/girl-pointing.png";
 import girlMegaphone from "./assets/girl-megaphone.png";
 import girlSitting from "./assets/girl-sitting.png";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import "./LearningPage.css";
 import "./App.css";
 
