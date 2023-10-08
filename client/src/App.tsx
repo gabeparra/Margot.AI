@@ -208,14 +208,14 @@ function App() {
         <div className="info">
           {activeTab === "LearningPage" && (
             <div>
-              <h2>
+              <h2 id="margot-question">
                 {language === "Spanish"
                   ? "¿Qué dijo Margot?"
                   : "What did Margot say?"}
               </h2>
               <div>
-                <button onClick={loadInitialAudio}>
-                  {language === "Spanish" ? "Empezar de nuevo" : "Start Over"}
+                <button id="startover-button" onClick={loadInitialAudio}>
+                  {language === "Spanish" ? "Empezar de nuevo" : "Start Over!"}
                 </button>
               </div>
               <div className="subtext">
@@ -231,6 +231,7 @@ function App() {
                   onChange={(e) => setInputValue(e.target.value)}
                 />
                 <button
+                  className="submit-button"
                   onClick={() =>
                     handleSubmit(
                       currentWord.english,
