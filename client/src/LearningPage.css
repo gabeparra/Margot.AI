@@ -42,24 +42,6 @@ p {
 
 .lstar1 {
   position: relative;
-  top: -4em;
-  right: -10%;
-  width: 16%;
-  height: 16%;
-  rotate: 180deg;
-}
-
-.lstar2 {
-  position: relative;
-  top: -16em;
-  right: -15%;
-  width: 16%;
-  height: 16%;
-  rotate: 180deg;
-}
-
-.lstar3 {
-  position: relative;
   top: -7em;
   right: -45%;
   width: 15%;
@@ -68,7 +50,7 @@ p {
   rotate: 45deg;
 }
 
-.lstar4 {
+.lstar2 {
   position: relative;
   top: -12em;
   right: -50%;
@@ -77,7 +59,7 @@ p {
   z-index: 3;
 }
 
-.lstar5 {
+.lstar3 {
   position: relative;
   top: -25em;
   right: -18%;

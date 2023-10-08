@@ -88,9 +88,9 @@ function App() {
                   alt="girl pointing at text"
                 />
               </div>
+              <img src={starImage} className="lstar1" alt="Star" />
+              <img src={starImage} className="lstar2" alt="Star" />
               <img src={starImage} className="lstar3" alt="Star" />
-              <img src={starImage} className="lstar4" alt="Star" />
-              <img src={starImage} className="lstar5" alt="Star" />
             </div>
           )}
           {activeTab === "Instructions" && (
