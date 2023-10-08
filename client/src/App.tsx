@@ -21,16 +21,16 @@ function App() {
   const [inputValue, setInputValue] = useState(""); // State for input value
   const [responseMessage, setResponseMessage] = useState(""); // State for server response message
   const [currentWord, setCurrentWord] = useState<Word>();
-  const [shownWords, setShownWords] = useState<Word[]>([]);;
+  const [shownWords, setShownWords] = useState<Word[]>([]);
   const [resetMode, setResetMode] = useState(false);
-  const [audioSrc, setAudioSrc] = useState<string | null>(null);; // State to store the audio blob URL
+  const [audioSrc, setAudioSrc] = useState<string | null>(null); // State to store the audio blob URL
   const [audioKey, setAudioKey] = useState(0);
   const [starCountNum, setStarCountNum] = useState(0);
 
-  // Function to increment starCountNum
   const incrementStarCountNum = () => {
     setStarCountNum(starCountNum + 1);
   };
+
   const handleSubmit = async (
     wordEnglish: any,
     inputText: string,
@@ -68,13 +68,11 @@ function App() {
         const audioUrl = URL.createObjectURL(blob);
         setAudioSrc(audioUrl);
         setAudioKey((prevKey) => prevKey + 1); // Increment the audio key
-        starCountNum ++;
+        // starCountNum++;
         setResponseMessage("Correct word!");
       } else {
         //setResponseMessage(data.message || "Error generating audio.");
       }
-
-
     } catch (error) {
       console.error("Error sending request:", error);
       //setResponseMessage("Error generating audio.");
@@ -231,7 +229,7 @@ function App() {
                 </button>
                 {audioSrc && (
                   <div>
-                    <audio controls key={audioKey}>
+                    <audio controls key={audioKey} className="audiobar">
                       <source src={audioSrc} type="audio/mpeg" />
                       {language === "Spanish"
                         ? "Su navegador no admite el elemento de audio."
