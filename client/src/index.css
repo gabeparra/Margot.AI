@@ -148,8 +148,6 @@ button.learn-button,
   /* bottom: 5em; */
   position: relative;
   padding-left: 40px;
-  /* cursor: pointer; */
-  /* transition: border-color 0.25s; */
 }
 
 .description-english-line1 {
@@ -337,18 +335,25 @@ div.description {
   height: auto;
   bottom: 18%;
   right: 8%;
-
-  /* margin-top: -50%;
-  margin-left: 3%;
-  margin-bottom: 5%; */
   z-index: 0;
+
+  animation: bounce 0.5s; 
+    animation-direction: alternate; 
+    animation-iteration-count: infinite; 
+  
 }
 
+
+@keyframes bounce{ 
+  from { transform: translate3d(0, 0, 0);} 
+  to { transform: translate3d(0, 20px, 0);} 
+} 
+
 .girl-megaphone {
-  width: 20%;
+  width: 25%;
   height: auto;
   position: absolute;
-  bottom: 35%;
+  bottom: 26%;
   left: 19%;
   transform: translateY(-50%);
   animation: shake 0.9s;
