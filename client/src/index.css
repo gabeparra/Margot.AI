@@ -207,7 +207,7 @@ body {
 .star2-1 {
   position: absolute;
   left: 50%;
-  bottom: 5%;
+  bottom: 0%;
   width: 13%;
   height: auto;
 }
@@ -218,7 +218,7 @@ body {
 
 .star2-2 {
   position: absolute;
-  right: 20%;
+  right: 13%;
   bottom: -15%;
   width: 17%;
   height: auto;
