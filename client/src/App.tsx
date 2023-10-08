@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import babyImage from "./assets/baby.png";
 import starImage from "./assets/star.png";
 import girlPointing from "./assets/girl-pointing.png";
@@ -9,27 +9,67 @@ import "./LearningPage.css";
 import "./App.css";
 
 function App() {
-  // const [showLearningPage, setShowLearningPage] = useState(false);
+  // const [showLearningPage, setShowLearningPage] = useState(false);\
+  const [words, setWords] = useState([]);
   const [activeTab, setActiveTab] = useState("AboutMargot");
-
   const [inputValue, setInputValue] = useState(""); // State for input value
   const [responseMessage, setResponseMessage] = useState(""); // State for server response message
-
+  const [currentWord, setCurrentWord] = useState(null);
+  const [shownWords, setShownWords] = useState([]);
+  const [resetMode, setResetMode] = useState(false);
+  const [audioSrc, setAudioSrc] = useState(null); // State to store the audio blob URL
   const handleSubmit = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/generate_audio", {
+      const response = await fetch("http://localhost:5000/generate_audio", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ text: inputValue }),
       });
-      const data = await response.json();
-      setResponseMessage(data.message);
+
+      if (response.ok) {
+        const blob = await response.blob();
+        const audioUrl = URL.createObjectURL(blob);
+        setAudioSrc(audioUrl);
+        setResponseMessage("Audio generated successfully!");
+      } else {
+        const data = await response.json();
+        setResponseMessage(data.message || "Error generating audio.");
+      }
     } catch (error) {
       console.error("Error sending request:", error);
       setResponseMessage("Error generating audio.");
     }
+  };
+  useEffect(() => {
+    fetch('http://localhost:5000/words')
+      .then(response => response.json())
+      .then(data => setWords(data))
+      .catch(error => console.error('Error fetching words:', error));
+  }, []);
+  useEffect(() => {
+    pickRandomWord();
+  }, []);
+  const pickRandomWord = () => {
+    // If in reset mode, just return
+    if (resetMode) return;
+
+    // Filter out words that have already been shown
+    const unshownWords = words.filter(word => !shownWords.includes(word));
+
+    // If all words have been shown, enable reset mode
+    if (unshownWords.length === 0) {
+      setResetMode(true);
+      return;
+    }
+
+    // Pick a random word from the unshownWords array
+    const randomWord = unshownWords[Math.floor(Math.random() * unshownWords.length)];
+
+    // Update the current word and the list of shown words
+    setCurrentWord(randomWord);
+    setShownWords(prevWords => [...prevWords, randomWord]);
   };
   return (
     <Router>
@@ -71,6 +111,25 @@ function App() {
           {activeTab === "LearningPage" && (
             <div>
               <h2>What did Margot say?</h2>
+              <div>
+                <h2>Word</h2>
+                {currentWord && (
+                  <div>
+                    English: {currentWord.english}, Spanish: {currentWord.spanish}
+                  </div>
+                )}
+                <button onClick={() => {
+                  if (resetMode) {
+                    setShownWords([]);
+                    setResetMode(false);
+                    pickRandomWord();
+                  } else {
+                    pickRandomWord();
+                  }
+                }}>
+                  {resetMode ? "Start Over" : "Pick Random Word"}
+                </button>
+              </div>
               <div className="subtext">
                 <input
                   className="input-box"
@@ -80,6 +139,14 @@ function App() {
                   onChange={(e) => setInputValue(e.target.value)}
                 />
                 <button onClick={handleSubmit}>Submit</button>
+                {audioSrc && (
+                  <div>
+                    <audio controls>
+                      <source src={audioSrc} type="audio/mpeg" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </div>
+                )}
                 {responseMessage && <p>{responseMessage}</p>}
               </div>
               <div className="learning-images">
@@ -89,6 +156,7 @@ function App() {
                   alt="girl pointing at text"
                 />
               </div>
+
             </div>
           )}
           {activeTab === "Instructions" && (
