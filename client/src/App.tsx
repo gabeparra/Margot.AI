@@ -4,9 +4,7 @@ import starImage from "./assets/star.png";
 import girlPointing from "./assets/girl-pointing.png";
 import girlMegaphone from "./assets/girl-megaphone.png";
 import girlSitting from "./assets/girl-sitting.png";
-// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-// import LearningPage from "./components/LearningPage";
 import "./LearningPage.css";
 import "./App.css";
 
@@ -86,13 +84,19 @@ function App() {
             />
           </a>
           <button className="change-language">SITE LANGUAGE: English</button>
-          <button className="instructions-button">Instructions</button>
+          {/* <button className="instructions-button">Instructions</button> */}
           <div className="info-buttons">
             <button
               onClick={() => setActiveTab("AboutMargot")}
               className="about-button"
             >
               About Margot
+            </button>
+            <button
+              onClick={() => setActiveTab("Instructions")}
+              className="instructions-button"
+            >
+              Instructions
             </button>
             <button
               onClick={() => setActiveTab("LearningPage")}
@@ -155,6 +159,23 @@ function App() {
 
             </div>
           )}
+          {activeTab === "Instructions" && (
+            <div className="introduction">
+              <img
+                src={girlMegaphone}
+                className="girl-megaphone"
+                alt="Girl holding megaphone"
+              />
+              <h1 className="how-works">How Margot.AI works: </h1>
+              <ul id="instruction-list">
+                <li className="star">
+                  Listen for Margot to say a Spanish word.
+                </li>
+                <li className="star">Type the word.</li>
+                <li className="star">Earn stars!</li>
+              </ul>
+            </div>
+          )}
           {activeTab === "AboutMargot" && (
             <div className="description">
               <p className="description-english-line1">
@@ -180,12 +201,17 @@ function App() {
           )}
         </div>
         <button className="change-language">SITE LANGUAGE: English</button>
-        <button className="instructions-button">Instructions</button>
       </div>
-      {/* <div className="startle">
-        <button className="start-learning-button">Start Learning</button>
-        <button className="instructions-button">Instructions</button>
-      </div>   */}
+      <img src={starImage} className="star2" alt="Star" />
+      {/* <div className="introduction">
+        <img
+          src={girlMegaphone}
+          className="girl-megaphone"
+          alt="Girl holding megaphone"
+        />
+        <button onClick={handleSubmit}>Submit</button>
+        {responseMessage && <p>{responseMessage}</p>}
+      </div> */}
       {/* <img src={starImage} className="star-image2" alt="Star" /> */}
       <img src={starImage} className="star2" alt="Star" />
       <div className="introduction">
@@ -196,7 +222,7 @@ function App() {
           <li className="star">Type the word.</li>
           <li className="star">Earn stars!</li>
         </ul>
-      </div>
+      </div> */}
     </Router>
   );
 }
