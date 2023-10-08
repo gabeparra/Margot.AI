@@ -14,6 +14,7 @@ interface Word {
   spanish: string;
 }
 function App() {
+  let starCountNum = 0;
   // const [showLearningPage, setShowLearningPage] = useState(false);\
   const [words, setWords] = useState<Word[]>([]);
   const [activeTab, setActiveTab] = useState("AboutMargot");
@@ -49,6 +50,7 @@ function App() {
       });
 
       if (response.ok) {
+        starCountNum += 1;
         // Revoke the previous blob URL
         if (audioSrc) {
           URL.revokeObjectURL(audioSrc);
@@ -211,14 +213,14 @@ function App() {
         <div className="info">
           {activeTab === "LearningPage" && (
             <div>
-              <h2>
+              <h2 id="margot-question">
                 {language === "Spanish"
                   ? "¿Qué dijo Margot?"
                   : "What did Margot say?"}
               </h2>
               <div>
-                <button onClick={loadInitialAudio}>
-                  {language === "Spanish" ? "Empezar de nuevo" : "Start Over"}
+                <button id="startover-button" onClick={loadInitialAudio}>
+                  {language === "Spanish" ? "Empezar de nuevo" : "Start Over!"}
                 </button>
               </div>
               <div className="subtext">
@@ -234,6 +236,7 @@ function App() {
                   onChange={(e) => setInputValue(e.target.value)}
                 />
                 <button
+                  className="submit-button"
                   onClick={() =>
                     handleSubmit(
                       currentWord.english,
@@ -257,6 +260,8 @@ function App() {
                 {responseMessage && <p>{responseMessage}</p>}
               </div>
               <div className="learning-images">
+                <img src={starImage} className="starCount" alt="Star" />
+                <p className="starCountNum">{starCountNum}</p>
                 <img
                   src={girlSitting}
                   className="girl-sitting"
