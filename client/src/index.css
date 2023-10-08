@@ -211,17 +211,6 @@ body {
   }
 }
 
-.girl-pointing {
-  position: relative;
-  width: 35%;
-  height: auto;
-  margin-top: -50%;
-  margin-left: 3%;
-  margin-bottom: 5%;
-  z-index: 0;
-  right: -65%;
-}
-
 .girl-megaphone {
   width: 40%;
   height: auto;

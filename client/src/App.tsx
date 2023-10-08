@@ -5,6 +5,7 @@ import girlPointing from "./assets/girl-pointing.png";
 import girlMegaphone from "./assets/girl-megaphone.png";
 import girlSitting from "./assets/girl-sitting.png";
 import { BrowserRouter as Router } from "react-router-dom";
+import "./AboutMe.css";
 import "./LearningPage.css";
 import "./App.css";
 
