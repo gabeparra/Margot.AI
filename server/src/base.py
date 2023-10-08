@@ -74,16 +74,17 @@ def get_words():
     words_list = [{"english": word.english, "spanish": word.spanish} for word in words]
     return jsonify(words_list)
 
-
 @app.route("/generate_audio", methods=["POST"])
 def generate_audio():
     print("Generating audio...")  # Debug print to confirm the endpoint is hit
 
     data = request.get_json()
     text = data.get("text", "")
-    finaltext = "The word is "+text
+    wordEnglish = data.get("wordEnglish", "")
 
-    response = request_audio_conversion(finaltext)
+
+    response = request_audio_conversion(text)
+    response2= request_audio_conversion("Correct. The Spanish word for "+wordEnglish+" would be ")
 
     #print(f"Response status code: {response.status_code}")  # Debug print
     #print(f"Response headers: {response.headers}")  # Debug print
@@ -93,7 +94,7 @@ def generate_audio():
 
     if response.status_code == 200 and response.headers.get("Content-Type") == "audio/mpeg":
         # Send the audio data directly to the client
-        return Response(response.content, content_type="audio/mpeg")
+        return Response(response2.content+response.content, content_type="audio/mpeg")
     else:
         return jsonify({"error": "Failed to generate audio"}), 500
 
