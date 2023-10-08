@@ -2,7 +2,16 @@ h2 {
   font-family: "Patrick Hand", cursive;
   font-size: 300%;
   margin-bottom: 0;
-  margin-top: 0;
+  margin-top: 1em;
+}
+
+#margot-question {
+  color: #4d92d3;
+}
+
+#startover-button {
+  margin-top: 2em;
+  background-color: #019798;
 }
 
 p {
@@ -15,8 +24,8 @@ p {
 .input-box {
   font-family: "Patrick Hand", cursive;
   font-size: 1.5em;
-  color: #757575;
-  background-color: #e0e0e0;
+  /* color: #79b9f4;  */
+  background-color: #b1d1ef;
   border-color: #5d5d5d;
   border-radius: 10px;
   margin-top: 1em;
@@ -27,14 +36,16 @@ p {
 }
 
 ::placeholder {
-  color: #c2bfbfb9;
+  color: #98b9d8;
   opacity: 1; /* Firefox */
 }
 
 .submit-button {
-  display: block;
-  margin: 0 auto; /* center horizontally */
+  display: relative;
   margin-top: 1em;
+  margin-left: 1em;
+  background-color: #b1d1ef;
+  color: #4d92d3;
 }
 
 submit-button:hover {
@@ -100,4 +111,24 @@ submit-button:hover {
   to {
     transform: rotate(360deg);
   }
+}
+
+.starCount {
+  position: absolute;
+  top: 10em;
+  left: 5em;
+  width: 25%;
+  height: auto;
+}
+
+.starCountNum {
+  position: absolute;
+  top: 260px;
+  left: 80px;
+  width: 25%;
+  height: auto;
+  z-index: 9999;
+  color: white;
+  font-style: oblique;
+  font-size: 50px;
 }
