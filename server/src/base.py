@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file, send_from_directory, Response
 import os
 import sys
 import requests
@@ -90,12 +90,19 @@ def generate_audio():
         f"First 100 bytes of response: {response.content[:100]}"
     )  # Debug print, just to check content type
 
-    audio_filename = handle_audio_response(response)
+    if response.status_code == 200 and response.headers.get("Content-Type") == "audio/mpeg":
+        # Send the audio data directly to the client
+        return Response(response.content, content_type="audio/mpeg")
+    else:
+        return jsonify({"error": "Failed to generate audio"}), 500
 
-    print(f"Audio saved as: {audio_filename}")  # Debug print
-    goodjob()
+    #audio_filename = handle_audio_response(response)
 
-    return jsonify({"message": f"Audio saved as {audio_filename}"})
+    #print(f"Audio saved as: {audio_filename}")  # Debug print
+    #goodjob()
+
+    #audio_path = os.path.join(AUDIO_FOLDER, audio_filename)
+    #return send_file(audio_path, as_attachment=True, download_name=audio_filename)
 
 def goodjob():
     print("Generating audio...")  # Debug print to confirm the endpoint is hit

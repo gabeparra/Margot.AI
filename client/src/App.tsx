@@ -19,6 +19,7 @@ function App() {
   const [currentWord, setCurrentWord] = useState(null);
   const [shownWords, setShownWords] = useState([]);
   const [resetMode, setResetMode] = useState(false);
+  const [audioSrc, setAudioSrc] = useState(null); // State to store the audio blob URL
   const handleSubmit = async () => {
     try {
       const response = await fetch("http://localhost:5000/generate_audio", {
@@ -28,8 +29,16 @@ function App() {
         },
         body: JSON.stringify({ text: inputValue }),
       });
-      const data = await response.json();
-      setResponseMessage(data.message);
+
+      if (response.ok) {
+        const blob = await response.blob();
+        const audioUrl = URL.createObjectURL(blob);
+        setAudioSrc(audioUrl);
+        setResponseMessage("Audio generated successfully!");
+      } else {
+        const data = await response.json();
+        setResponseMessage(data.message || "Error generating audio.");
+      }
     } catch (error) {
       console.error("Error sending request:", error);
       setResponseMessage("Error generating audio.");
@@ -126,6 +135,14 @@ function App() {
                   onChange={(e) => setInputValue(e.target.value)}
                 />
                 <button onClick={handleSubmit}>Submit</button>
+                {audioSrc && (
+                  <div>
+                    <audio controls>
+                      <source src={audioSrc} type="audio/mpeg" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </div>
+                )}
                 {responseMessage && <p>{responseMessage}</p>}
               </div>
               <div className="learning-images">
