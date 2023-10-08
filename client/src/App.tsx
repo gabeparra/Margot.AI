@@ -72,8 +72,12 @@ function App() {
                 <input
                   className="input-box"
                   type="text"
-                  placeholder="Enter your response here!"
+                  placeholder="Enter text for audio conversion..."
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
                 />
+                <button onClick={handleSubmit}>Submit</button>
+                {responseMessage && <p>{responseMessage}</p>}
               </div>
               <div className="learning-images">
                 <img
@@ -128,10 +132,10 @@ function App() {
         <button onClick={handleSubmit}>Submit</button>
         {responseMessage && <p>{responseMessage}</p>}
       </div> */}
-        {/* <img src={starImage} className="star-image2" alt="Star" /> */}
-        <img src={starImage} className="star2" alt="Star" />
+      {/* <img src={starImage} className="star-image2" alt="Star" /> */}
+      <img src={starImage} className="star2" alt="Star" />
       <div className="introduction">
-        <img src={girlMegaphone} className="girl-megaphone" alt="Girl holding megaphone"/>
+        <img src={girlMegaphone} className="girl-megaphone" alt="Girl holding megaphone" />
         <h1 className="how-works">How Margot.AI works: </h1>
         <ul id="instruction-list">
           <li className="star">Listen for Margot to say a Spanish word.</li>
