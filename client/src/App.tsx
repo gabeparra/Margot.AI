@@ -9,17 +9,21 @@ import "./AboutMe.css";
 import "./LearningPage.css";
 import "./App.css";
 
+interface Word {
+  english: string;
+  spanish: string;
+}
 function App() {
   // const [showLearningPage, setShowLearningPage] = useState(false);\
-  const [words, setWords] = useState([]);
+  const [words, setWords] = useState<Word[]>([]);
   const [activeTab, setActiveTab] = useState("AboutMargot");
   const [inputValue, setInputValue] = useState(""); // State for input value
   const [responseMessage, setResponseMessage] = useState(""); // State for server response message
-  const [currentWord, setCurrentWord] = useState(null);
+  const [currentWord, setCurrentWord] = useState<Word>();
   const [shownWords, setShownWords] = useState([]);
   const [resetMode, setResetMode] = useState(false);
   const [audioSrc, setAudioSrc] = useState(null); // State to store the audio blob URL
-  const [audioURL, setAudioURL] = useState("");
+  const [audioUrl, setAudioURL] = useState("");
   const [audioKey, setAudioKey] = useState(0);
   const handleSubmit = async (
     wordEnglish: any,
@@ -27,7 +31,7 @@ function App() {
     wordSpanish: any
   ) => {
     //Check if the inputValue matches currentWord.spanish
-    if (inputValue.toLowerCase() !== currentWord.spanish.toLowerCase()) {
+    if (!currentWord || !("spanish" in currentWord) || inputValue.toLowerCase() !== currentWord.spanish.toLowerCase()) {
       setResponseMessage("Incorrect word. Please try again.");
       return; // Exit the function early if the word is incorrect
     }

@@ -44,9 +44,9 @@ submit-button:hover {
 }
 
 .girl-sitting {
-  position: relative;
+  position: absolute;
   width: 300px;
-  height: auto;
+  height: 300px;
   margin-top: -40px;
   margin-left: 12px;
   z-index: 0;
