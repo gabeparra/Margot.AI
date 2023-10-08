@@ -5,6 +5,7 @@ import girlPointing from "./assets/girl-pointing.png";
 import girlMegaphone from "./assets/girl-megaphone.png";
 import girlSitting from "./assets/girl-sitting.png";
 import { BrowserRouter as Router } from "react-router-dom";
+import "./AboutMe.css";
 import "./LearningPage.css";
 import "./App.css";
 
@@ -47,7 +48,7 @@ function App() {
         const blob = await response.blob();
         const audioUrl = URL.createObjectURL(blob);
         setAudioSrc(audioUrl);
-        setAudioKey(prevKey => prevKey + 1); // Increment the audio key
+        setAudioKey((prevKey) => prevKey + 1); // Increment the audio key
         setResponseMessage("Correct word!");
       } else {
         const data = await response.json();
@@ -135,12 +136,11 @@ function App() {
       setResponseMessage("Error loading audio.");
     }
   };
-
   useEffect(() => {
-    fetch('http://localhost:5000/words')
-      .then(response => response.json())
-      .then(data => setWords(data))
-      .catch(error => console.error('Error fetching words:', error));
+    fetch("http://localhost:5000/words")
+      .then((response) => response.json())
+      .then((data) => setWords(data))
+      .catch((error) => console.error("Error fetching words:", error));
   }, []);
   useEffect(() => {
     pickRandomWord();
@@ -149,17 +149,18 @@ function App() {
     // If in reset mode, just return
     if (resetMode) return;
     // Filter out words that have already been shown
-    const unshownWords = words.filter(word => !shownWords.includes(word));
+    const unshownWords = words.filter((word) => !shownWords.includes(word));
     // If all words have been shown, enable reset mode
     if (unshownWords.length === 0) {
       setResetMode(true);
       return;
     }
     // Pick a random word from the unshownWords array
-    const randomWord = unshownWords[Math.floor(Math.random() * unshownWords.length)];
+    const randomWord =
+      unshownWords[Math.floor(Math.random() * unshownWords.length)];
     // Update the current word and the list of shown words
     setCurrentWord(randomWord);
-    setShownWords(prevWords => [...prevWords, randomWord]);
+    setShownWords((prevWords) => [...prevWords, randomWord]);
   };
   return (
     <Router>
@@ -202,7 +203,11 @@ function App() {
         <div className="info">
           {activeTab === "LearningPage" && (
             <div>
-              <h2>What did Margot say?</h2>
+              <h2>
+                {language === "Spanish"
+                  ? "¿Qué dijo Margot?"
+                  : "What did Margot say?"}
+              </h2>
               <div>
                 <button onClick={loadInitialAudio}>Start Over</button>
               </div>
@@ -210,7 +215,11 @@ function App() {
                 <input
                   className="input-box"
                   type="text"
-                  placeholder="Enter text for audio conversion"
+                  placeholder={
+                    language === "Spanish"
+                      ? "Ingrese el texto para la conversión de audio"
+                      : "Enter text for audio conversion"
+                  }
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                 />
@@ -219,7 +228,9 @@ function App() {
                   <div>
                     <audio controls key={audioKey}>
                       <source src={audioSrc} type="audio/mpeg" />
-                      Your browser does not support the audio element.
+                      {language === "Spanish"
+                        ? "Su navegador no admite el elemento de audio."
+                        : "Your browser does not support the audio element."}
                     </audio>
                   </div>
                 )}
@@ -246,10 +257,25 @@ function App() {
               />
               {/* <h1 className="how-works">How Margot.AI works: </h1> */}
               <ul id="instruction-list">
-                <li className="how-works">How Margot.AI works: </li>
-                <li className="star"> Listen for Margot to say a Spanish word.</li>
-                <li className="star">Type the word.</li>
-                <li className="star">Earn stars!</li>
+                <li className="how-works">
+                  {language === "Spanish"
+                    ? "Cómo funciona Margot.AI:"
+                    : "How Margot.AI works:"}
+                </li>
+                <li className="star">
+                  {" "}
+                  {language === "Spanish"
+                    ? "Escucha a Margot decir una palabra en español."
+                    : "Listen for Margot to say a Spanish word."}
+                </li>
+                <li className="star">
+                  {language === "Spanish"
+                    ? "Escribe la palabra."
+                    : "Type the word."}
+                </li>
+                <li className="star">
+                  {language === "Spanish" ? "¡Gana estrellas!" : "Earn stars!"}
+                </li>
               </ul>
               <img src={starImage} className="star3" alt="Star" />
               <img src={starImage} className="star4" alt="Star" />
