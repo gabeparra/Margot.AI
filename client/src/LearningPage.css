@@ -130,3 +130,9 @@ submit-button:hover {
     transform: rotate(360deg);
   }
 }
+
+.audiobar {
+  position:relative;
+  margin-top: 20px;
+  margin-right: 102px;
+}
