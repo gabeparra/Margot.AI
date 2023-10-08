@@ -50,7 +50,6 @@ function App() {
       });
 
       if (response.ok) {
-        starCountNum += 1;
         // Revoke the previous blob URL
         if (audioSrc) {
           URL.revokeObjectURL(audioSrc);
@@ -59,6 +58,7 @@ function App() {
         const audioUrl = URL.createObjectURL(blob);
         setAudioSrc(audioUrl);
         setAudioKey((prevKey) => prevKey + 1); // Increment the audio key
+        starCountNum ++;
         setResponseMessage("Correct word!");
       } else {
         const data = await response.json();

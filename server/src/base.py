@@ -85,7 +85,7 @@ def generate_audio():
 
 
     response = request_audio_conversion(text)
-    response2= request_audio_conversion("Correct. The Spanish word for "+wordEnglish+" would be ")
+    response2= request_audio_conversion("Correct. The Spanish word for "+wordEnglish+" is ")
 
     #print(f"Response status code: {response.status_code}")  # Debug print
     #print(f"Response headers: {response.headers}")  # Debug print
