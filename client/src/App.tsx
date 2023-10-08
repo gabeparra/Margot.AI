@@ -4,9 +4,7 @@ import starImage from "./assets/star.png";
 import girlPointing from "./assets/girl-pointing.png";
 import girlMegaphone from "./assets/girl-megaphone.png";
 import girlSitting from "./assets/girl-sitting.png";
-// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-// import LearningPage from "./components/LearningPage";
 import "./LearningPage.css";
 import "./App.css";
 
@@ -46,13 +44,19 @@ function App() {
             />
           </a>
           <button className="change-language">SITE LANGUAGE: English</button>
-          <button className="instructions-button">Instructions</button>
+          {/* <button className="instructions-button">Instructions</button> */}
           <div className="info-buttons">
             <button
               onClick={() => setActiveTab("AboutMargot")}
               className="about-button"
             >
               About Margot
+            </button>
+            <button
+              onClick={() => setActiveTab("Instructions")}
+              className="instructions-button"
+            >
+              Instructions
             </button>
             <button
               onClick={() => setActiveTab("LearningPage")}
@@ -67,7 +71,6 @@ function App() {
           {activeTab === "LearningPage" && (
             <div>
               <h2>What did Margot say?</h2>
-              {/* <p>Enter your response here!</p> */}
               <div className="subtext">
                 <input
                   className="input-box"
@@ -86,6 +89,23 @@ function App() {
                   alt="girl pointing at text"
                 />
               </div>
+            </div>
+          )}
+          {activeTab === "Instructions" && (
+            <div className="introduction">
+              <img
+                src={girlMegaphone}
+                className="girl-megaphone"
+                alt="Girl holding megaphone"
+              />
+              <h1 className="how-works">How Margot.AI works: </h1>
+              <ul id="instruction-list">
+                <li className="star">
+                  Listen for Margot to say a Spanish word.
+                </li>
+                <li className="star">Type the word.</li>
+                <li className="star">Earn stars!</li>
+              </ul>
             </div>
           )}
           {activeTab === "AboutMargot" && (
@@ -112,22 +132,14 @@ function App() {
             </div>
           )}
         </div>
-        {/* <Routes>
-          <Route path="/learning" Component={LearningPage} />
-        </Routes> */}
         <button className="change-language">SITE LANGUAGE: English</button>
-        <button className="instructions-button">Instructions</button>
       </div>
-      {/* <div className="startle">
-        <button className="start-learning-button">Start Learning</button>
-        <button className="instructions-button">Instructions</button>
-      </div>   */}
-      {/* <div className="input-section">
-        <input
-          type="text"
-          placeholder="Enter text for audio conversion..."
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+      <img src={starImage} className="star2" alt="Star" />
+      {/* <div className="introduction">
+        <img
+          src={girlMegaphone}
+          className="girl-megaphone"
+          alt="Girl holding megaphone"
         />
         <button onClick={handleSubmit}>Submit</button>
         {responseMessage && <p>{responseMessage}</p>}
@@ -142,7 +154,7 @@ function App() {
           <li className="star">Type the word.</li>
           <li className="star">Earn stars!</li>
         </ul>
-      </div>
+      </div> */}
     </Router>
   );
 }
