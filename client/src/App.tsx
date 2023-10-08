@@ -28,6 +28,7 @@ function App() {
   const [audioSrc, setAudioSrc] = useState<string | null>(null); // State to store the audio blob URL
   const [audioKey, setAudioKey] = useState(0);
   const [starCountNum, setStarCountNum] = useState(0);
+  const [language, setLanguage] = useState("English");
 
   const incrementStarCountNum = () => {
     setStarCountNum(starCountNum + 1);
@@ -39,11 +40,7 @@ function App() {
     wordSpanish: any
   ) => {
     //Check if the inputValue matches currentWord.spanish
-    if (
-      !currentWord ||
-      !("spanish" in currentWord) ||
-      inputValue.toLowerCase() !== currentWord.spanish.toLowerCase()
-    ) {
+    if ((!currentWord || inputValue.toLowerCase() !== currentWord.spanish.toLowerCase())&&language==="English") {
       setResponseMessage(
         <div className="incorrect-response">
           Incorrect word. Please try again.
@@ -51,18 +48,42 @@ function App() {
       );
       return; // Exit the function early if the word is incorrect
     }
+    if ((!currentWord || inputValue.toLowerCase() !== currentWord.english.toLowerCase())&&language==="Spanish") {
+      setResponseMessage(
+        <div className="incorrect-response">
+          Respuesta incorrecta. Intenta nuevamente.
+        </div>
+      );
+      return; // Exit the function early if the word is incorrect
+    }
     try {
-      const response = await fetch("http://localhost:5000/generate_audio", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          text: inputText,
-          wordEnglish: wordEnglish,
-          wordSpanish: wordSpanish,
-        }),
-      });
+      let response: { ok: any; blob: () => any; } = { ok: false, blob: () => null };
+      if (language === "English") {
+        response = await fetch("http://127.0.0.1:5000/generate_audio", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            text: inputText,
+            wordEnglish: wordEnglish,
+            wordSpanish: wordSpanish,
+          }),
+        });
+      } else {
+        response = await fetch("http://127.0.0.1:5000/generar_audio", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            text: inputText,
+            wordEnglish: wordEnglish,
+            wordSpanish: wordSpanish,
+          }),
+        });
+      }
+
 
       if (response.ok) {
         incrementStarCountNum();
@@ -86,7 +107,6 @@ function App() {
       //setResponseMessage("Error generating audio.");
     }
   };
-  const [language, setLanguage] = useState("English");
 
   const handleLanguageChange = () => {
     setLanguage(language === "English" ? "Spanish" : "English");
@@ -105,18 +125,32 @@ function App() {
       // Pick a random word from the unshownWords array
       const randomWord =
         unshownWords[Math.floor(Math.random() * unshownWords.length)];
-
-      const response = await fetch("http://localhost:5000/load_audio", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          wordEnglish: randomWord.english,
-          wordSpanish: randomWord.spanish,
-        }),
-      });
-
+      let response: {
+        [x: string]: any; ok: any; blob: () => any; 
+} = { ok: false, blob: () => null };
+      if (language === "English") {
+        response = await fetch("http://localhost:5000/load_audio", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            wordEnglish: randomWord.english,
+            wordSpanish: randomWord.spanish,
+          }),
+        });
+      } else {
+        response = await fetch("http://localhost:5000/cargar_audio", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            wordEnglish: randomWord.english,
+            wordSpanish: randomWord.spanish,
+          }),
+        });
+      }
       if (response.ok) {
         const blob = await response.blob();
         const audioUrl = URL.createObjectURL(blob);

@@ -124,7 +124,7 @@ def generar_audio():
 
 
     response = request_audio_conversion(text)
-    response2= request_audio_conversion("Correcto. La palabra en ingles para "+wordEnglish+" es ")
+    response2= request_audio_conversion("Correcto. La palabra en ingles para "+wordSpanish+" es ")
 
     print(
         f"First 100 bytes of response: {response.content[:100]}"
@@ -145,7 +145,7 @@ def cargar_audio():
     wordSpanish = data.get("wordSpanish", "")
 
 
-    response = request_audio_conversion(wordSpanish)
+    response = request_audio_conversion(wordEnglish)
     response2 = request_audio_conversion("Como se escribe?")
 
     if response.status_code == 200 and response.headers.get("Content-Type") == "audio/mpeg":
