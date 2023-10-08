@@ -59,7 +59,7 @@ submit-button:hover {
   width: 300px;
   height: auto;
   z-index: 0;
-  left: -29%;
+  margin-right: 70%;
   bottom: 30em;
 }
 
@@ -134,5 +134,6 @@ submit-button:hover {
 .audiobar {
   position:relative;
   margin-top: 20px;
-  margin-right: 102px;
+  margin-right: 100px;
+  padding-left: 5px;
 }
