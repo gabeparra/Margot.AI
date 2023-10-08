@@ -44,7 +44,6 @@ function App() {
             />
           </a>
           <button className="change-language">SITE LANGUAGE: English</button>
-          {/* <button className="instructions-button">Instructions</button> */}
           <div className="info-buttons">
             <button
               onClick={() => setActiveTab("AboutMargot")}
@@ -89,6 +88,9 @@ function App() {
                   alt="girl pointing at text"
                 />
               </div>
+              <img src={starImage} className="lstar3" alt="Star" />
+              <img src={starImage} className="lstar4" alt="Star" />
+              <img src={starImage} className="lstar5" alt="Star" />
             </div>
           )}
           {activeTab === "Instructions" && (
@@ -134,27 +136,6 @@ function App() {
         </div>
         <button className="change-language">SITE LANGUAGE: English</button>
       </div>
-      <img src={starImage} className="star2" alt="Star" />
-      {/* <div className="introduction">
-        <img
-          src={girlMegaphone}
-          className="girl-megaphone"
-          alt="Girl holding megaphone"
-        />
-        <button onClick={handleSubmit}>Submit</button>
-        {responseMessage && <p>{responseMessage}</p>}
-      </div> */}
-      {/* <img src={starImage} className="star-image2" alt="Star" /> */}
-      <img src={starImage} className="star2" alt="Star" />
-      <div className="introduction">
-        <img src={girlMegaphone} className="girl-megaphone" alt="Girl holding megaphone" />
-        <h1 className="how-works">How Margot.AI works: </h1>
-        <ul id="instruction-list">
-          <li className="star">Listen for Margot to say a Spanish word.</li>
-          <li className="star">Type the word.</li>
-          <li className="star">Earn stars!</li>
-        </ul>
-      </div> */}
     </Router>
   );
 }
