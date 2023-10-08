@@ -20,6 +20,12 @@ function App() {
   const [audioSrc, setAudioSrc] = useState(null); // State to store the audio blob URL
   const [audioURL, setAudioURL] = useState("");
   const [audioKey, setAudioKey] = useState(0);
+  const [language, setLanguage] = useState("Spanish");
+
+  const handleLanguageChange = () => {
+    setLanguage(language === "English" ? "Spanish" : "English");
+  };
+
   const handleSubmit = async () => {
     try {
       const response = await fetch("http://localhost:5000/generate_audio", {
@@ -92,25 +98,29 @@ function App() {
               alt="Image of a baby's face"
             />
           </a>
-          <button className="change-language">SITE LANGUAGE: English</button>
+          <button className="change-language" onClick={handleLanguageChange}>
+            {language === "Spanish" ? "switch to ENGLISH" : "cambiar a ESPAÑOL"}
+          </button>
           <div className="info-buttons">
             <button
               onClick={() => setActiveTab("AboutMargot")}
               className="about-button"
             >
-              About Margot
+              {language === "English" ? "About Margot" : "Acerca de Margot"}
             </button>
             <button
               onClick={() => setActiveTab("Instructions")}
               className="instructions-button"
             >
-              Instructions
+              {language === "English" ? "Instructions" : "Instrucciones"}
             </button>
             <button
               onClick={() => setActiveTab("LearningPage")}
               className="learn-button"
             >
-              Start Learning!
+              {language === "English"
+                ? "Start Learning!"
+                : "¡Comenzar a Aprender!"}
             </button>
           </div>
         </div>
@@ -202,7 +212,7 @@ function App() {
                 Hello, parents! I’m Margot. I’m here to help your
               </p>
               <p className="description-english-line2">
-                kids have fun as they learn to type Spanish!
+                kids have fun while learning Spanish!
               </p>
               <p className="description-spanish-line1">
                 ¡Hola, padres! Soy Margot. ¡Estoy aquí para ayudar a
@@ -223,7 +233,6 @@ function App() {
             </div>
           )}
         </div>
-        <button className="change-language">SITE LANGUAGE: English</button>
       </div>
     </Router>
   );
