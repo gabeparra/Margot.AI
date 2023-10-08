@@ -37,6 +37,12 @@ p {
   margin-top: 1em;
 }
 
+submit-button:hover {
+  border-width: 1px;
+  transition: 2s;
+  border-color: #646cff;
+}
+
 .girl-sitting {
   position: relative;
   width: 30%;
