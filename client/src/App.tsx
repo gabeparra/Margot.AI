@@ -211,14 +211,18 @@ function App() {
                 <input
                   className="input-box"
                   type="text"
-                  placeholder="Enter text for audio conversion"
+                  placeholder={
+                    language === "Spanish"
+                      ? "Ingrese el texto para la conversión de audio"
+                      : "Enter text for audio conversion"
+                  }
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                 />
                 <button
                   onClick={() => handleSubmit(currentWord.english, inputValue)}
                 >
-                  Submit
+                  {language === "Spanish" ? "Enviar" : "Submit"}
                 </button>
                 {audioSrc && (
                   <div>
@@ -253,13 +257,25 @@ function App() {
               />
               {/* <h1 className="how-works">How Margot.AI works: </h1> */}
               <ul id="instruction-list">
-                <li className="how-works">How Margot.AI works: </li>
+                <li className="how-works">
+                  {language === "Spanish"
+                    ? "Cómo funciona Margot.AI:"
+                    : "How Margot.AI works:"}
+                </li>
                 <li className="star">
                   {" "}
-                  Listen for Margot to say a Spanish word.
+                  {language === "Spanish"
+                    ? "Escucha a Margot decir una palabra en español."
+                    : "Listen for Margot to say a Spanish word."}
                 </li>
-                <li className="star">Type the word.</li>
-                <li className="star">Earn stars!</li>
+                <li className="star">
+                  {language === "Spanish"
+                    ? "Escribe la palabra."
+                    : "Type the word."}
+                </li>
+                <li className="star">
+                  {language === "Spanish" ? "¡Gana estrellas!" : "Earn stars!"}
+                </li>
               </ul>
               <img src={starImage} className="star3" alt="Star" />
               <img src={starImage} className="star4" alt="Star" />
