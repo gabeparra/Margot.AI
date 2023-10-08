@@ -105,8 +105,7 @@ function App() {
   const loadInitialAudio = async () => {
     try {
       // Filter out words that have already been shown
-      const unshownWords = words.filter((word) => !shownWords.includes(word));
-
+      let unshownWords = words.filter(word => !shownWords.includes(word));
       // If all words have been shown, reset the shownWords list
       if (unshownWords.length === 0) {
         setShownWords([]);
