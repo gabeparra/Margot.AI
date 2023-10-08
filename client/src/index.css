@@ -354,7 +354,7 @@ div.description {
   height: auto;
   position: absolute;
   bottom: 24%;
-  left: 19%;
+  left: 17%;
   transform: translateY(-50%);
   animation: shake 0.9s;
   animation-iteration-count: infinite;
@@ -443,7 +443,7 @@ button:focus-visible {
   font-family: "Patrick Hand", cursive;
   font-size: 150%;
   bottom: 4em;
-  left: 8em;
+  left: 9em;
   color: #4d92d3;
   text-align: left;
   /* margin-left: 100px;
