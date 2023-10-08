@@ -21,11 +21,12 @@ function App() {
   const [inputValue, setInputValue] = useState(""); // State for input value
   const [responseMessage, setResponseMessage] = useState(""); // State for server response message
   const [currentWord, setCurrentWord] = useState<Word>();
-  const [shownWords, setShownWords] = useState([]);
+  const [shownWords, setShownWords] = useState<Word[]>([]);;
   const [resetMode, setResetMode] = useState(false);
-  const [audioSrc, setAudioSrc] = useState(null); // State to store the audio blob URL
-  const [audioUrl, setAudioURL] = useState("");
+  const [audioSrc, setAudioSrc] = useState<string | null>(null);; // State to store the audio blob URL
   const [audioKey, setAudioKey] = useState(0);
+  
+  
   const handleSubmit = async (
     wordEnglish: any,
     inputText: string,
@@ -61,41 +62,13 @@ function App() {
         starCountNum ++;
         setResponseMessage("Correct word!");
       } else {
-        const data = await response.json();
         //setResponseMessage(data.message || "Error generating audio.");
       }
+
+
     } catch (error) {
       console.error("Error sending request:", error);
       //setResponseMessage("Error generating audio.");
-    }
-  };
-  const generateAudioForWord = async (wordText: string) => {
-    try {
-      const response = await fetch("http://localhost:5000/generate_audio", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ text: wordText }),
-      });
-
-      if (response.ok) {
-        // Revoke the previous blob URL
-        if (audioSrc) {
-          URL.revokeObjectURL(audioSrc);
-        }
-        const blob = await response.blob();
-        const audioUrl = URL.createObjectURL(blob);
-        setAudioSrc(audioUrl);
-        setAudioKey((prevKey) => prevKey + 1); // Increment the audio key
-        //setResponseMessage("Audio generated successfully! from audio from word");
-      } else {
-        const data = await response.json();
-        setResponseMessage(data.message || "Error generating audio.");
-      }
-    } catch (error) {
-      console.error("Error sending request:", error);
-      setResponseMessage("Error generating audio.");
     }
   };
   const [language, setLanguage] = useState("English");
@@ -239,9 +212,9 @@ function App() {
                   className="submit-button"
                   onClick={() =>
                     handleSubmit(
-                      currentWord.english,
+                      currentWord?.english,
                       inputValue,
-                      currentWord.spanish
+                      currentWord?.spanish
                     )
                   }
                 >
