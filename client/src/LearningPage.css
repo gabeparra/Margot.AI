@@ -59,7 +59,7 @@ submit-button:hover {
   width: 300px;
   height: auto;
   z-index: 0;
-  margin-right: 70%;
+  margin-right: 75%;
   bottom: 30em;
 }
 
@@ -136,4 +136,12 @@ submit-button:hover {
   margin-top: 20px;
   margin-right: 100px;
   padding-left: 5px;
+}
+
+.incorrect-response {
+  color: #019798;
+}
+
+.correct-response {
+  color: #019798;
 }
