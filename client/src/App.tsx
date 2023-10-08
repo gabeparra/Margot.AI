@@ -38,7 +38,7 @@ function App() {
         const blob = await response.blob();
         const audioUrl = URL.createObjectURL(blob);
         setAudioSrc(audioUrl);
-        setAudioKey(prevKey => prevKey + 1); // Increment the audio key
+        setAudioKey((prevKey) => prevKey + 1); // Increment the audio key
         setResponseMessage("Audio generated successfully!");
       } else {
         const data = await response.json();
@@ -49,7 +49,6 @@ function App() {
       setResponseMessage("Error generating audio.");
     }
   };
-
 
   useEffect(() => {
     fetch("http://localhost:5000/words")
@@ -183,7 +182,10 @@ function App() {
               {/* <h1 className="how-works">How Margot.AI works: </h1> */}
               <ul id="instruction-list">
                 <li className="how-works">How Margot.AI works: </li>
-                <li className="star"> Listen for Margot to say a Spanish word.</li>
+                <li className="star">
+                  {" "}
+                  Listen for Margot to say a Spanish word.
+                </li>
                 <li className="star">Type the word.</li>
                 <li className="star">Earn stars!</li>
               </ul>
@@ -215,6 +217,9 @@ function App() {
               />
               <img src={starImage} className="star1" alt="Star" />
               <img src={starImage} className="star2" alt="Star" />
+              <img src={starImage} className="star2-1" alt="Star" />
+              <img src={starImage} className="star2-2" alt="Star" />
+              <img src={starImage} className="star2-3" alt="Star" />
             </div>
           )}
         </div>

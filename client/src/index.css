@@ -136,7 +136,7 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: 0.7em;
-  margin-right: 0.2em; 
+  margin-right: 0.2em;
 }
 
 .description-english-line1 {
@@ -181,12 +181,11 @@ body {
 
 /* STARS */
 .star1 {
-  position: relative;
-  width: 25%;
-  height: 25%;
-  left: -75%;
-  margin-top: -20%;
-  z-index: 9999;
+  position: absolute;
+  left: 0;
+  bottom: 30%;
+  width: 20%;
+  height: auto;
 }
 
 .star1:hover {
@@ -194,22 +193,53 @@ body {
 }
 
 .star2 {
-  position: relative;
-  width: 20%;
+  position: absolute;
+  left: 20%;
+  bottom: 5%;
+  width: 10%;
   height: auto;
-  /* flex-shrink: 0; */
-  /* left: 0; */
-  /* top: 63%; changed from top: 1; */
-  margin-left: 50%;
-  margin-top: -10%;
-  margin-bottom: 3%;
-  z-index: 9999;
 }
 
 .star2:hover {
   transform: rotateY(180deg);
 }
 
+.star2-1 {
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  width: 13%;
+  height: auto;
+}
+
+.star2-1:hover {
+  transform: rotateY(180deg);
+}
+
+.star2-2 {
+  position: absolute;
+  right: 20%;
+  bottom: -15%;
+  width: 17%;
+  height: auto;
+}
+
+.star2-2:hover {
+  transform: rotateY(180deg);
+}
+
+.star2-3 {
+  position: absolute;
+  right: -5%;
+  bottom: 5%;
+  width: 19%;
+  height: auto;
+  rotate: 45deg;
+}
+
+.star2-3:hover {
+  transform: rotateY(180deg);
+}
 .star3 {
   width: 14%;
   height: auto;
@@ -274,24 +304,46 @@ body {
   margin-top: 50px;
   z-index: 0;
   /* Start the shake animation and make the animation last for 0.5 seconds */
-  animation: shake .90s;
+  animation: shake 0.9s;
 
   /* When the animation is finished, start again */
   animation-iteration-count: infinite;
 }
 
 @keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
 }
 
 button {
