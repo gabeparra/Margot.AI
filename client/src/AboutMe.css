@@ -1,0 +1,88 @@
+.description-english-line1 {
+    font-family: "Patrick Hand", cursive;
+    color: #ff7777;
+    font-size: 48px;
+    /* margin-right: 3em; */
+    /* padding-right: 3em; */
+    margin-bottom: -5%;
+    margin-top: 2%;
+  }
+  
+  .description-english-line2 {
+    font-family: "Patrick Hand", cursive;
+    color: #ff7777;
+    font-size: 48px;
+    /* margin-right: 3em; */
+    /* padding-right: 3em; */
+    margin-bottom: -5%;
+    margin-top: 7%;
+  }
+  
+  .description-spanish-line1 {
+    font-family: "Patrick Hand", cursive;
+    color: #f2a661;
+    font-size: 48px;
+    /* margin-right: 3em; */
+    /* padding-right: 3em; */
+    margin-bottom: -5%;
+    margin-top: 7%;
+  }
+  
+  .description-spanish-line2 {
+    font-family: "Patrick Hand", cursive;
+    color: #f2a661;
+    font-size: 48px;
+    /* margin-right: 3em; */
+    /* padding-right: 3em; */
+    margin-top: 7%;
+    margin-bottom: 0px;
+  }
+  
+  /* STARS */
+  .star1 {
+    position: absolute;
+    left: 0;
+    bottom: 30%;
+    width: 20%;
+    height: auto;
+  }
+  
+  .star1:hover {
+    transform: rotateY(180deg);
+  }
+  
+  .star2 {
+    position: absolute;
+    left: 20%;
+    bottom: 5%;
+    width: 10%;
+    height: auto;
+  }
+  
+  .star2:hover {
+    transform: rotateY(180deg);
+  }
+  
+  .star2-1 {
+    position: absolute;
+    left: 50%;
+    bottom: 0%;
+    width: 13%;
+    height: auto;
+  }
+  
+  .star2-1:hover {
+    transform: rotateY(180deg);
+  }
+  
+  .star2-2 {
+    position: absolute;
+    right: 13%;
+    bottom: -15%;
+    width: 17%;
+    height: auto;
+  }
+  
+  .star2-2:hover {
+    transform: rotateY(180deg);
+  }
