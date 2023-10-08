@@ -102,7 +102,7 @@ body {
 }
 
 .learn-button {
-  position:fixed;
+  position: fixed;
   background-color: #f7d6a6;
   color: #3db29f;
   font-family: "Patrick Hand", cursive;
@@ -121,7 +121,7 @@ body {
 }
 
 .about-button {
-  position:fixed;
+  position: fixed;
   background-color: #f7d6a6;
   color: #3db29f;
   font-family: "Patrick Hand", cursive;
@@ -140,7 +140,9 @@ body {
   margin-right: 0.2em;
 }
 
-button.learn-button, .about-button, .instructions-button {
+button.learn-button,
+.about-button,
+.instructions-button {
   /* border: 1px solid transparent; */
   /* padding: 0.6em 1.2em; */
   /* bottom: 5em; */
@@ -207,7 +209,7 @@ div.description {
 } */
 
 /* STARS */
-.star1 {
+/* .star1 {
   position: absolute;
   left: 0;
   bottom: 30%;
@@ -266,7 +268,7 @@ div.description {
 
 .star2-3:hover {
   transform: rotateY(180deg);
-}
+} */
 .star3 {
   position: absolute;
   width: 10%;
@@ -432,7 +434,7 @@ button:focus-visible {
 
 /* list */
 #instruction-list {
-  position:relative;
+  position: relative;
   font-family: "Patrick Hand", cursive;
   font-size: 150%;
   bottom: 4em;

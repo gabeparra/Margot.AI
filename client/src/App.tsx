@@ -14,7 +14,7 @@ interface Word {
   spanish: string;
 }
 function App() {
-  let starCountNum = 0;
+  // let starCountNum = 0;
   // const [showLearningPage, setShowLearningPage] = useState(false);\
   const [words, setWords] = useState<Word[]>([]);
   const [activeTab, setActiveTab] = useState("AboutMargot");
@@ -25,15 +25,23 @@ function App() {
   const [resetMode, setResetMode] = useState(false);
   const [audioSrc, setAudioSrc] = useState<string | null>(null);; // State to store the audio blob URL
   const [audioKey, setAudioKey] = useState(0);
-  
-  
+  const [starCountNum, setStarCountNum] = useState(0);
+
+  // Function to increment starCountNum
+  const incrementStarCountNum = () => {
+    setStarCountNum(starCountNum + 1);
+  };
   const handleSubmit = async (
     wordEnglish: any,
     inputText: string,
     wordSpanish: any
   ) => {
     //Check if the inputValue matches currentWord.spanish
-    if (!currentWord || !("spanish" in currentWord) || inputValue.toLowerCase() !== currentWord.spanish.toLowerCase()) {
+    if (
+      !currentWord ||
+      !("spanish" in currentWord) ||
+      inputValue.toLowerCase() !== currentWord.spanish.toLowerCase()
+    ) {
       setResponseMessage("Incorrect word. Please try again.");
       return; // Exit the function early if the word is incorrect
     }
@@ -51,6 +59,7 @@ function App() {
       });
 
       if (response.ok) {
+        incrementStarCountNum();
         // Revoke the previous blob URL
         if (audioSrc) {
           URL.revokeObjectURL(audioSrc);
@@ -80,7 +89,7 @@ function App() {
   const loadInitialAudio = async () => {
     try {
       // Filter out words that have already been shown
-      let unshownWords = words.filter(word => !shownWords.includes(word));
+      let unshownWords = words.filter((word) => !shownWords.includes(word));
       // If all words have been shown, reset the shownWords list
       if (unshownWords.length === 0) {
         setShownWords([]);

@@ -94,3 +94,16 @@
 .star2-2:hover {
   transform: rotateY(180deg);
 }
+
+.star2-3 {
+  position: absolute;
+  right: -5%;
+  bottom: 5%;
+  width: 19%;
+  height: auto;
+  rotate: 45deg;
+}
+
+.star2-3:hover {
+  transform: rotateY(180deg);
+}
