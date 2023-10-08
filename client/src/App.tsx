@@ -36,7 +36,7 @@ function App() {
     }
   };
   useEffect(() => {
-    fetch('http://localhost/words')
+    fetch('http://localhost:5000/words')
       .then(response => response.json())
       .then(data => setWords(data))
       .catch(error => console.error('Error fetching words:', error));
