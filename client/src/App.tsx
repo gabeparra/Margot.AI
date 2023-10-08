@@ -21,7 +21,11 @@ function App() {
   const [audioSrc, setAudioSrc] = useState(null); // State to store the audio blob URL
   const [audioURL, setAudioURL] = useState("");
   const [audioKey, setAudioKey] = useState(0);
-  const handleSubmit = async (wordEnglish: any, inputText: string, wordSpanish: any) => {
+  const handleSubmit = async (
+    wordEnglish: any,
+    inputText: string,
+    wordSpanish: any
+  ) => {
     //Check if the inputValue matches currentWord.spanish
     if (inputValue.toLowerCase() !== currentWord.spanish.toLowerCase()) {
       setResponseMessage("Incorrect word. Please try again.");
@@ -36,7 +40,7 @@ function App() {
         body: JSON.stringify({
           text: inputText,
           wordEnglish: wordEnglish,
-          wordSpanish: wordSpanish
+          wordSpanish: wordSpanish,
         }),
       });
 
@@ -77,7 +81,7 @@ function App() {
         const blob = await response.blob();
         const audioUrl = URL.createObjectURL(blob);
         setAudioSrc(audioUrl);
-        setAudioKey(prevKey => prevKey + 1); // Increment the audio key
+        setAudioKey((prevKey) => prevKey + 1); // Increment the audio key
         //setResponseMessage("Audio generated successfully! from audio from word");
       } else {
         const data = await response.json();
@@ -97,7 +101,7 @@ function App() {
   const loadInitialAudio = async () => {
     try {
       // Filter out words that have already been shown
-      const unshownWords = words.filter(word => !shownWords.includes(word));
+      const unshownWords = words.filter((word) => !shownWords.includes(word));
 
       // If all words have been shown, reset the shownWords list
       if (unshownWords.length === 0) {
@@ -106,7 +110,8 @@ function App() {
       }
 
       // Pick a random word from the unshownWords array
-      const randomWord = unshownWords[Math.floor(Math.random() * unshownWords.length)];
+      const randomWord =
+        unshownWords[Math.floor(Math.random() * unshownWords.length)];
 
       const response = await fetch("http://localhost:5000/load_audio", {
         method: "POST",
@@ -126,7 +131,7 @@ function App() {
         setAudioKey((prevKey) => prevKey + 1);
         setCurrentWord(randomWord);
         setInputValue(""); // Clear the input value
-        setShownWords(prevWords => [...prevWords, randomWord]);
+        setShownWords((prevWords) => [...prevWords, randomWord]);
       } else {
         const data = await response.json();
         setResponseMessage(data.message || "Error loading audio.");
@@ -223,7 +228,17 @@ function App() {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                 />
-                <button onClick={() => handleSubmit(currentWord.english, inputValue, currentWord.spanish)}>Submit</button>
+                <button
+                  onClick={() =>
+                    handleSubmit(
+                      currentWord.english,
+                      inputValue,
+                      currentWord.spanish
+                    )
+                  }
+                >
+                  {language === "Spanish" ? "Enviar" : "Submit"}
+                </button>
                 {audioSrc && (
                   <div>
                     <audio controls key={audioKey}>
