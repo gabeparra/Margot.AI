@@ -332,16 +332,16 @@ function App() {
           {activeTab === "AboutMargot" && (
             <div className="description">
               <p className="description-english-line1">
-                Helping your kids learn and
+                Helping your kids have fun
               </p>
               <p className="description-english-line2">
-                kids have fun while learning Spanish!
+                while learning Spanish!
               </p>
               <p className="description-spanish-line1">
-                Ayudando a tus niños a
+                ¡Ayudando a tus niños a
               </p>
               <p className="description-spanish-line2">
-                entender y aprender Ingles facilmente!
+                divertirse mientras aprenden inglés!
               </p>
               <img
                 src={girlPointing}
