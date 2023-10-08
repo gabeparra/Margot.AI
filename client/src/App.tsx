@@ -10,6 +10,7 @@ import "./LearningPage.css";
 import "./App.css";
 
 function App() {
+  let starCountNum = 0;
   // const [showLearningPage, setShowLearningPage] = useState(false);\
   const [words, setWords] = useState([]);
   const [activeTab, setActiveTab] = useState("AboutMargot");
@@ -45,6 +46,7 @@ function App() {
       });
 
       if (response.ok) {
+        starCountNum += 1;
         // Revoke the previous blob URL
         if (audioSrc) {
           URL.revokeObjectURL(audioSrc);
@@ -255,6 +257,8 @@ function App() {
                 {responseMessage && <p>{responseMessage}</p>}
               </div>
               <div className="learning-images">
+                <img src={starImage} className="starCount" alt="Star" />
+                <p className="starCountNum">{starCountNum}</p>
                 <img
                   src={girlSitting}
                   className="girl-sitting"
