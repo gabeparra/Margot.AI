@@ -68,7 +68,6 @@ function App() {
         const audioUrl = URL.createObjectURL(blob);
         setAudioSrc(audioUrl);
         setAudioKey((prevKey) => prevKey + 1); // Increment the audio key
-        starCountNum ++;
         setResponseMessage("Correct word!");
       } else {
         //setResponseMessage(data.message || "Error generating audio.");
