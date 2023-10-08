@@ -60,7 +60,11 @@ function App() {
     wordSpanish: any
   ) => {
     //Check if the inputValue matches currentWord.spanish
-    if ((!currentWord || inputValue.toLowerCase() !== currentWord.spanish.toLowerCase())&&language==="English") {
+    if (
+      (!currentWord ||
+        inputValue.toLowerCase() !== currentWord.spanish.toLowerCase()) &&
+      language === "English"
+    ) {
       setResponseMessage(
         <div className="incorrect-response">
           Incorrect word. Please try again.
@@ -68,7 +72,11 @@ function App() {
       );
       return; // Exit the function early if the word is incorrect
     }
-    if ((!currentWord || inputValue.toLowerCase() !== currentWord.english.toLowerCase())&&language==="Spanish") {
+    if (
+      (!currentWord ||
+        inputValue.toLowerCase() !== currentWord.english.toLowerCase()) &&
+      language === "Spanish"
+    ) {
       setResponseMessage(
         <div className="incorrect-response">
           Respuesta incorrecta. Intenta nuevamente.
@@ -77,7 +85,10 @@ function App() {
       return; // Exit the function early if the word is incorrect
     }
     try {
-      let response: { ok: any; blob: () => any; } = { ok: false, blob: () => null };
+      let response: { ok: any; blob: () => any } = {
+        ok: false,
+        blob: () => null,
+      };
       if (language === "English") {
         response = await fetch("http://127.0.0.1:5000/generate_audio", {
           method: "POST",
@@ -103,7 +114,6 @@ function App() {
           }),
         });
       }
-
 
       if (response.ok) {
         incrementStarCountNum();
@@ -146,8 +156,10 @@ function App() {
       const randomWord =
         unshownWords[Math.floor(Math.random() * unshownWords.length)];
       let response: {
-        [x: string]: any; ok: any; blob: () => any; 
-} = { ok: false, blob: () => null };
+        [x: string]: any;
+        ok: any;
+        blob: () => any;
+      } = { ok: false, blob: () => null };
       if (language === "English") {
         response = await fetch("http://localhost:5000/load_audio", {
           method: "POST",
@@ -246,6 +258,7 @@ function App() {
               onClick={() => {
                 setActiveTab("LearningPage");
                 handleStartClick();
+                handleStartClickSpanish();
               }}
               className="learn-button"
             >
