@@ -28,6 +28,26 @@ function App() {
   const [audioSrc, setAudioSrc] = useState<string | null>(null); // State to store the audio blob URL
   const [audioKey, setAudioKey] = useState(0);
   const [starCountNum, setStarCountNum] = useState(0);
+  const [startOverText, setStartOverText] = useState("Start!");
+  const [startOverTextSpanish, setStartOverTextSpanish] =
+    useState("¡Comenzar!");
+
+  const handleStartOverClick = () => {
+    setStartOverText("Start Over!");
+    // Add any other logic you need to reset the app state
+  };
+
+  const handleStartClick = () => {
+    setStartOverText("Start!");
+  };
+
+  const handleStartOverClickSpanish = () => {
+    setStartOverTextSpanish("¡Empezar de nuevo!");
+  };
+
+  const handleStartClickSpanish = () => {
+    setStartOverTextSpanish("¡Comenzar!");
+  };
   const [language, setLanguage] = useState("English");
 
   const incrementStarCountNum = () => {
@@ -223,7 +243,10 @@ function App() {
               {language === "English" ? "Instructions" : "Instrucciones"}
             </button>
             <button
-              onClick={() => setActiveTab("LearningPage")}
+              onClick={() => {
+                setActiveTab("LearningPage");
+                handleStartClick();
+              }}
               className="learn-button"
             >
               {language === "English"
@@ -241,8 +264,17 @@ function App() {
                   : "What did Margot say?"}
               </h2>
               <div>
-                <button id="startover-button" onClick={loadInitialAudio}>
-                  {language === "Spanish" ? "Empezar de nuevo" : "Start Over!"}
+                <button
+                  id="startover-button"
+                  onClick={() => {
+                    loadInitialAudio();
+                    handleStartOverClick();
+                    handleStartOverClickSpanish();
+                  }}
+                >
+                  {language === "Spanish"
+                    ? startOverTextSpanish
+                    : startOverText}
                 </button>
               </div>
               <div className="subtext">
@@ -334,16 +366,16 @@ function App() {
           {activeTab === "AboutMargot" && (
             <div className="description">
               <p className="description-english-line1">
-                Helping your kids learn and
+                Helping your kids have fun
               </p>
               <p className="description-english-line2">
-                kids have fun while learning Spanish!
+                while learning Spanish!
               </p>
               <p className="description-spanish-line1">
-                Ayudando a tus niños a
+                ¡Ayudando a tus niños a
               </p>
               <p className="description-spanish-line2">
-                entender y aprender Ingles facilmente!
+                divertirse mientras aprenden inglés!
               </p>
               <img
                 src={girlPointing}
