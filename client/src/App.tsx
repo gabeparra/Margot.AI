@@ -3,7 +3,7 @@ import babyImage from "./assets/baby.png";
 import starImage from "./assets/star.png";
 import girlPointing from "./assets/girl-pointing.png";
 import girlMegaphone from "./assets/girl-megaphone.png";
-import girlSitting from "./assets/girl-sitting.png";\
+import girlSitting from "./assets/girl-sitting.png";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 // import LearningPage from "./components/LearningPage";
