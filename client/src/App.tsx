@@ -235,17 +235,17 @@ function App() {
               {language === "English" ? "About Margot" : "Acerca de Margot"}
             </button>
             <button
-              onClick={() => {
-                setActiveTab("LearningPage");
-                handleStartClick();
-                handleStartClickSpanish();
-              }}
+              onClick={() => setActiveTab("Instructions")}
               className="instructions-button"
             >
               {language === "English" ? "Instructions" : "Instrucciones"}
             </button>
             <button
-              onClick={() => setActiveTab("LearningPage")}
+              onClick={() => {
+                setActiveTab("LearningPage");
+                handleStartClick();
+                handleStartClickSpanish();
+              }}
               className="learn-button"
             >
               {language === "English"
