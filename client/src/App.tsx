@@ -98,14 +98,18 @@ function App() {
                 className="girl-megaphone"
                 alt="Girl holding megaphone"
               />
-              <h1 className="how-works">How Margot.AI works: </h1>
+              {/* <h1 className="how-works">How Margot.AI works: </h1> */}
               <ul id="instruction-list">
-                <li className="star">
-                  Listen for Margot to say a Spanish word.
-                </li>
+                <li className="how-works">How Margot.AI works: </li>
+                <li className="star"> Listen for Margot to say a Spanish word.</li>
                 <li className="star">Type the word.</li>
                 <li className="star">Earn stars!</li>
               </ul>
+              <img src={starImage} className="star3" alt="Star" />
+              <img src={starImage} className="star4" alt="Star" />
+              <img src={starImage} className="star5" alt="Star" />
+              <img src={starImage} className="star6" alt="Star" />
+              <img src={starImage} className="star7" alt="Star" />
             </div>
           )}
           {activeTab === "AboutMargot" && (
@@ -134,7 +138,6 @@ function App() {
         </div>
         <button className="change-language">SITE LANGUAGE: English</button>
       </div>
-      <img src={starImage} className="star2" alt="Star" />
       {/* <div className="introduction">
         <img
           src={girlMegaphone}
@@ -145,8 +148,9 @@ function App() {
         {responseMessage && <p>{responseMessage}</p>}
       </div> */}
       {/* <img src={starImage} className="star-image2" alt="Star" /> */}
-      <img src={starImage} className="star2" alt="Star" />
-      <div className="introduction">
+
+      {/* INSTRUCTION */}
+      {/* <div className="introduction">
         <img src={girlMegaphone} className="girl-megaphone" alt="Girl holding megaphone" />
         <h1 className="how-works">How Margot.AI works: </h1>
         <ul id="instruction-list">
@@ -155,6 +159,8 @@ function App() {
           <li className="star">Earn stars!</li>
         </ul>
       </div> */}
+        {/* END OF INSTRUCTION */}
+
     </Router>
   );
 }
