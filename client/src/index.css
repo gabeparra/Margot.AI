@@ -32,6 +32,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: #f5f5f5;
+  overflow: hidden;
 }
 
 .title {
@@ -312,18 +313,36 @@ body {
 }
 
 .girl-megaphone {
-  width: 40%;
+  width: 70%; /* Default width for mobile devices */
   height: auto;
-  margin-left: -680px;
-  margin-bottom: -160px;
-  margin-top: 50px;
+  margin-left: -340px; /* Adjusted for mobile */
+  margin-bottom: -80px; /* Adjusted for mobile */
+  margin-top: 25px; /* Adjusted for mobile */
   z-index: 0;
-  /* Start the shake animation and make the animation last for 0.5 seconds */
   animation: shake 0.9s;
-
-  /* When the animation is finished, start again */
   animation-iteration-count: infinite;
 }
+
+/* For tablets and small desktops */
+@media (min-width: 768px) {
+  .girl-megaphone {
+    width: 50%; /* Adjusted width for tablets/small desktops */
+    margin-left: -510px; /* Adjusted for tablets/small desktops */
+    margin-bottom: -120px; /* Adjusted for tablets/small desktops */
+    margin-top: 35px; /* Adjusted for tablets/small desktops */
+  }
+}
+
+/* For large desktops */
+@media (min-width: 1024px) {
+  .girl-megaphone {
+    width: 40%; /* As originally defined for large desktops */
+    margin-left: -680px;
+    margin-bottom: -160px;
+    margin-top: 50px;
+  }
+}
+
 
 @keyframes shake {
   0% {
