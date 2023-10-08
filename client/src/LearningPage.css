@@ -14,14 +14,22 @@ p {
 
 .input-box {
   font-family: "Patrick Hand", cursive;
-  color: #8e8d8d;
+  color: #757575;
+  background-color: #e0e0e0;
+  border-color: #5d5d5d;
   font-size: 2em;
   border-radius: 10px;
   margin-top: 1em;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.submit-button {
+  display: block;
+  margin: 0 auto; /* center horizontally */
+  margin-top: 1em;
 }
 
 ::placeholder {

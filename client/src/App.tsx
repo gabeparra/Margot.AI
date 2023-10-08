@@ -78,7 +78,9 @@ function App() {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                 />
-                <button onClick={handleSubmit}>Submit</button>
+                <button onClick={handleSubmit} className="submit-button">
+                  Submit
+                </button>
                 {responseMessage && <p>{responseMessage}</p>}
               </div>
               <div className="learning-images">
