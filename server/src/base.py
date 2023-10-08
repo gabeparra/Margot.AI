@@ -79,8 +79,9 @@ def generate_audio():
     print("Generating audio...")  # Debug print to confirm the endpoint is hit
 
     data = request.get_json()
-    text = data.get("text", "")
     wordEnglish = data.get("wordEnglish", "")
+    text = data.get("text", "")
+    wordSpanish = data.get("wordSpanish", "")
 
 
     response = request_audio_conversion(text)
@@ -97,14 +98,24 @@ def generate_audio():
         return Response(response2.content+response.content, content_type="audio/mpeg")
     else:
         return jsonify({"error": "Failed to generate audio"}), 500
+    
 
-    #audio_filename = handle_audio_response(response)
+@app.route("/load_audio", methods=["POST"])
+def load_audio():
+    print("Generating audio...")
 
-    #print(f"Audio saved as: {audio_filename}")  # Debug print
-    #goodjob()
+    data = request.get_json()
+    wordEnglish = data.get("wordEnglish", "")
+    wordSpanish = data.get("wordSpanish", "")
 
-    #audio_path = os.path.join(AUDIO_FOLDER, audio_filename)
-    #return send_file(audio_path, as_attachment=True, download_name=audio_filename)
+
+    response = request_audio_conversion(wordSpanish)
+    response2 = request_audio_conversion("How do you spell?")
+
+    if response.status_code == 200 and response.headers.get("Content-Type") == "audio/mpeg":
+        return Response(response2.content + response.content, content_type="audio/mpeg")
+    else:
+        return jsonify({"error": "Failed to generate audio"}), 500
 
 def goodjob():
     print("Generating audio...")  # Debug print to confirm the endpoint is hit
@@ -131,9 +142,9 @@ def request_audio_conversion(text):
         "text": text,
         "model_id": "eleven_multilingual_v2",
         "voice_settings": {
-            "stability": 0.37,
-            "similarity_boost": 0.69,
-            "style": 0.30,
+            "stability": 0.56,
+            "similarity_boost": 0.89,
+            "style": 0.31,
             "use_speaker_boost": True,
         },
     }
