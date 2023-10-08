@@ -353,7 +353,7 @@ div.description {
   width: 25%;
   height: auto;
   position: absolute;
-  bottom: 26%;
+  bottom: 24%;
   left: 19%;
   transform: translateY(-50%);
   animation: shake 0.9s;
