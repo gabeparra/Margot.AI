@@ -214,7 +214,9 @@ function App() {
                   : "What did Margot say?"}
               </h2>
               <div>
-                <button onClick={loadInitialAudio}>Start Over</button>
+                <button onClick={loadInitialAudio}>
+                  {language === "Spanish" ? "Empezar de nuevo" : "Start Over"}
+                </button>
               </div>
               <div className="subtext">
                 <input
