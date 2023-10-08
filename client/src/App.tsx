@@ -1,35 +1,85 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import babyImage from "./assets/baby.png";
 import starImage from "./assets/star.png";
 import girlPointing from "./assets/girl-pointing.png";
 import girlMegaphone from "./assets/girl-megaphone.png";
 import girlSitting from "./assets/girl-sitting.png";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import "./LearningPage.css";
 import "./App.css";
 
 function App() {
-  // const [showLearningPage, setShowLearningPage] = useState(false);
+  // const [showLearningPage, setShowLearningPage] = useState(false);\
+  const [words, setWords] = useState([]);
   const [activeTab, setActiveTab] = useState("AboutMargot");
-
   const [inputValue, setInputValue] = useState(""); // State for input value
   const [responseMessage, setResponseMessage] = useState(""); // State for server response message
-
+  const [currentWord, setCurrentWord] = useState(null);
+  const [shownWords, setShownWords] = useState([]);
+  const [resetMode, setResetMode] = useState(false);
+  const [audioSrc, setAudioSrc] = useState(null); // State to store the audio blob URL
+  const [audioURL, setAudioURL] = useState("");
+  const [audioKey, setAudioKey] = useState(0);
   const handleSubmit = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/generate_audio", {
+      const response = await fetch("http://localhost:5000/generate_audio", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ text: inputValue }),
       });
-      const data = await response.json();
-      setResponseMessage(data.message);
+
+      if (response.ok) {
+        // Revoke the previous blob URL
+        if (audioSrc) {
+          URL.revokeObjectURL(audioSrc);
+        }
+        const blob = await response.blob();
+        const audioUrl = URL.createObjectURL(blob);
+        setAudioSrc(audioUrl);
+        setAudioKey(prevKey => prevKey + 1); // Increment the audio key
+        setResponseMessage("Audio generated successfully!");
+      } else {
+        const data = await response.json();
+        setResponseMessage(data.message || "Error generating audio.");
+      }
     } catch (error) {
       console.error("Error sending request:", error);
       setResponseMessage("Error generating audio.");
     }
+  };
+
+
+  useEffect(() => {
+    fetch("http://localhost:5000/words")
+      .then((response) => response.json())
+      .then((data) => setWords(data))
+      .catch((error) => console.error("Error fetching words:", error));
+  }, []);
+  useEffect(() => {
+    pickRandomWord();
+  }, []);
+  const pickRandomWord = () => {
+    // If in reset mode, just return
+    if (resetMode) return;
+
+    // Filter out words that have already been shown
+    const unshownWords = words.filter((word) => !shownWords.includes(word));
+
+    // If all words have been shown, enable reset mode
+    if (unshownWords.length === 0) {
+      setResetMode(true);
+      return;
+    }
+
+    // Pick a random word from the unshownWords array
+    const randomWord =
+      unshownWords[Math.floor(Math.random() * unshownWords.length)];
+
+    // Update the current word and the list of shown words
+    setCurrentWord(randomWord);
+    setShownWords((prevWords) => [...prevWords, randomWord]);
   };
   return (
     <Router>
@@ -44,7 +94,6 @@ function App() {
             />
           </a>
           <button className="change-language">SITE LANGUAGE: English</button>
-          {/* <button className="instructions-button">Instructions</button> */}
           <div className="info-buttons">
             <button
               onClick={() => setActiveTab("AboutMargot")}
@@ -71,15 +120,45 @@ function App() {
           {activeTab === "LearningPage" && (
             <div>
               <h2>What did Margot say?</h2>
+              <div>
+                <h2>Word</h2>
+                {currentWord && (
+                  <div>
+                    English: {currentWord.english}, Spanish:{" "}
+                    {currentWord.spanish}
+                  </div>
+                )}
+                <button
+                  onClick={() => {
+                    if (resetMode) {
+                      setShownWords([]);
+                      setResetMode(false);
+                      pickRandomWord();
+                    } else {
+                      pickRandomWord();
+                    }
+                  }}
+                >
+                  {resetMode ? "Start Over" : "Pick Random Word"}
+                </button>
+              </div>
               <div className="subtext">
                 <input
                   className="input-box"
                   type="text"
-                  placeholder="Enter text for audio conversion..."
+                  placeholder="Enter text for audio conversion"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                 />
                 <button onClick={handleSubmit}>Submit</button>
+                {audioSrc && (
+                  <div>
+                    <audio controls key={audioKey}>
+                      <source src={audioSrc} type="audio/mpeg" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </div>
+                )}
                 {responseMessage && <p>{responseMessage}</p>}
               </div>
               <div className="learning-images">
@@ -89,6 +168,9 @@ function App() {
                   alt="girl pointing at text"
                 />
               </div>
+              <img src={starImage} className="lstar1" alt="Star" />
+              <img src={starImage} className="lstar2" alt="Star" />
+              <img src={starImage} className="lstar3" alt="Star" />
             </div>
           )}
           {activeTab === "Instructions" && (
@@ -115,16 +197,16 @@ function App() {
           {activeTab === "AboutMargot" && (
             <div className="description">
               <p className="description-english-line1">
-                Helping your kids learn and
+                Hello, parents! I’m Margot. I’m here to help your
               </p>
               <p className="description-english-line2">
-                understand Spanish easier!
+                kids have fun as they learn to type Spanish!
               </p>
               <p className="description-spanish-line1">
-                Ayudando a tus niños a
+                ¡Hola, padres! Soy Margot. ¡Estoy aquí para ayudar a
               </p>
               <p className="description-spanish-line2">
-                entender y aprender Ingles facilmente!
+                a tus niños divertirse mientras aprenden inglés!
               </p>
               <img
                 src={girlPointing}
@@ -138,29 +220,6 @@ function App() {
         </div>
         <button className="change-language">SITE LANGUAGE: English</button>
       </div>
-      {/* <div className="introduction">
-        <img
-          src={girlMegaphone}
-          className="girl-megaphone"
-          alt="Girl holding megaphone"
-        />
-        <button onClick={handleSubmit}>Submit</button>
-        {responseMessage && <p>{responseMessage}</p>}
-      </div> */}
-      {/* <img src={starImage} className="star-image2" alt="Star" /> */}
-
-      {/* INSTRUCTION */}
-      {/* <div className="introduction">
-        <img src={girlMegaphone} className="girl-megaphone" alt="Girl holding megaphone" />
-        <h1 className="how-works">How Margot.AI works: </h1>
-        <ul id="instruction-list">
-          <li className="star">Listen for Margot to say a Spanish word.</li>
-          <li className="star">Type the word.</li>
-          <li className="star">Earn stars!</li>
-        </ul>
-      </div> */}
-        {/* END OF INSTRUCTION */}
-
     </Router>
   );
 }
