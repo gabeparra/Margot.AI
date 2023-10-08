@@ -20,6 +20,12 @@ function App() {
   const [audioSrc, setAudioSrc] = useState(null); // State to store the audio blob URL
   const [audioURL, setAudioURL] = useState("");
   const [audioKey, setAudioKey] = useState(0);
+  const [language, setLanguage] = useState("Spanish");
+
+  const handleLanguageChange = () => {
+    setLanguage(language === "English" ? "Spanish" : "English");
+  };
+
   const handleSubmit = async () => {
     try {
       const response = await fetch("http://localhost:5000/generate_audio", {
@@ -38,7 +44,7 @@ function App() {
         const blob = await response.blob();
         const audioUrl = URL.createObjectURL(blob);
         setAudioSrc(audioUrl);
-        setAudioKey(prevKey => prevKey + 1); // Increment the audio key
+        setAudioKey((prevKey) => prevKey + 1); // Increment the audio key
         setResponseMessage("Audio generated successfully!");
       } else {
         const data = await response.json();
@@ -49,7 +55,6 @@ function App() {
       setResponseMessage("Error generating audio.");
     }
   };
-
 
   useEffect(() => {
     fetch("http://localhost:5000/words")
@@ -93,25 +98,29 @@ function App() {
               alt="Image of a baby's face"
             />
           </a>
-          <button className="change-language">SITE LANGUAGE: English</button>
+          <button className="change-language" onClick={handleLanguageChange}>
+            {language === "Spanish" ? "switch to ENGLISH" : "cambiar a ESPAÑOL"}
+          </button>
           <div className="info-buttons">
             <button
               onClick={() => setActiveTab("AboutMargot")}
               className="about-button"
             >
-              About Margot
+              {language === "English" ? "About Margot" : "Acerca de Margot"}
             </button>
             <button
               onClick={() => setActiveTab("Instructions")}
               className="instructions-button"
             >
-              Instructions
+              {language === "English" ? "Instructions" : "Instrucciones"}
             </button>
             <button
               onClick={() => setActiveTab("LearningPage")}
               className="learn-button"
             >
-              Start Learning!
+              {language === "English"
+                ? "Start Learning!"
+                : "¡Comenzar a Aprender!"}
             </button>
           </div>
         </div>
@@ -183,7 +192,10 @@ function App() {
               {/* <h1 className="how-works">How Margot.AI works: </h1> */}
               <ul id="instruction-list">
                 <li className="how-works">How Margot.AI works: </li>
-                <li className="star"> Listen for Margot to say a Spanish word.</li>
+                <li className="star">
+                  {" "}
+                  Listen for Margot to say a Spanish word.
+                </li>
                 <li className="star">Type the word.</li>
                 <li className="star">Earn stars!</li>
               </ul>
@@ -200,7 +212,7 @@ function App() {
                 Hello, parents! I’m Margot. I’m here to help your
               </p>
               <p className="description-english-line2">
-                kids have fun as they learn to type Spanish!
+                kids have fun while learning Spanish!
               </p>
               <p className="description-spanish-line1">
                 ¡Hola, padres! Soy Margot. ¡Estoy aquí para ayudar a
@@ -215,10 +227,12 @@ function App() {
               />
               <img src={starImage} className="star1" alt="Star" />
               <img src={starImage} className="star2" alt="Star" />
+              <img src={starImage} className="star2-1" alt="Star" />
+              <img src={starImage} className="star2-2" alt="Star" />
+              <img src={starImage} className="star2-3" alt="Star" />
             </div>
           )}
         </div>
-        <button className="change-language">SITE LANGUAGE: English</button>
       </div>
     </Router>
   );
