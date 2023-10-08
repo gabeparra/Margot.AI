@@ -74,7 +74,7 @@ function App() {
                 <input
                   className="input-box"
                   type="text"
-                  placeholder="Enter text for audio conversion..."
+                  placeholder="Enter text for audio conversion"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                 />
