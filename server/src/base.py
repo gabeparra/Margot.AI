@@ -87,14 +87,11 @@ def generate_audio():
     response = request_audio_conversion(text)
     response2= request_audio_conversion("Correct. The Spanish word for "+wordEnglish+" is ")
 
-    #print(f"Response status code: {response.status_code}")  # Debug print
-    #print(f"Response headers: {response.headers}")  # Debug print
     print(
         f"First 100 bytes of response: {response.content[:100]}"
-    )  # Debug print, just to check content type
+    )  
 
     if response.status_code == 200 and response.headers.get("Content-Type") == "audio/mpeg":
-        # Send the audio data directly to the client
         return Response(response2.content+response.content, content_type="audio/mpeg")
     else:
         return jsonify({"error": "Failed to generate audio"}), 500
@@ -116,26 +113,46 @@ def load_audio():
         return Response(response2.content + response.content, content_type="audio/mpeg")
     else:
         return jsonify({"error": "Failed to generate audio"}), 500
-
-def goodjob():
-    print("Generating audio...")  # Debug print to confirm the endpoint is hit
+@app.route("/generar_audio", methods=["POST"])
+def generar_audio():
+    print("Generando audio...")  # Debug print to confirm the endpoint is hit
 
     data = request.get_json()
-    text = "Good job! Excelente trabajo!"
+    wordEnglish = data.get("wordEnglish", "")
+    text = data.get("text", "")
+    wordSpanish = data.get("wordSpanish", "")
+
 
     response = request_audio_conversion(text)
+    response2= request_audio_conversion("Correcto. La palabra en ingles para "+wordEnglish+" es ")
 
-    #print(f"Response status code: {response.status_code}")  # Debug print
-    #print(f"Response headers: {response.headers}")  # Debug print
     print(
         f"First 100 bytes of response: {response.content[:100]}"
-    )  # Debug print, just to check content type
+    )  
 
-    audio_filename = handle_audio_response(response)
+    if response.status_code == 200 and response.headers.get("Content-Type") == "audio/mpeg":
+        return Response(response2.content+response.content, content_type="audio/mpeg")
+    else:
+        return jsonify({"error": "Failed to generate audio"}), 500
+    
 
-    print(f"Audio saved as: {audio_filename}")  # Debug print
+@app.route("/cargar_audio", methods=["POST"])
+def cargar_audio():
+    print("Generating audio...")
 
-    return jsonify({"message": f"Audio saved as {audio_filename}"})
+    data = request.get_json()
+    wordEnglish = data.get("wordEnglish", "")
+    wordSpanish = data.get("wordSpanish", "")
+
+
+    response = request_audio_conversion(wordSpanish)
+    response2 = request_audio_conversion("Como se escribe?")
+
+    if response.status_code == 200 and response.headers.get("Content-Type") == "audio/mpeg":
+        return Response(response2.content + response.content, content_type="audio/mpeg")
+    else:
+        return jsonify({"error": "Failed to generate audio"}), 500
+
 
 def request_audio_conversion(text):
     data = { #set paramters for the voice AI conversion
