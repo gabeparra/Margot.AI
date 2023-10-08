@@ -44,13 +44,19 @@ function App() {
             />
           </a>
           <button className="change-language">SITE LANGUAGE: English</button>
-          <button className="instructions-button">Instructions</button>
+          {/* <button className="instructions-button">Instructions</button> */}
           <div className="info-buttons">
             <button
               onClick={() => setActiveTab("AboutMargot")}
               className="about-button"
             >
               About Margot
+            </button>
+            <button
+              onClick={() => setActiveTab("Instructions")}
+              className="instructions-button"
+            >
+              Instructions
             </button>
             <button
               onClick={() => setActiveTab("LearningPage")}
@@ -81,6 +87,23 @@ function App() {
               </div>
             </div>
           )}
+          {activeTab === "Instructions" && (
+            <div className="introduction">
+              <img
+                src={girlMegaphone}
+                className="girl-megaphone"
+                alt="Girl holding megaphone"
+              />
+              <h1 className="how-works">How Margot.AI works: </h1>
+              <ul id="instruction-list">
+                <li className="star">
+                  Listen for Margot to say a Spanish word.
+                </li>
+                <li className="star">Type the word.</li>
+                <li className="star">Earn stars!</li>
+              </ul>
+            </div>
+          )}
           {activeTab === "AboutMargot" && (
             <div className="description">
               <p className="description-english-line1">
@@ -106,10 +129,9 @@ function App() {
           )}
         </div>
         <button className="change-language">SITE LANGUAGE: English</button>
-        <button className="instructions-button">Instructions</button>
       </div>
       <img src={starImage} className="star2" alt="Star" />
-      <div className="introduction">
+      {/* <div className="introduction">
         <img
           src={girlMegaphone}
           className="girl-megaphone"
@@ -121,7 +143,7 @@ function App() {
           <li className="star">Type the word.</li>
           <li className="star">Earn stars!</li>
         </ul>
-      </div>
+      </div> */}
     </Router>
   );
 }
