@@ -90,7 +90,7 @@ body {
   transform: translateX(30%);
   transform: translateY(270%);
   margin-top: 1em;
-  font-size: 3em;
+  font-size: 2em;
   border-radius: 20px;
   padding-left: 40px;
   padding-right: 40px;
@@ -110,7 +110,7 @@ body {
   transform: translateX(30%);
   transform: translateY(270%);
   margin-top: 1em;
-  font-size: 3em;
+  font-size: 2em;
   border-radius: 20px;
   padding-left: 40px;
   padding-right: 40px;
@@ -118,6 +118,7 @@ body {
   padding-bottom: 10px;
   margin-bottom: 0.7em;
 }
+
 .about-button {
   background-color: #f7d6a6;
   color: #3db29f;
@@ -127,15 +128,15 @@ body {
   right: 0;
   transform: translateX(30%);
   transform: translateY(270%);
-  margin-top: 1em;
-  font-size: 3em;
+  margin-top: 2em; /* Updated margin-top value */
+  font-size: 2em;
   border-radius: 20px;
   padding-left: 40px;
   padding-right: 40px;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: 0.7em;
-  margin-right: 0.2em;
+  margin-right: 0.2em; 
 }
 
 .description-english-line1 {
@@ -144,7 +145,8 @@ body {
   font-size: 48px;
   /* margin-right: 3em; */
   /* padding-right: 3em; */
-  margin-bottom: 0px;
+  margin-bottom: -5%;
+  margin-top: 2%;
 }
 
 .description-english-line2 {
@@ -153,8 +155,8 @@ body {
   font-size: 48px;
   /* margin-right: 3em; */
   /* padding-right: 3em; */
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin-bottom: -5%;
+  margin-top: 7%;
 }
 
 .description-spanish-line1 {
@@ -163,8 +165,8 @@ body {
   font-size: 48px;
   /* margin-right: 3em; */
   /* padding-right: 3em; */
-  margin-bottom: 0px;
-  margin-top: 0px;
+  margin-bottom: -5%;
+  margin-top: 7%;
 }
 
 .description-spanish-line2 {
@@ -173,10 +175,11 @@ body {
   font-size: 48px;
   /* margin-right: 3em; */
   /* padding-right: 3em; */
-  margin-top: 0px;
+  margin-top: 7%;
   margin-bottom: 0px;
 }
 
+/* STARS */
 .star1 {
   position: relative;
   width: 25%;
@@ -198,13 +201,58 @@ body {
   /* left: 0; */
   /* top: 63%; changed from top: 1; */
   margin-left: 50%;
-  margin-top: -5%;
+  margin-top: -10%;
   margin-bottom: 3%;
   z-index: 9999;
 }
 
 .star2:hover {
   transform: rotateY(180deg);
+}
+
+.star3 {
+  width: 14%;
+  height: auto;
+  /* flex-shrink: 0; */
+  /* left: 0; */
+  /* top: 63%; changed from top: 1; */
+  margin-left: -800px;
+  margin-top: -880px;
+  margin-bottom: 300px;
+  z-index: 9999;
+}
+
+.star4 {
+  width: 20%;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.star5 {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  width: 12%;
+  height: auto;
+}
+
+.star6 {
+  width: 8%;
+  height: auto;
+  position: absolute;
+  top: 25%;
+  right: 15%;
+}
+
+.star7 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 25%;
+  height: auto;
 }
 
 .girl-pointing {
@@ -219,10 +267,31 @@ body {
 }
 
 .girl-megaphone {
-  width: 22%;
+  width: 40%;
   height: auto;
-  margin-right: 60%;
-  margin-bottom: -35%;
+  margin-left: -680px;
+  margin-bottom: -160px;
+  margin-top: 50px;
+  z-index: 0;
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake .90s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
 button {
@@ -266,25 +335,34 @@ button:focus-visible {
 /* list */
 #instruction-list {
   font-family: "Patrick Hand", cursive;
-  font-size: 1.5em;
+  font-size: 150%;
   color: #4d92d3;
   text-align: left;
-  margin-left: 25%;
+  margin-left: 100px;
+  margin-bottom: 50px;
+  margin-top: -180px;
 }
 
+/* bullet points */
 .star {
   list-style-type: none;
   background-image: url("./assets/star.png");
   background-size: 50px;
   background-repeat: no-repeat;
-  background-position: left center;
+  background-position: left;
   padding: 10px 48px;
 }
 
-/* headers */
+li {
+  font-size: 115%;
+}
+
+/* list header */
 .how-works {
+  list-style-type: none;
   font-family: "Patrick Hand", cursive;
-  font-size: 300%;
+  font-size: 250%;
   color: #4d92d3;
-  margin-top: 20%;
+  margin-top: 100px;
+  margin-bottom: 5px;
 }

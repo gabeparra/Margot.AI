@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import babyImage from "./assets/baby.png";
 import starImage from "./assets/star.png";
 import girlPointing from "./assets/girl-pointing.png";
 import girlMegaphone from "./assets/girl-megaphone.png";
 import girlSitting from "./assets/girl-sitting.png";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import "./LearningPage.css";
 import "./App.css";
 
@@ -18,6 +18,8 @@ function App() {
   const [shownWords, setShownWords] = useState([]);
   const [resetMode, setResetMode] = useState(false);
   const [audioSrc, setAudioSrc] = useState(null); // State to store the audio blob URL
+  const [audioURL, setAudioURL] = useState("");
+  const [audioKey, setAudioKey] = useState(0);
   const handleSubmit = async () => {
     try {
       const response = await fetch("http://localhost:5000/generate_audio", {
@@ -29,9 +31,14 @@ function App() {
       });
 
       if (response.ok) {
+        // Revoke the previous blob URL
+        if (audioSrc) {
+          URL.revokeObjectURL(audioSrc);
+        }
         const blob = await response.blob();
         const audioUrl = URL.createObjectURL(blob);
         setAudioSrc(audioUrl);
+        setAudioKey(prevKey => prevKey + 1); // Increment the audio key
         setResponseMessage("Audio generated successfully!");
       } else {
         const data = await response.json();
@@ -42,6 +49,8 @@ function App() {
       setResponseMessage("Error generating audio.");
     }
   };
+
+
   useEffect(() => {
     fetch("http://localhost:5000/words")
       .then((response) => response.json())
@@ -144,7 +153,7 @@ function App() {
                 <button onClick={handleSubmit}>Submit</button>
                 {audioSrc && (
                   <div>
-                    <audio controls>
+                    <audio controls key={audioKey}>
                       <source src={audioSrc} type="audio/mpeg" />
                       Your browser does not support the audio element.
                     </audio>
@@ -171,14 +180,18 @@ function App() {
                 className="girl-megaphone"
                 alt="Girl holding megaphone"
               />
-              <h1 className="how-works">How Margot.AI works: </h1>
+              {/* <h1 className="how-works">How Margot.AI works: </h1> */}
               <ul id="instruction-list">
-                <li className="star">
-                  Listen for Margot to say a Spanish word.
-                </li>
+                <li className="how-works">How Margot.AI works: </li>
+                <li className="star"> Listen for Margot to say a Spanish word.</li>
                 <li className="star">Type the word.</li>
                 <li className="star">Earn stars!</li>
               </ul>
+              <img src={starImage} className="star3" alt="Star" />
+              <img src={starImage} className="star4" alt="Star" />
+              <img src={starImage} className="star5" alt="Star" />
+              <img src={starImage} className="star6" alt="Star" />
+              <img src={starImage} className="star7" alt="Star" />
             </div>
           )}
           {activeTab === "AboutMargot" && (
