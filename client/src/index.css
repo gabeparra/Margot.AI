@@ -32,6 +32,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: #f5f5f5;
+  overflow: hidden;
 }
 
 .title {
@@ -81,10 +82,10 @@ body {
 }
 
 .instructions-button {
+  position: fixed;
   background-color: #f7d6a6;
   color: #3db29f;
   font-family: "Patrick Hand", cursive;
-  position: relative;
   bottom: 5em;
   right: 0;
   transform: translateX(30%);
@@ -101,10 +102,10 @@ body {
 }
 
 .learn-button {
+  position:fixed;
   background-color: #f7d6a6;
   color: #3db29f;
   font-family: "Patrick Hand", cursive;
-  position: relative;
   bottom: 5em;
   right: 0;
   transform: translateX(30%);
@@ -120,10 +121,10 @@ body {
 }
 
 .about-button {
+  position:fixed;
   background-color: #f7d6a6;
   color: #3db29f;
   font-family: "Patrick Hand", cursive;
-  position: relative;
   bottom: 5em;
   right: 0;
   transform: translateX(30%);
@@ -135,49 +136,75 @@ body {
   padding-right: 40px;
   padding-top: 10px;
   padding-bottom: 10px;
-  margin-bottom: 0.7em;
+  /* margin-bottom: 0.7em; */
   margin-right: 0.2em;
+}
+
+button.learn-button, .about-button, .instructions-button {
+  /* border: 1px solid transparent; */
+  /* padding: 0.6em 1.2em; */
+  /* bottom: 5em; */
+  position: relative;
+  padding-left: 40px;
+  /* cursor: pointer; */
+  /* transition: border-color 0.25s; */
 }
 
 .description-english-line1 {
   font-family: "Patrick Hand", cursive;
   color: #ff7777;
   font-size: 48px;
+  margin: 0;
+  bottom: 10em;
   /* margin-right: 3em; */
   /* padding-right: 3em; */
-  margin-bottom: -5%;
-  margin-top: 2%;
+  /* top: 5px; */
+  /* margin-bottom: -5%;
+  margin-top: 2%; */
 }
 
 .description-english-line2 {
   font-family: "Patrick Hand", cursive;
   color: #ff7777;
   font-size: 48px;
+  margin: 0;
+  bottom: 8em;
   /* margin-right: 3em; */
   /* padding-right: 3em; */
-  margin-bottom: -5%;
-  margin-top: 7%;
+  /* top: 9px; */
 }
 
 .description-spanish-line1 {
   font-family: "Patrick Hand", cursive;
   color: #f2a661;
   font-size: 48px;
+  margin: 0;
+  bottom: 8em;
   /* margin-right: 3em; */
   /* padding-right: 3em; */
-  margin-bottom: -5%;
-  margin-top: 7%;
+  /* top: 9px; */
 }
 
 .description-spanish-line2 {
   font-family: "Patrick Hand", cursive;
   color: #f2a661;
   font-size: 48px;
+  margin: 0;
+  bottom: 8em;
   /* margin-right: 3em; */
   /* padding-right: 3em; */
-  margin-top: 7%;
-  margin-bottom: 0px;
+  /* top: 5px; */
 }
+
+/* p .description-english-line1, .description-english-line2, .description-spanish-line1, .description-spanish-line2 {
+  position: fixed;
+  bottom: 10px;
+  margin: 0;
+} */
+/* 
+div.description {
+  margin: 0;
+} */
 
 /* STARS */
 .star1 {
@@ -207,7 +234,7 @@ body {
 .star2-1 {
   position: absolute;
   left: 50%;
-  bottom: 0%;
+  top: 37em;
   width: 13%;
   height: auto;
 }
@@ -241,15 +268,17 @@ body {
   transform: rotateY(180deg);
 }
 .star3 {
-  width: 14%;
+  position: absolute;
+  width: 10%;
   height: auto;
+  bottom: 25em;
+  left: 10em;
   /* flex-shrink: 0; */
   /* left: 0; */
   /* top: 63%; changed from top: 1; */
-  margin-left: -800px;
+  /* margin-left: -800px;
   margin-top: -880px;
-  margin-bottom: 300px;
-  z-index: 9999;
+  margin-bottom: 300px; */
 }
 
 .star4 {
@@ -301,30 +330,32 @@ body {
 }
 
 .girl-pointing {
-  position: relative;
-  width: 35%;
+  position: absolute;
+  width: 23%;
   height: auto;
-  margin-top: -50%;
+  bottom: 18%;
+  right: 8%;
+
+  /* margin-top: -50%;
   margin-left: 3%;
-  margin-bottom: 5%;
+  margin-bottom: 5%; */
   z-index: 0;
-  right: -65%;
 }
 
 .girl-megaphone {
-  width: 40%;
+  width: 20%;
   height: auto;
-  margin-left: -680px;
-  margin-bottom: -160px;
-  margin-top: 50px;
-  z-index: 0;
-  /* Start the shake animation and make the animation last for 0.5 seconds */
+  position: absolute;
+  bottom: 35%;
+  left: 19%;
+  transform: translateY(-50%);
   animation: shake 0.9s;
-
-  /* When the animation is finished, start again */
   animation-iteration-count: infinite;
 }
-
+/* margin-left: -680px;
+  margin-bottom: -160px;
+  margin-top: 50px;
+  z-index: 0; */
 @keyframes shake {
   0% {
     transform: translate(1px, 1px) rotate(0deg);
@@ -401,13 +432,16 @@ button:focus-visible {
 
 /* list */
 #instruction-list {
+  position:relative;
   font-family: "Patrick Hand", cursive;
   font-size: 150%;
+  bottom: 4em;
+  left: 8em;
   color: #4d92d3;
   text-align: left;
-  margin-left: 100px;
+  /* margin-left: 100px;
   margin-bottom: 50px;
-  margin-top: -180px;
+  margin-top: -180px; */
 }
 
 /* bullet points */
