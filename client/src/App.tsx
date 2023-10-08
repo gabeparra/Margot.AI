@@ -20,20 +20,24 @@ function App() {
   const [audioSrc, setAudioSrc] = useState(null); // State to store the audio blob URL
   const [audioURL, setAudioURL] = useState("");
   const [audioKey, setAudioKey] = useState(0);
-  const [language, setLanguage] = useState("Spanish");
+  const handleSubmit = async (wordEnglish, inputText) => {
+    // Check if the inputValue matches currentWord.spanish
+    //if (inputValue !== currentWord.spanish) {
+    //setResponseMessage("Incorrect word. Please try again.");
+    //return; // Exit the function early if the word is incorrect
+    //}
 
-  const handleLanguageChange = () => {
-    setLanguage(language === "English" ? "Spanish" : "English");
-  };
-
-  const handleSubmit = async () => {
     try {
+      generateAudioForWord(inputValue);
       const response = await fetch("http://localhost:5000/generate_audio", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ text: inputValue }),
+        body: JSON.stringify({
+          text: inputText,
+          wordEnglish: wordEnglish
+        }),
       });
 
       if (response.ok) {
@@ -44,7 +48,36 @@ function App() {
         const blob = await response.blob();
         const audioUrl = URL.createObjectURL(blob);
         setAudioSrc(audioUrl);
-        setAudioKey((prevKey) => prevKey + 1); // Increment the audio key
+        setAudioKey(prevKey => prevKey + 1); // Increment the audio key
+        setResponseMessage("Correct word!");
+      } else {
+        const data = await response.json();
+        //setResponseMessage(data.message || "Error generating audio.");
+      }
+    } catch (error) {
+      console.error("Error sending request:", error);
+      //setResponseMessage("Error generating audio.");
+    }
+  };
+  const generateAudioForWord = async (wordText) => {
+    try {
+      const response = await fetch("http://localhost:5000/generate_audio", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text: wordText }),
+      });
+
+      if (response.ok) {
+        // Revoke the previous blob URL
+        if (audioSrc) {
+          URL.revokeObjectURL(audioSrc);
+        }
+        const blob = await response.blob();
+        const audioUrl = URL.createObjectURL(blob);
+        setAudioSrc(audioUrl);
+        setAudioKey(prevKey => prevKey + 1); // Increment the audio key
         setResponseMessage("Audio generated successfully!");
       } else {
         const data = await response.json();
@@ -55,12 +88,33 @@ function App() {
       setResponseMessage("Error generating audio.");
     }
   };
+  const [language, setLanguage] = useState("Spanish");
+
+  const handleLanguageChange = () => {
+    setLanguage(language === "English" ? "Spanish" : "English");
+  };
+
+
 
   useEffect(() => {
-    fetch("http://localhost:5000/words")
-      .then((response) => response.json())
-      .then((data) => setWords(data))
-      .catch((error) => console.error("Error fetching words:", error));
+    // Fetch words from the database when the component mounts
+    fetch('http://localhost:5000/words')
+      .then(response => response.json())
+      .then(data => {
+        setWords(data);
+        // Assuming the first word is the one you want to load
+        const initialWord = data[0];
+        setCurrentWord(initialWord);
+        // Generate audio for the initial word
+        generateAudioForWord(initialWord.spanish);
+      })
+      .catch(error => console.error('Error fetching words:', error));
+  }, []);
+  useEffect(() => {
+    fetch('http://localhost:5000/words')
+      .then(response => response.json())
+      .then(data => setWords(data))
+      .catch(error => console.error('Error fetching words:', error));
   }, []);
   useEffect(() => {
     pickRandomWord();
@@ -68,23 +122,18 @@ function App() {
   const pickRandomWord = () => {
     // If in reset mode, just return
     if (resetMode) return;
-
     // Filter out words that have already been shown
-    const unshownWords = words.filter((word) => !shownWords.includes(word));
-
+    const unshownWords = words.filter(word => !shownWords.includes(word));
     // If all words have been shown, enable reset mode
     if (unshownWords.length === 0) {
       setResetMode(true);
       return;
     }
-
     // Pick a random word from the unshownWords array
-    const randomWord =
-      unshownWords[Math.floor(Math.random() * unshownWords.length)];
-
+    const randomWord = unshownWords[Math.floor(Math.random() * unshownWords.length)];
     // Update the current word and the list of shown words
     setCurrentWord(randomWord);
-    setShownWords((prevWords) => [...prevWords, randomWord]);
+    setShownWords(prevWords => [...prevWords, randomWord]);
   };
   return (
     <Router>
@@ -124,30 +173,25 @@ function App() {
             </button>
           </div>
         </div>
-
         <div className="info">
           {activeTab === "LearningPage" && (
             <div>
               <h2>What did Margot say?</h2>
               <div>
-                <h2>Word</h2>
                 {currentWord && (
                   <div>
-                    English: {currentWord.english}, Spanish:{" "}
-                    {currentWord.spanish}
+                    English: {currentWord.english}, Spanish: {currentWord.spanish}
                   </div>
                 )}
-                <button
-                  onClick={() => {
-                    if (resetMode) {
-                      setShownWords([]);
-                      setResetMode(false);
-                      pickRandomWord();
-                    } else {
-                      pickRandomWord();
-                    }
-                  }}
-                >
+                <button onClick={() => {
+                  if (resetMode) {
+                    setShownWords([]);
+                    setResetMode(false);
+                    pickRandomWord();
+                  } else {
+                    pickRandomWord();
+                  }
+                }}>
                   {resetMode ? "Start Over" : "Pick Random Word"}
                 </button>
               </div>
@@ -159,7 +203,7 @@ function App() {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                 />
-                <button onClick={handleSubmit}>Submit</button>
+                <button onClick={() => handleSubmit(currentWord.english, inputValue)}>Submit</button>
                 {audioSrc && (
                   <div>
                     <audio controls key={audioKey}>
@@ -192,10 +236,7 @@ function App() {
               {/* <h1 className="how-works">How Margot.AI works: </h1> */}
               <ul id="instruction-list">
                 <li className="how-works">How Margot.AI works: </li>
-                <li className="star">
-                  {" "}
-                  Listen for Margot to say a Spanish word.
-                </li>
+                <li className="star"> Listen for Margot to say a Spanish word.</li>
                 <li className="star">Type the word.</li>
                 <li className="star">Earn stars!</li>
               </ul>
@@ -209,16 +250,16 @@ function App() {
           {activeTab === "AboutMargot" && (
             <div className="description">
               <p className="description-english-line1">
-                Hello, parents! I’m Margot. I’m here to help your
+                Helping your kids learn and
               </p>
               <p className="description-english-line2">
                 kids have fun while learning Spanish!
               </p>
               <p className="description-spanish-line1">
-                ¡Hola, padres! Soy Margot. ¡Estoy aquí para ayudar a
+                Ayudando a tus niños a
               </p>
               <p className="description-spanish-line2">
-                a tus niños divertirse mientras aprenden inglés!
+                entender y aprender Ingles facilmente!
               </p>
               <img
                 src={girlPointing}
