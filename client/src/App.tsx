@@ -19,7 +19,6 @@ function App() {
   const [resetMode, setResetMode] = useState(false);
   const [audioSrc, setAudioSrc] = useState(null); // State to store the audio blob URL
   const [audioKey, setAudioKey] = useState(0);
-
   const handleInputChange = (e) => {
     const inputText = e.target.value;
     if (currentWord && inputText === currentWord.spanish) {
@@ -67,6 +66,14 @@ function App() {
     }
   };
   const generateAudioForWord = async (wordText) => {
+
+  const [language, setLanguage] = useState("Spanish");
+
+  const handleLanguageChange = () => {
+    setLanguage(language === "English" ? "Spanish" : "English");
+  };
+
+  const handleSubmit = async () => {
     try {
       const randomWord = pickRandomWord();
       const response = await fetch("http://localhost:5000/generate_audio", {
@@ -85,7 +92,7 @@ function App() {
         const blob = await response.blob();
         const audioUrl = URL.createObjectURL(blob);
         setAudioSrc(audioUrl);
-        setAudioKey(prevKey => prevKey + 1); // Increment the audio key
+        setAudioKey((prevKey) => prevKey + 1); // Increment the audio key
         setResponseMessage("Audio generated successfully!");
       } else {
         const data = await response.json();
@@ -96,7 +103,6 @@ function App() {
       //setResponseMessage("Error generating audio.");
     }
   };
-
 
   useEffect(() => {
     // Fetch words from the database when the component mounts
@@ -154,25 +160,29 @@ function App() {
               alt="Image of a baby's face"
             />
           </a>
-          <button className="change-language">SITE LANGUAGE: English</button>
+          <button className="change-language" onClick={handleLanguageChange}>
+            {language === "Spanish" ? "switch to ENGLISH" : "cambiar a ESPAÑOL"}
+          </button>
           <div className="info-buttons">
             <button
               onClick={() => setActiveTab("AboutMargot")}
               className="about-button"
             >
-              About Margot
+              {language === "English" ? "About Margot" : "Acerca de Margot"}
             </button>
             <button
               onClick={() => setActiveTab("Instructions")}
               className="instructions-button"
             >
-              Instructions
+              {language === "English" ? "Instructions" : "Instrucciones"}
             </button>
             <button
               onClick={() => setActiveTab("LearningPage")}
               className="learn-button"
             >
-              Start Learning!
+              {language === "English"
+                ? "Start Learning!"
+                : "¡Comenzar a Aprender!"}
             </button>
           </div>
         </div>
@@ -239,7 +249,9 @@ function App() {
               />
               <h1 className="how-works">How Margot.AI works: </h1>
               <ul id="instruction-list">
+                <li className="how-works">How Margot.AI works: </li>
                 <li className="star">
+                  {" "}
                   Listen for Margot to say a Spanish word.
                 </li>
                 <li className="star">Type the word.</li>
@@ -253,7 +265,7 @@ function App() {
                 Helping your kids learn and
               </p>
               <p className="description-english-line2">
-                understand Spanish easier!
+                kids have fun while learning Spanish!
               </p>
               <p className="description-spanish-line1">
                 Ayudando a tus niños a
@@ -268,10 +280,12 @@ function App() {
               />
               <img src={starImage} className="star1" alt="Star" />
               <img src={starImage} className="star2" alt="Star" />
+              <img src={starImage} className="star2-1" alt="Star" />
+              <img src={starImage} className="star2-2" alt="Star" />
+              <img src={starImage} className="star2-3" alt="Star" />
             </div>
           )}
         </div>
-        <button className="change-language">SITE LANGUAGE: English</button>
       </div>
     </Router>
   );
