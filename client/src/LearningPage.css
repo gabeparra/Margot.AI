@@ -112,3 +112,23 @@ submit-button:hover {
     transform: rotate(360deg);
   }
 }
+
+.starCount {
+  position: absolute;
+  top: 10em;
+  left: 5em;
+  width: 25%;
+  height: auto;
+}
+
+.starCountNum {
+  position: absolute;
+  top: 260px;
+  left: 80px;
+  width: 25%;
+  height: auto;
+  z-index: 9999;
+  color: white;
+  font-style: oblique;
+  font-size: 50px;
+}
