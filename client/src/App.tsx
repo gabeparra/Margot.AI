@@ -19,7 +19,9 @@ function App() {
   const [words, setWords] = useState<Word[]>([]);
   const [activeTab, setActiveTab] = useState("AboutMargot");
   const [inputValue, setInputValue] = useState(""); // State for input value
-  const [responseMessage, setResponseMessage] = useState(""); // State for server response message
+  const [responseMessage, setResponseMessage] = useState<JSX.Element>(
+    <div></div>
+  ); // State for server response message
   const [currentWord, setCurrentWord] = useState<Word>();
   const [shownWords, setShownWords] = useState<Word[]>([]);
   const [resetMode, setResetMode] = useState(false);
@@ -42,7 +44,11 @@ function App() {
       !("spanish" in currentWord) ||
       inputValue.toLowerCase() !== currentWord.spanish.toLowerCase()
     ) {
-      setResponseMessage("Incorrect word. Please try again.");
+      setResponseMessage(
+        <div className="incorrect-response">
+          Incorrect word. Please try again.
+        </div>
+      );
       return; // Exit the function early if the word is incorrect
     }
     try {
@@ -69,7 +75,9 @@ function App() {
         setAudioSrc(audioUrl);
         setAudioKey((prevKey) => prevKey + 1); // Increment the audio key
         // starCountNum++;
-        setResponseMessage("Correct word!");
+        setResponseMessage(
+          <div className="correct-response">Correct word!</div>
+        );
       } else {
         //setResponseMessage(data.message || "Error generating audio.");
       }
@@ -123,7 +131,7 @@ function App() {
       }
     } catch (error) {
       console.error("Error sending request:", error);
-      setResponseMessage("Error loading audio.");
+      setResponseMessage(<div>Error loading audio.</div>);
     }
   };
   useEffect(() => {
