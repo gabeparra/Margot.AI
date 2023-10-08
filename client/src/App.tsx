@@ -28,6 +28,24 @@ function App() {
   const [audioSrc, setAudioSrc] = useState<string | null>(null); // State to store the audio blob URL
   const [audioKey, setAudioKey] = useState(0);
   const [starCountNum, setStarCountNum] = useState(0);
+
+
+  const [startOverText, setStartOverText] = useState("Start!");
+  const [startOverTextSpanish, setStartOverTextSpanish] =
+    useState("¡Comenzar!");
+  const handleStartOverClick = () => {
+    setStartOverText("Start Over!");
+    // Add any other logic you need to reset the app state
+  };
+  const handleStartClick = () => {
+    setStartOverText("Start!");
+  };
+  const handleStartOverClickSpanish = () => {
+    setStartOverTextSpanish("¡Empezar de nuevo!");
+  };
+  const handleStartClickSpanish = () => {
+    setStartOverTextSpanish("¡Comenzar!");
+  };
   const [language, setLanguage] = useState("English");
 
   const incrementStarCountNum = () => {
@@ -40,7 +58,7 @@ function App() {
     wordSpanish: any
   ) => {
     //Check if the inputValue matches currentWord.spanish
-    if ((!currentWord || inputValue.toLowerCase() !== currentWord.spanish.toLowerCase())&&language==="English") {
+    if ((!currentWord || inputValue.toLowerCase() !== currentWord.spanish.toLowerCase()) && language === "English") {
       setResponseMessage(
         <div className="incorrect-response">
           Incorrect word. Please try again.
@@ -48,7 +66,7 @@ function App() {
       );
       return; // Exit the function early if the word is incorrect
     }
-    if ((!currentWord || inputValue.toLowerCase() !== currentWord.english.toLowerCase())&&language==="Spanish") {
+    if ((!currentWord || inputValue.toLowerCase() !== currentWord.english.toLowerCase()) && language === "Spanish") {
       setResponseMessage(
         <div className="incorrect-response">
           Respuesta incorrecta. Intenta nuevamente.
@@ -126,8 +144,8 @@ function App() {
       const randomWord =
         unshownWords[Math.floor(Math.random() * unshownWords.length)];
       let response: {
-        [x: string]: any; ok: any; blob: () => any; 
-} = { ok: false, blob: () => null };
+        [x: string]: any; ok: any; blob: () => any;
+      } = { ok: false, blob: () => null };
       if (language === "English") {
         response = await fetch("http://localhost:5000/load_audio", {
           method: "POST",
@@ -217,7 +235,11 @@ function App() {
               {language === "English" ? "About Margot" : "Acerca de Margot"}
             </button>
             <button
-              onClick={() => setActiveTab("Instructions")}
+              onClick={() => {
+                setActiveTab("LearningPage");
+                handleStartClick();
+                handleStartClickSpanish();
+              }}
               className="instructions-button"
             >
               {language === "English" ? "Instructions" : "Instrucciones"}
@@ -241,8 +263,17 @@ function App() {
                   : "What did Margot say?"}
               </h2>
               <div>
-                <button id="startover-button" onClick={loadInitialAudio}>
-                  {language === "Spanish" ? "Empezar de nuevo" : "Start Over!"}
+                <button
+                  id="startover-button"
+                  onClick={() => {
+                    loadInitialAudio();
+                    handleStartOverClick();
+                    handleStartOverClickSpanish();
+                  }}
+                >
+                  {language === "Spanish"
+                    ? startOverTextSpanish
+                    : startOverText}
                 </button>
               </div>
               <div className="subtext">
@@ -334,16 +365,16 @@ function App() {
           {activeTab === "AboutMargot" && (
             <div className="description">
               <p className="description-english-line1">
-                Helping your kids learn and
+                Helping your kids have fun
               </p>
               <p className="description-english-line2">
                 kids have fun while learning Spanish!
               </p>
               <p className="description-spanish-line1">
-                Ayudando a tus niños a
+                ¡Ayudando a tus niños a
               </p>
               <p className="description-spanish-line2">
-                entender y aprender Ingles facilmente!
+                divertirse mientras aprenden inglés!
               </p>
               <img
                 src={girlPointing}
