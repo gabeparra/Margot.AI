@@ -18,6 +18,8 @@ function App() {
   const [shownWords, setShownWords] = useState([]);
   const [resetMode, setResetMode] = useState(false);
   const [audioSrc, setAudioSrc] = useState(null); // State to store the audio blob URL
+  const [audioURL, setAudioURL] = useState("");
+  const [audioKey, setAudioKey] = useState(0);
   const handleSubmit = async () => {
     try {
       const response = await fetch("http://localhost:5000/generate_audio", {
@@ -29,9 +31,14 @@ function App() {
       });
 
       if (response.ok) {
+        // Revoke the previous blob URL
+        if (audioSrc) {
+          URL.revokeObjectURL(audioSrc);
+        }
         const blob = await response.blob();
         const audioUrl = URL.createObjectURL(blob);
         setAudioSrc(audioUrl);
+        setAudioKey(prevKey => prevKey + 1); // Increment the audio key
         setResponseMessage("Audio generated successfully!");
       } else {
         const data = await response.json();
@@ -42,6 +49,8 @@ function App() {
       setResponseMessage("Error generating audio.");
     }
   };
+
+
   useEffect(() => {
     fetch('http://localhost:5000/words')
       .then(response => response.json())
@@ -140,7 +149,7 @@ function App() {
                 <button onClick={handleSubmit}>Submit</button>
                 {audioSrc && (
                   <div>
-                    <audio controls>
+                    <audio controls key={audioKey}>
                       <source src={audioSrc} type="audio/mpeg" />
                       Your browser does not support the audio element.
                     </audio>

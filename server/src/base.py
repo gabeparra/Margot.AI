@@ -81,8 +81,9 @@ def generate_audio():
 
     data = request.get_json()
     text = data.get("text", "")
+    finaltext = "The word is "+text
 
-    response = request_audio_conversion(text)
+    response = request_audio_conversion(finaltext)
 
     #print(f"Response status code: {response.status_code}")  # Debug print
     #print(f"Response headers: {response.headers}")  # Debug print
