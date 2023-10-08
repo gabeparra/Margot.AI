@@ -55,19 +55,37 @@ submit-button:hover {
 }
 
 .girl-sitting {
-  position: absolute;
+  position: relative;
   width: 300px;
-  height: 300px;
-  margin-top: -40px;
-  margin-left: 12px;
+  height: auto;
   z-index: 0;
-  right: 35%;
+  left: -29%;
+  bottom: 30em;
+}
+
+.starCount {
+  position: relative;
+  bottom: 18em;
+  right: 33%;
+  width: 25%;
+  height: auto;
+}
+
+.starCountNum {
+  position: relative;
+  left: 4%;
+  bottom: 9.5em;
+  width: 25%;
+  height: auto;
+  z-index: 9999;
+  color: black;
+  font-style: oblique;
+  font-size: 50px;
 }
 
 .lstar1 {
-  top: -650px;
-  right: 0;
-  left: 70%;
+  bottom: 750px;
+  left: 15%;
   width: 15%;
   height: auto;
   z-index: 2;
@@ -75,16 +93,16 @@ submit-button:hover {
 }
 
 .lstar2 {
-  top: -450px;
-  right: -60%;
+  bottom: 960px;
+  left: 46%;
   width: 18%;
   height: auto;
   z-index: 0;
 }
 
 .lstar3 {
-  top: -255px;
-  right: -22%;
+  top: -720px;
+  left: 9%;
   width: 25%;
   height: auto;
   z-index: 3;
@@ -111,24 +129,4 @@ submit-button:hover {
   to {
     transform: rotate(360deg);
   }
-}
-
-.starCount {
-  position: absolute;
-  top: 10em;
-  left: 5em;
-  width: 25%;
-  height: auto;
-}
-
-.starCountNum {
-  position: absolute;
-  top: 260px;
-  left: 80px;
-  width: 25%;
-  height: auto;
-  z-index: 9999;
-  color: white;
-  font-style: oblique;
-  font-size: 50px;
 }
