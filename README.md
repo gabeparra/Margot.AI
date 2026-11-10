@@ -17,9 +17,9 @@ Margot says a word out loud in one language, and the child types it in the langu
 
 Margot dice una palabra en un idioma y el niño la escribe en el idioma que está aprendiendo. Cada respuesta correcta gana una estrella.
 
-| How it works | Practice |
-|---|---|
-| ![The page explaining the game: listen for the word, type it, earn stars](docs/how-it-works.jpg) | ![The practice screen asking "What did Margot say?" with a star counter](docs/practice.jpg) |
+| About | How it works | Practice |
+|---|---|---|
+| ![The landing page: helping your kids have fun while learning Spanish](docs/about.jpg) | ![The page explaining the game: listen for the word, type it, earn stars](docs/how-it-works.jpg) | ![The practice screen after a right answer, with one star earned](docs/practice.jpg) |
 
 ## How to play
 

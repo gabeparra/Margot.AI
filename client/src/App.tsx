@@ -284,8 +284,8 @@ function App() {
                   type="text"
                   placeholder={
                     language === "Spanish"
-                      ? "Ingrese el texto para la conversión de audio"
-                      : "Enter text for audio conversion"
+                      ? "Escribe lo que dijo Margot"
+                      : "Type what Margot said"
                   }
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
@@ -370,7 +370,7 @@ function App() {
                 Helping your kids have fun
               </p>
               <p className="description-english-line2">
-                kids have fun while learning Spanish!
+                while learning Spanish!
               </p>
               <p className="description-spanish-line1">
                 ¡Ayudando a tus niños a

@@ -233,3 +233,10 @@ submit-button:hover {
   .info > div > .lstar2 { left: 44%; }
   .info > div > .lstar3 { left: auto; right: 3%; }
 }
+
+/* Short desktop windows: keep the sitting girl inside the page. */
+@media (min-width: 1181px) and (max-height: 900px) {
+  .girl-sitting {
+    width: 215px;
+  }
+}
