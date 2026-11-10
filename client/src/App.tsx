@@ -115,7 +115,9 @@ function App() {
         setAudioKey((prevKey) => prevKey + 1); // Increment the audio key
         // starCountNum++;
         setResponseMessage(
-          <div className="correct-response">Correct word!</div>
+          <div className="correct-response">
+            {language === "Spanish" ? "¡Palabra correcta!" : "Correct word!"}
+          </div>
         );
       } else {
         //setResponseMessage(data.message || "Error generating audio.");

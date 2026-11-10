@@ -98,8 +98,8 @@ docker-compose.yaml
 
 ## Team
 
-Built by a team of three in October 2023: Gabriel Parra, Pharit Smitasin and Maria ([isunsetglow](https://github.com/isunsetglow)). My part was the MongoDB side (connection, schema, getting data in and out), the ElevenLabs connection and training Margot's voice model, and work across the Flask API and the React client.
+Built by a team of three at a hackathon in October 2023: Gabriel Parra, Pharit Smitasin and Maria ([isunsetglow](https://github.com/isunsetglow)). My part was the MongoDB side (connection, schema, getting data in and out), the ElevenLabs connection and training Margot's voice model, and work across the Flask API and the React client.
 
 ## Status
 
-A finished team project that isn't being developed further. It has no hosted demo, since it needs MongoDB and ElevenLabs credentials to run.
+A hackathon project, finished over a weekend and lightly tidied since (the layout now holds up on phones and tablets). It isn't being developed further. It has no hosted demo, since it needs MongoDB and ElevenLabs credentials to run.
