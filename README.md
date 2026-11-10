@@ -102,4 +102,4 @@ Built by a team of three at a hackathon in October 2023: Gabriel Parra, Pharit S
 
 ## Status
 
-A hackathon project, finished over a weekend and lightly tidied since (the layout now holds up on phones and tablets). It isn't being developed further. It has no hosted demo, since it needs MongoDB and ElevenLabs credentials to run.
+A hackathon project, lightly tidied since (the layout now holds up on phones and tablets). It isn't being developed further. It has no hosted demo, since it needs MongoDB and ElevenLabs credentials to run.
