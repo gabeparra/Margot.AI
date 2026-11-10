@@ -145,3 +145,91 @@ submit-button:hover {
 .correct-response {
   color: #019798;
 }
+
+/* Placeholder text was cut off at the default input width. */
+.input-box {
+  box-sizing: border-box;
+  width: min(21em, 100%);
+}
+
+/* Wide screens: the wider input would run under the star counter, so move the counter left. */
+@media (min-width: 1181px) {
+  .starCount {
+    right: 40%;
+  }
+  .starCountNum {
+    left: -3%;
+  }
+}
+
+/* Tablets and phones: flow layout, star counter and girl share a small stage. */
+@media (max-width: 1180px) {
+  .info > div {
+    position: relative;
+  }
+  .info > div:has(.learning-images) {
+    padding-bottom: clamp(60px, 18vw, 110px);
+  }
+  #margot-question {
+    font-size: clamp(30px, 8vw, 48px);
+    margin-top: 0.5em;
+  }
+  .input-box {
+    width: min(21em, 100%);
+    font-size: clamp(15px, 4.4vw, 1.5em);
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .submit-button {
+    margin-left: 0;
+  }
+  .audiobar {
+    margin-right: 0;
+    padding-left: 0;
+    max-width: 100%;
+  }
+  .learning-images {
+    --sc: clamp(90px, 24vw, 150px);
+    display: grid;
+    width: min(100%, 440px);
+    margin: 1rem auto 0;
+  }
+  .learning-images > * {
+    grid-area: 1 / 1;
+  }
+  .learning-images .starCount {
+    position: static;
+    width: var(--sc);
+    justify-self: start;
+    align-self: start;
+  }
+  .learning-images .starCountNum {
+    position: static;
+    width: var(--sc);
+    height: var(--sc);
+    line-height: var(--sc);
+    margin: 0;
+    justify-self: start;
+    align-self: start;
+    text-align: center;
+    font-size: clamp(28px, 8vw, 50px);
+  }
+  .learning-images .girl-sitting {
+    position: static;
+    margin: 0;
+    width: clamp(150px, 40vw, 240px);
+    justify-self: end;
+    align-self: end;
+  }
+  .info > div > .lstar1,
+  .info > div > .lstar2,
+  .info > div > .lstar3 {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    width: clamp(44px, 13vw, 90px);
+  }
+  .info > div > .lstar1 { left: 3%; }
+  .info > div > .lstar2 { left: 44%; }
+  .info > div > .lstar3 { left: auto; right: 3%; }
+}

@@ -474,3 +474,117 @@ li {
   margin-top: 100px;
   margin-bottom: 5px;
 }
+
+/* Overlap fixes, wide screens: keep the tab row clear of the language button. */
+@media (min-width: 1181px) {
+  #root:has(.learning-images) {
+    padding-top: 3.3rem;
+  }
+  #instruction-list {
+    left: clamp(9em, calc(9em + (1700px - 100vw) * 0.24), 14em);
+  }
+  .star6 {
+    top: 22%;
+    right: 8%;
+  }
+}
+
+/* Overlap fixes, tablets and phones: normal flow layout instead of
+   fixed and absolute offsets, and let the page scroll. */
+@media (max-width: 1180px) {
+  body {
+    display: block;
+    min-width: 0;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  html body #root {
+    max-width: 100%;
+    padding: 1rem 1rem 2rem;
+    box-sizing: border-box;
+  }
+  .header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem 1rem;
+  }
+  .header .baby-image {
+    position: static;
+    order: 1;
+    width: 56px;
+    height: 56px;
+    margin: 0;
+  }
+  .header .title {
+    position: static;
+    order: 2;
+    margin: 0;
+    font-size: clamp(36px, 9vw, 60px);
+  }
+  .header .change-language {
+    position: static;
+    order: 3;
+    margin: 0;
+    font-size: clamp(1rem, 4vw, 1.5em);
+    padding: 8px clamp(16px, 5vw, 80px);
+  }
+  .info-buttons {
+    order: 4;
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .info-buttons button.about-button,
+  .info-buttons button.instructions-button,
+  .info-buttons button.learn-button {
+    transform: none;
+    bottom: auto;
+    margin: 0;
+    font-size: clamp(1.15rem, 4.6vw, 2em);
+    padding: 0.3em clamp(14px, 3vw, 40px);
+  }
+  .info {
+    margin-top: 1rem;
+  }
+  .introduction {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: clamp(70px, 18vw, 130px);
+  }
+  .introduction .girl-megaphone {
+    position: static;
+    transform: none;
+    width: clamp(150px, 40vw, 260px);
+  }
+  .introduction #instruction-list {
+    position: static;
+    margin: 0;
+    padding: 0;
+    font-size: clamp(100%, 4.2vw, 150%);
+  }
+  .introduction .how-works {
+    margin-top: 0.5em;
+  }
+  .introduction .star3,
+  .introduction .star4,
+  .introduction .star5,
+  .introduction .star6,
+  .introduction .star7 {
+    top: auto;
+    transform: none;
+    bottom: 0;
+    width: clamp(44px, 12vw, 90px);
+  }
+  .introduction .star3 { left: 3%; }
+  .introduction .star7 { left: 24%; }
+  .introduction .star5 { left: 46%; right: auto; }
+  .introduction .star6 { left: auto; right: 24%; }
+  .introduction .star4 { right: 3%; }
+}

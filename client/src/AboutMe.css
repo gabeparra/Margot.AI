@@ -107,3 +107,44 @@
 .star2-3:hover {
   transform: rotateY(180deg);
 }
+
+
+/* Wide screens: shrink the text with the window so it stops short of the girl. */
+@media (min-width: 1181px) {
+  .description p {
+    font-size: clamp(34px, 2.9vw, 48px);
+  }
+}
+
+/* Tablets and phones: stack the text, then the girl, then a row of stars. */
+@media (max-width: 1180px) {
+  .description {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: clamp(60px, 16vw, 120px);
+  }
+  .description p {
+    font-size: clamp(22px, 5.4vw, 40px);
+    margin: 0.15em 0;
+  }
+  .description .girl-pointing {
+    position: static;
+    width: clamp(150px, 32vw, 240px);
+    margin-top: 1rem;
+  }
+  .description .star1,
+  .description .star2,
+  .description .star2-1,
+  .description .star2-2,
+  .description .star2-3 {
+    bottom: 0;
+    width: clamp(40px, 11vw, 84px);
+  }
+  .description .star1 { left: 2%; }
+  .description .star2 { left: 22%; }
+  .description .star2-1 { left: 44%; }
+  .description .star2-2 { right: 22%; }
+  .description .star2-3 { right: 4%; }
+}
