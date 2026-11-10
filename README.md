@@ -26,7 +26,7 @@ Margot dice una palabra en un idioma y el niño la escribe en el idioma que est�
 1. Pick the language you speak: English or Español. The whole page switches with it.
 2. Press **Start**. Margot says a word in the other language.
 3. Type what she said in the language you're learning and send it.
-4. A right answer adds a star and moves to the next word. A wrong one asks you to try again. Words don't repeat until you press **Start Over**.
+4. A right answer adds a star and moves to the next word. A wrong one asks you to try again. Words come in random order and don't repeat until you've been through the whole list.
 
 ## How it's built
 
