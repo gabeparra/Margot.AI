@@ -15,6 +15,8 @@
 
 Margot says a word out loud in one language, and the child types it in the language they're learning. A right answer earns a star, a wrong one gets a gentle "try again".
 
+**Status:** `Archived` - October 2023 hackathon project; kept as a reference repository and no longer actively developed.
+
 Margot dice una palabra en un idioma y el niño la escribe en el idioma que está aprendiendo. Cada respuesta correcta gana una estrella.
 
 | About | How it works | Practice |
@@ -28,7 +30,7 @@ Margot dice una palabra en un idioma y el niño la escribe en el idioma que est�
 3. Type what she said in the language you're learning and send it.
 4. A right answer adds a star and moves to the next word. A wrong one asks you to try again. Words come in random order and don't repeat until you've been through the whole list.
 
-## How it's built
+## Stack & Architecture
 
 ```mermaid
 flowchart LR
@@ -100,6 +102,10 @@ docker-compose.yaml
 
 Built by a team of three at a hackathon in October 2023: Gabriel Parra, Pharit Smitasin and Maria ([isunsetglow](https://github.com/isunsetglow)). My part was the MongoDB side (connection, schema, getting data in and out), the ElevenLabs connection and training Margot's voice model, and work across the Flask API and the React client.
 
-## Status
+## Notes
 
 A hackathon project, lightly tidied since (the layout now holds up on phones and tablets). It isn't being developed further. It has no hosted demo, since it needs MongoDB and ElevenLabs credentials to run.
+
+## License
+
+MIT - see [LICENSE](./LICENSE).
